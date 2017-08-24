@@ -147,6 +147,7 @@ class Cart extends CI_Controller {
         if (array_key_exists($product_id, $cart_product)) {
             unset($cart_product[$product_id]);
         }
+        
 
         $this->session->set_userdata('cart', $cart_product);
         $this->session->unset_userdata('shipping_charges');
