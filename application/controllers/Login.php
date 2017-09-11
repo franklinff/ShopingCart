@@ -10,31 +10,26 @@ class Login extends CI_Controller{
         $this->load->model('Login_model');
         $this->load->model('User_model');
         }
-         /*
+
+        /*
          * function name :__construct
          * Counstructor for Admin_login controller 
          * @access	public
-         * @param : 
          * @return : void
          */
-     
         public function index()
-        {
-            /*echo "test";
-            exit();*/           
+        { 
             $this->form_validation->set_rules('email', 'Email', 'trim|required');
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
          
                 if($this->form_validation->run() == FALSE) {
                 $this->load->view('backend/login');
-                } else {                          
+                } else {  
+
                         $email= $this->input->post('email');
                         $password= $this->input->post('password');
                         $result = $this->Login_model->login($email,$password);                                 
-                        // $result->role_type;
-                        //echo'<pre>';
-                        //print_r($result);
-                        //die();           
+       
                         if(!empty($result)){
 
                              $role = $result->role_type;
@@ -47,10 +42,9 @@ class Login extends CI_Controller{
                                 'email' => $result->email,
                                 'role_type' => 2
                              );   
-                            /*print_r($newdata);
-                            die();*/
+
                             $this->session->set_userdata('admin_login',$newdata);
-                            redirect('index.php/User');
+                            redirect('User');
                             } 
                         }
                         else {
@@ -62,7 +56,8 @@ class Login extends CI_Controller{
 
         public function logout() {
         $this->session->sess_destroy();
-        redirect('index.php/login');        
+        redirect('Login');        
         }
+
 }
 ?>

@@ -13,8 +13,7 @@ class Category_model extends CI_Model
      * insert the data into category table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $datacc
      */
     public function insert_category($datacc)
     {
@@ -28,7 +27,7 @@ class Category_model extends CI_Model
      * retreives the data from category table
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : null
      * @return : array
      */
     public function getAll()
@@ -43,7 +42,7 @@ class Category_model extends CI_Model
      * retreives the data from category table as per the id
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */
     public function getCatgId($id)
@@ -60,7 +59,7 @@ class Category_model extends CI_Model
      * 
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param :null
      * @return : array
      */ 
     public function getByCat()
@@ -79,8 +78,7 @@ class Category_model extends CI_Model
      * delete individual row(hard delete) from category table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $id
      */  
     public function delete_categry($id)
     {
@@ -94,7 +92,7 @@ class Category_model extends CI_Model
      * retreives the data from category table
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */
     public function getCategory($id)
@@ -110,8 +108,7 @@ class Category_model extends CI_Model
      * updates the data of category table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $data, $id
      */   
     public function update($data, $id)
     {

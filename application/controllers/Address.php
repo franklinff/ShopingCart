@@ -8,15 +8,14 @@ class Address extends CI_Controller
         parent::__construct();
         $this->load->model('User_addres_model');
 
-        if (empty($this->session->userdata('user_login'))){      
-           redirect(base_url() . 'index.php/user_login');
+        if (empty($this->session->userdata('user_login'))){  //user_login is a session set in User_login controller
+           redirect(base_url() . 'User_login');              //User_login is a controller
         }
     } 
 
     public function index()
     {
-        $user = $this->session->userdata('user_login');
-      
+        $user = $this->session->userdata('user_login');    
         $user_id = $user[0]['id'];
         $data['result'] = $this->User_addres_model->getUserAddressINDEX($user_id);
 
@@ -27,17 +26,15 @@ class Address extends CI_Controller
 
 
     /*
-     * function name : get_countries
-     * 
+     * function name : get_countries 
      * @access  public
-     * @param : 
-     * @return : void
      */
     public function get_countries()
     {
         $query = $this->db->get('countries');
         $result = $query->result_array();
         $data = array();
+
         foreach ($result as $r) {
             $data['value'] = $r['id'];
             $data['label'] = $r['name'];
@@ -50,15 +47,12 @@ class Address extends CI_Controller
     /*
      * function name :get_states
      * get_states function for states
-     * @access  public
-     * @param : 
+     * @access  public 
      * @return : void
      */
     public function get_states() 
     {
-        $result = $this->db->where('country_id', $_POST['id'])
-                ->get('states')
-                ->result_array();
+        $result = $this->db->where('country_id', $_POST['id'])->get('states')->result_array();
 
         $data = array();
         foreach ($result as $r) {
@@ -74,8 +68,7 @@ class Address extends CI_Controller
     /*
      * function name :get_cities
      * get_cities function for cities
-     * @access  public
-     * @param : 
+     * @access  public 
      * @return : void
      */
     public function get_cities()
@@ -98,15 +91,14 @@ class Address extends CI_Controller
     /*
      * function name :get_cities
      * add user address
-     * @access  public
-     * @param : 
+     * @access  public 
      * @return : void
      */
     public function add_user_adds()
     {
         $user = $this->session->userdata('user_login'); // user_login is session name in User_login controller.
-        $x = $user[0]['id'];
-         /*       echo '<pre>';
+        $x = $user[0]['id'];  
+        /*echo '<pre>';
         print_r($user_id);
         die();*/
         $this->form_validation->set_rules('address_1', 'Address', 'required');
@@ -129,7 +121,7 @@ class Address extends CI_Controller
                     );
 
              $this->User_addres_model->insert_user_address($data_info);
-             redirect('index.php/address'); 
+             redirect('Address'); 
         }
         
         $this->load->view('frontend/header.php');
@@ -142,7 +134,7 @@ class Address extends CI_Controller
     public function delete_address($id)
     {
         $this->User_addres_model->delete_address($id);
-        redirect('index.php/address');   
+        redirect('Address');   
     }
 
 
@@ -187,12 +179,11 @@ class Address extends CI_Controller
             /* print_r($data_info);
               die();*/
              $this->User_addres_model->modify_user_address($data_info,$id);
-             redirect('index.php/address'); 
+             redirect('Address'); 
         }
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/edit_user_address',$data);
         $this->load->view('frontend/footer.php');
     }
-
 
 }

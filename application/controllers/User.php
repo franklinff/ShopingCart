@@ -8,9 +8,9 @@ class User extends CI_Controller
         $this->load->model('User_model');
         $this->load->model('Login_model');
 
-                if (!$this->session->userdata('admin_login')) {
-                    redirect('index.php/login');
-                    }
+        if (!$this->session->userdata('admin_login')) {
+            redirect('Login');
+        }
     }
     
     public function index()
@@ -51,7 +51,7 @@ class User extends CI_Controller
                 //exit();
                 $result = $this->User_model->insert_data($new_data);
                 $this->session->set_flashdata('success', 'Registration successfull!');
-                redirect('index.php/user');
+                redirect('User');
             } else {
                 $this->session->set_flashdata('error', 'Error! Please try again.');
             }
@@ -81,7 +81,7 @@ class User extends CI_Controller
             if ($this->form_validation->run() == TRUE) {          
                 $result = $this->User_model->update($new_data, $id);
                 $this->session->set_flashdata('success', 'Updated successfully !');
-                redirect('index.php/user');
+                redirect('User');
             }
             
         $this->load->view('backend/header.php');
@@ -93,7 +93,7 @@ class User extends CI_Controller
     public function delete_user($id)
     {
         $this->User_model->delete_user($id);
-        redirect('index.php/user');
+        redirect('User');
     }
 
     public function config_data()
@@ -113,7 +113,6 @@ class User extends CI_Controller
       /*  echo '<pre>';
         print_r($data['current_config']);
         exit;*/
-
         $postData = $this->input->post('config_value');
         $this->form_validation->set_rules('config_value', 'Configuration value', 'required|valid_email');
 
@@ -124,7 +123,7 @@ class User extends CI_Controller
                 if($result)
                 {
                 $this->session->set_flashdata('success','Configuration Updated!');
-                 redirect('index.php/user/config_data'); 
+                 redirect('User/config_data'); 
                 }else
                 {
                 $this->session->set_flashdata('error','Error! Please try again.');

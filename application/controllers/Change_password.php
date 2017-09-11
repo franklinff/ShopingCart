@@ -1,5 +1,4 @@
 <?php
-
 class Change_password extends CI_Controller{
     
     public function __construct() {
@@ -9,7 +8,7 @@ class Change_password extends CI_Controller{
         $session_data = $this->session->userdata('user_login');
 
         if(empty($session_data)){
-             redirect(base_url() . 'index.php/user_login');
+             redirect(base_url() . 'User_login');
        }
     }
     
@@ -49,15 +48,15 @@ class Change_password extends CI_Controller{
             if($result[0]['password']== $data['password']){
                 $result1 = $this->Change_password_model->update($data);
                 $this->session->set_flashdata('updated_password', 'Password updated successfully!');
-                redirect('index.php/My_account');
+                redirect('My_account');
             }else{
                 $this->session->set_flashdata('error_msg', 'Enter correct old password!');
-                redirect('index.php/change_password');
+                redirect('Change_password');
             }
             
         }else{
             $this->session->set_flashdata('error_msg', 'Enter correct old password!');
-            redirect('index.php/change_password');
+            redirect('Change_password');
         }
     } 
 }

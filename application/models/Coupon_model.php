@@ -9,11 +9,9 @@ class Coupon_model extends CI_Model
 
     /*
      * function name :insert_coupon_info
-     *  
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $data_info
      */
     public function insert_coupon_info($data_info)
     {
@@ -25,12 +23,13 @@ class Coupon_model extends CI_Model
     }
 
 
-     /*
+    
+    /*
      * function name :getAll
-     *  for listing coupon table.
+     * for listing coupon table.
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : null
      * @return : array
      */    
     public function getAll()
@@ -40,12 +39,12 @@ class Coupon_model extends CI_Model
         return $r->result_array();
     }
  
-     /*
+    
+    /*
      * function name :getCoupon
-     *  
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */   
     public function getCoupon($id)
@@ -56,13 +55,13 @@ class Coupon_model extends CI_Model
     }
 
 
+
      /*
      * function name :delete_coupon
-     *  sets 'is_deleted' column to 0.
+     * sets 'is_deleted' column to 1.
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $id
      */    
     public function delete_coupon($id)
     {
@@ -74,13 +73,14 @@ class Coupon_model extends CI_Model
         
     }
 
-     /*
+
+
+    /*
      * function name :edit_coupon
-     *  edit coupon data
+     * edit coupon data
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $data_info, $id
      */ 
     public function edit_coupon($data_info, $id)
     {
@@ -93,4 +93,5 @@ class Coupon_model extends CI_Model
         $result       = $this->db->query("CALL update_coupon('$code','$percent_off','56','$created_date','$no_of_uses','1','$cou_id')");
     }
     
+
 }

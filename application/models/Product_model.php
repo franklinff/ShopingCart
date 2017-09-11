@@ -13,7 +13,7 @@ class Product_model extends CI_Model
      * for listing product table.
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : null
      * @return : array
      */
     public function getAll()
@@ -29,7 +29,7 @@ class Product_model extends CI_Model
      * for inserting product details in product table
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $data_info
      * @return : number
      */
     public function insert_product_info($data_info)
@@ -69,12 +69,11 @@ class Product_model extends CI_Model
 
 
     /*
-     * function name : insert_product
+     * function name : insert_product_img
      * insert the images in  product_images table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $data,$data_info,$p_id
      */
     public function insert_product_img($data,$data_info,$p_id)
     {
@@ -88,12 +87,34 @@ class Product_model extends CI_Model
      }
 
 
+
+    /*
+     * function name : insert_product_imghh
+     * insert the images in  product_images table
+     * @author  Franklin
+     * @access  public
+     * @param : $data,$data_info,$p_id
+     */
+    public function insert_product_imghh($data,$data_info,$p_id)
+    {
+        $x=$data['current_product'][0]['id'];
+      /*  echo"<pre>";
+        print_r($x);
+        exit();*/
+        $status = $data_info['status'];
+        $created_date = date('y-m-d');
+        $image_name = $data['image']['file_name'];
+        $result = $this->db->query("CALL add_product_image('$image_name','$status','2','$created_date',".$x.")");
+     }
+
+
+
     /*
      * function name : getByCat
      * for getting categories in dropdown.
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : null
      * @return : array
      */
     public function getByCat()
@@ -111,7 +132,7 @@ class Product_model extends CI_Model
      * returns data from product table for editing purpose
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */
     public function getProduct($id)
@@ -128,7 +149,7 @@ class Product_model extends CI_Model
      * retrieves data from product_categories table  
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id 
      * @return : array
      */
     public function getCurrentCategory($id)
@@ -145,7 +166,7 @@ class Product_model extends CI_Model
      * returns data from product_images table for editing purpose
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */
     public function getProduct_image($id)
@@ -158,11 +179,27 @@ class Product_model extends CI_Model
 
 
     /*
+     * function name : update_product_images
+     * Updates the images product_images
+     * @author  Franklin
+     * @access  public
+     * @param : $data,$data_info,$id
+     */
+    public function update_product_images($data,$data_info,$id)
+    {
+        $image_name = $data['image']['file_name'];
+        $status = $data_info['status'];
+        $created_date = date('y-m-d');
+        $result = $this->db->query("CALL update_product_image('$image_name','$status','2','$created_date',".$id.")");
+    }
+
+
+    /*
      * function name : update_product_info
      * to update the products
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $data_info,$id
      * @return : array
      */
     public function update_product_info($data_info,$id)
@@ -194,30 +231,11 @@ class Product_model extends CI_Model
 
 
     /*
-     * function name : update_product_images
-     * Updates the images product_images
-     * @author  Franklin
-     * @access  public
-     * @param : number
-     * @return : array
-     */
-    public function update_product_images($data,$data_info,$id)
-    {
-        $image_name = $data['image']['file_name'];
-        $status = $data_info['status'];
-        $created_date = date('y-m-d');
-        $result = $this->db->query("CALL edit_product_images('$image_name','$status','2','$created_date',".$id.")");
-    }
-
-
-
-    /*
      * function name : delete_product
-     * sets value of cloum is_deleted to o
+     * sets value of column is_deleted to o
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $id
      */
     public function delete_product($id)
     {
@@ -225,6 +243,21 @@ class Product_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('product',$data);     
         //$this->db->delete('product'); 
+    }
+
+
+
+    /*
+     * function name : delete_product_images
+     * deletes the product images 
+     * @author  Franklin
+     * @access  public
+     * @param : $id
+     */
+    public function delete_product_images($id)
+    {
+        $this->db->where('product_id', $id);    
+        $this->db->delete('product_images'); 
     }
 
 } 

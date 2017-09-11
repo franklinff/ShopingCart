@@ -39,7 +39,25 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+
+
+ <!-- 
+ <link href="<?php echo base_url(); ?>Eshopper/css/prettyPhoto.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Eshopper/css/price-range.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Eshopper/css/animate.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Eshopper/css/main.css" rel="stylesheet"> -->
+<!-- <link href="<?php echo base_url(); ?>Eshopper/css/responsive.css" rel="stylesheet"> --> 
+
+
+
+
 </head>
+
+
+
+
+
 
 <body class="hold-transition skin-blue sidebar-mini">
   <header class="main-header">
@@ -288,7 +306,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="<?php echo base_url(); ?>index.php/login/logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo base_url(); ?>login/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
 
@@ -346,3 +364,7 @@
 
 </body>
 </html>
+
+
+
+

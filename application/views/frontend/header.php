@@ -64,7 +64,7 @@
 					<div class="col-sm-4">
 
 						<div class="logo pull-left">
-							<a href="<?php echo base_url("/index.php/shop/");?>"><img src="<?php echo base_url("/Eshopper/images/home/logo.png")?>"></a>
+							<a href="<?php echo base_url("Shop");?>"><img src="<?php echo base_url("/Eshopper/images/home/logo.png")?>"></a>
 						</div>
 
 					</div>
@@ -74,35 +74,35 @@
 						<div class="mainmenu pull-right">
 							<ul class="nav navbar-nav">
 							
-							<li><a href="<?php echo site_url('index.php/Contact_us')?>">Contact</a></li>
+							<li><a href="<?php echo site_url('Contact_us')?>">Contact</a></li>
 
 							<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo base_url("index.php/shop")?>">Products</a></li>
+                                        <li><a href="<?php echo base_url("Shop")?>">Products</a></li>
 										
-										<li><a href="<?php echo base_url('index.php/Checkout') ?>">Checkout</a></li> 
+										<li><a href="<?php echo base_url("Checkout") ?>">Checkout</a></li> 
                                     </ul>
                             </li> 
 
                             <li class="dropdown"><a href="#">Account<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu" class="nav navbar-nav collapse navbar-collapse">
-                                		<li><a href="<?php echo base_url('index.php/My_account/index') ?>">My account</a></li>
+                                		<li><a href="<?php echo base_url('My_account') ?>">My account</a></li>
 
-                                        <li><a href="<?php echo site_url('index.php/Address')?>">Address</a></li>
+                                        <li><a href="<?php echo site_url('Address')?>">Address</a></li>
                                        
-										<li><a href="<?php echo base_url("index.php/Track_order")?>">Track order</a></li> 
-										<li><a href="<?php echo base_url("index.php/My_order")?>">Order details</a></li>
+										<li><a href="<?php echo base_url("Track_order")?>">Track order</a></li> 
+										<li><a href="<?php echo base_url("My_order")?>">My order details</a></li>
                                 </ul>
                             </li>
 
-							<li><a href="<?php echo base_url('index.php/Wishlist/index') ?>"><i class="fa fa-star"></i> Wishlist</a></li>
+							<li><a href="<?php echo base_url('Wishlist') ?>"><i class="fa fa-star"></i> Wishlist</a></li>
 								
-						    <li><a href="<?php echo base_url('index.php/Cart/index') ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						    <li><a href="<?php echo base_url('Cart') ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							
 							<li>
-							<a href="<?php echo base_url('index.php/User_login/') ?>" class="active">
+							<a href="<?php echo base_url('User_login') ?>" class="active">
 							<?php if(!empty($this->session->userdata('user_login'))){   ?>
-								<a href="<?php echo site_url('index.php/user_login/logout')?>"><i class="fa fa-lock"></i>Logout</a>
+								<a href="<?php echo site_url('user_login/logout')?>"><i class="fa fa-lock"></i>Logout</a>
 							<?php }else{ ?>
 							        <i class="fa fa-lock"></i>Login
 							<?php } ?>		

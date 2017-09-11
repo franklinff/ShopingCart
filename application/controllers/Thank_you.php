@@ -15,11 +15,11 @@ class Thank_you extends CI_Controller {
         }*/
     }
 
-
-
     public function index()
     {
         $session_data = $this->session->user_login;
+
+        $i ='0';
 
       	if (!empty($session_data)) {
 
@@ -30,7 +30,9 @@ class Thank_you extends CI_Controller {
 	            foreach ($data['cart_products'] as $cart_prod) {
 	                foreach ($product_details as $key => $quantity) {
 	                    if ($key == $cart_prod['id']) {
+
 	                        $data['cart_products'][$i]['quantity'] = $quantity['quantity'];
+
 	                    }
 	                }
 	                foreach ($product_details as $key => $total_price) {
@@ -48,7 +50,7 @@ class Thank_you extends CI_Controller {
         }
         else
         {
-       	redirect('index.php/user_login');
+       	redirect('User_login');
         }
 
     }

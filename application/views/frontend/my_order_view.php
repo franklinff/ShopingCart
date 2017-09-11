@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>index.php/shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>Shop">Home</a></li>
                 <li class="active">My orders</li>
             </ol>
 <!--            <a href="<?php echo base_url(); ?>index.php/track_order"><button type="submit" class="btn btn-default">Track order</button></a>-->
@@ -32,7 +32,7 @@
                             if(!empty($value['transaction_id'])){
                                 echo $value['transaction_id'];
                             }else{
-                                echo '---';
+                                echo '--------';
                             }?>
                         </td>
 
@@ -43,19 +43,36 @@
                         <td class="quantity"><?php echo $value['created_date']; ?></td>
 
 
-                        <td class="total"><br><a href="<?php echo base_url(); ?>index.php/my_order/order_details/<?php echo $value['id'];  ?>" class="btn btn-default add-to-cart">View Details</a></td>
+                        <td class="total"><br><a href="<?php echo base_url(); ?>My_order/order_details/<?php echo $value['id'];  ?>" class="btn btn-default add-to-cart">View Details</a></td>
                         
                     </tr>
                     <?php }}else{ ?>
+
                     <tr>
-                            <td colspan="5">No orders found yet!</td>
-                        </tr> 
+                        <td colspan="5">No orders found yet!</td>
+                    </tr> 
+
                     <?php } ?>	
                 </tbody>
             </table>
         </div>
+
         <ul class="pagination">
-            <?php //echo $this->pagination->create_links(); ?>	
+            <?php echo $this->pagination->create_links(); ?>	
         </ul>
+
     </div>
 </section>
+
+
+<style>
+.pagination a {
+    background-color: #ff9800;
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: "roboto_slabregular";
+    margin:7px;
+    padding: 10px 15px;
+}
+</style>

@@ -26,7 +26,6 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <img src="<?php echo base_url("/Eshopper/images/home/girl1.jpg")?>" class="girl img-responsive" alt="" />
-                                        <img src="<?php echo base_url("/Eshopper/images/shop/advertisement.jpg")?>">
                                     </div>
                                 </div>
                
@@ -78,6 +77,7 @@
                             foreach ($arr_category as $category) {
                                 ?>  
                                 <div class="panel panel-default">
+
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <?php if (isset($category['sub_categories'])) { ?>
@@ -92,6 +92,7 @@
                                             <?php } ?>
                                         </h4>
                                     </div>
+
                                     <?php if (isset($category['sub_categories'])) { ?>
                                         <div id="<?php echo $category['id']; ?>" class="panel-collapse collapse">
                                             <div class="panel-body">
@@ -108,12 +109,13 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+
                                 </div>
-                            <?php } ?>
-                            
-                           
-                            
+                            <?php } ?>      
                         </div><!--/category-productsr-->
+
+                        <br></br><br></br>
+<!-- 
                         <div class="price-range">
                             <h2>Price Range</h2>
                             <div class="well">
@@ -121,7 +123,8 @@
                                 
                                 <b><?php echo $min_price[0]; ?></b> <b class="pull-right"><?php echo $max_price[0]; ?></b>
                             </div>
-                        </div>
+                        </div> -->
+
                         <div class="shipping text-center">
                             <img src="<?php echo base_url("/Eshopper/images/home/shipping.jpg")?>">
                         </div><br>
@@ -150,16 +153,18 @@
                         <div id="price_range_products">
                             <?php
                             if (!empty($products)) {
-                                foreach ($products as $product) {
-/*print_r($product);
-die();*/                     ?>
+                          foreach ($products as $product) {
+ 
+ 
+                   ?>
                                     <div class="col-sm-4" >
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <!--<a href="<?php // echo base_url();  ?>index.php/product_details/<?php // echo $product['id'];  ?>">-->
-                                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $product['image_name']; ?>" class="img_style" alt="" />
-                                                    </a>
+
+<a href="<?php echo base_url();?>Product_details/index/<?php echo $product['id']; ?>">
+                                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $product['image_name']; ?>" class="img_style" style="width: 100%; " alt="" />
+                                                </a>   
 
                                                     <?php
                                                     $curr_date = date('Y-m-d');
@@ -202,8 +207,8 @@ die();*/                     ?>
                                                     </a>
 
                                                 </div>
-
                                             </div>
+
                                             <div class="choose">
                                                 <ul class="nav nav-pills nav-justified">
                                                     <li><a href="javascript:void(0);" id="add_to_wishlist" class="add-to-wishlist" data-value="<?php echo $product['id']; ?>"><span id="added_to_wishlist_<?php echo $product['id']; ?>"><?php
@@ -236,7 +241,7 @@ die();*/                     ?>
                     </div>
 
                     <ul class="pagination">
-                    <?php //echo $this->pagination->create_links(); ?>    
+                    <?php echo $this->pagination->create_links(); ?>    
                     </ul>
                 </div><!--features_items-->
             </div>
@@ -270,7 +275,7 @@ die();*/                     ?>
                 url: "<?php echo base_url(); ?>index.php/shop/price_range/" + price_range,
                 success: function (data) {
                     var products = JSON.parse(data);
-//                    console.log(products.price_range_products);
+//console.log(products.price_range_products);
                     if (products.price_range_products != '') {
                         $('#price_range_products').html(products.price_range_products);
                         $('.pagination').html(products.price_range_pagination);
@@ -301,7 +306,7 @@ die();*/                     ?>
 //           console.log(product_id);
         });
 
-        $('.add-to-wishlist').click(function () {
+        $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
             var product_id = $(this).attr('data-value');
             $.ajax({
                 type: "post",
@@ -311,6 +316,8 @@ die();*/                     ?>
                         window.location = '<?php echo base_url(); ?>index.php/user_login';
                     }
                     var messge = JSON.parse(data);
+                    console.log(messge);
+                    
                     $('#added_to_wishlist_' + product_id).html(messge.message);
                     $('#wishlist_count_total').text(messge.quantity);
 
@@ -320,3 +327,15 @@ die();*/                     ?>
 
     });
 </script>
+
+<style>
+.pagination a {
+    background-color: #ff9800;
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: "roboto_slabregular";
+    margin:7px;
+    padding: 10px 15px;
+}
+</style>

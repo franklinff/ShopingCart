@@ -11,12 +11,13 @@ class Shop_model extends CI_Model {
      * Retreive the products 
      * @author  Franklin
      * @access  public
-     * @param : $count,$limit,$offset,$category_id
+     * @param : $count,$limit,$offset,$category_id,$min_price,$max_prices
      * @return : array
-     */
+     *///Called from Shop controller only   
     public function getProdetails($count = false, $limit = '', $offset = '', $category_id = '',$min_price = '',$max_price = '') {
 
         if ($category_id != '') {
+            
             $this->db->select('id');
             $this->db->from('category');
             $this->db->where('parent_id', $category_id);
@@ -74,17 +75,20 @@ class Shop_model extends CI_Model {
             $this->db->where('price >=',$min_price);
             $this->db->where('price <=',$max_price);
         }
+
         $this->db->order_by('product.id', 'DESC');
         $result = $this->db->get();
         return $result->result_array();
     }
+
+
 
      /*
      * function name : getPrice
      * Get price range
      * @author  Franklin
      * @access  public
-     * @param : null
+     * @param : $count
      * @return : array
      */
     public function getPrice($count = false) {
@@ -125,7 +129,6 @@ class Shop_model extends CI_Model {
      * @return : array
      */
     public function getCategories() {
-
         $this->db->select('id,name,parent_id');
         $this->db->from('category');
         $this->db->where('status', '1');
@@ -161,10 +164,10 @@ class Shop_model extends CI_Model {
      * Check product id in wishlist table
      * @author  Franklin
      * @access  public
-     * @param : $product_id
+     * @param : $product_id,$user_id
      * @return : array
      */
-    public function check_prod_id($product_id, $user_id) {
+    public function check_prod_id($product_id, $user_id) {  //This function is called from the controller Cart,Shop.
         $this->db->select('*');
         $this->db->from('user_wish_list');
         if($product_id != ''){
@@ -182,7 +185,6 @@ class Shop_model extends CI_Model {
      * @author  Franklin
      * @access  public
      * @param : $user_wishlist
-     * @return : array
      */
     public function insert($user_wishlist) {
         $r = $this->db->insert('user_wish_list', $user_wishlist);
@@ -191,7 +193,6 @@ class Shop_model extends CI_Model {
     
     /*
      * function name : getProdQuantity
-     * 
      * @author  Franklin
      * @access  public
      * @param : $product_id
@@ -207,10 +208,9 @@ class Shop_model extends CI_Model {
  
     /*
      * function name : getBanners
-     * 
      * @author  Franklin
      * @access  public
-     * @param :
+     * @param : null
      * @return : array
      */   
     public function getBanners() {

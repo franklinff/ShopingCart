@@ -22,7 +22,7 @@ class User_model extends CI_Model
     }
     
 
-     /*
+    /*
      * function name : list_user
      * retrive content from users table
      * @author  Franklin
@@ -63,7 +63,7 @@ class User_model extends CI_Model
      */ 
     public function update($new_data, $id)
     {
-      //  unset($data['button']);
+        //unset($data['button']);
         $this->db->where('id', $id);
         $r = $this->db->update('users', $new_data);
         return $r;

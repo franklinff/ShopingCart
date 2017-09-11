@@ -1,11 +1,5 @@
 <?php
 
-/*
- * Cart
- * @package    CI
- * @subpackage Controller
- * @author     Franklin Fargoj
- */
 class Cart extends CI_Controller {
 
     public function __construct() {
@@ -15,13 +9,12 @@ class Cart extends CI_Controller {
         $this->load->model('User_addres_model');
         $this->load->model('My_orders_model');
 
-        if (empty($this->session->userdata('user_login'))){      
-           redirect(base_url() . 'index.php/user_login');
-        }
+        /*if (empty($this->session->userdata('user_login'))){      
+           redirect(base_url() . 'User_login');
+        }*/
     }
 
-    /*
-     * index
+    /* index
      * Display products added to the cart.
      * @access public
      * @param null
@@ -205,7 +198,7 @@ class Cart extends CI_Controller {
         echo json_encode($cart_price);
     }
 
-    /**
+    /*
      * update_cart_quantity
      * Update cart data. 
      * @access public

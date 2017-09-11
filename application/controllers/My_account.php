@@ -21,7 +21,7 @@ class My_account extends CI_Controller
 		}
 		else 
 		{
-		 redirect('index.php/user_login');	
+		 	redirect('User_login');	
 		}
 	}
 
@@ -43,14 +43,12 @@ class My_account extends CI_Controller
 			if ($this->form_validation->run() == TRUE)
                   {
                   	 $result = $this->My_account_model->update($new_data,$user_id);
-
                   	 $this->session->set_userdata('my_acc',$result);
-
-                  	 redirect("index.php/shop");
+                  	 redirect("Shop");
                   }
                  // $this->session->unset_userdata($user_data);
 		}
- 		redirect("index.php/my_account");
+ 		redirect("My_account");
 	}
 
 

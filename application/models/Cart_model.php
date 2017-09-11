@@ -12,7 +12,7 @@ class Cart_model extends CI_Model {
      * Retreive the products added to cart.
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $product_id
      * @return : array
      */
     public function getAddedProducts($product_id) { 
@@ -31,8 +31,8 @@ class Cart_model extends CI_Model {
      * Get coupon data.
      * @author  Franklin
      * @access  public
-     * @param : number,array
-     * @return : boolean
+     * @param : $coupon_code
+     * @return : array
      */
     public function getcoupondata($coupon_code) { 
         $this->db->select('*');
@@ -49,8 +49,7 @@ class Cart_model extends CI_Model {
      * Update coupon data.
      * @author  Franklin
      * @access  public
-     * @param : number,array
-     * @return : boolean
+     * @param : $no_of_uses, $coupon_code
      */
     public function update_users($no_of_uses, $coupon_code) {
         $this->db->set('no_of_uses', $no_of_uses);
@@ -65,8 +64,8 @@ class Cart_model extends CI_Model {
      * Get coupons used.
      * @author  Franklin
      * @access  public
-     * @param : number,array
-     * @return : boolean
+     * @param : $coupon_id
+     * @return : array
      */
     public function coupon_uses($coupon_id) {
         $this->db->select('count(1) AS coupon_count');
@@ -79,11 +78,11 @@ class Cart_model extends CI_Model {
 
      /*
      * function name : getPrice
-     * to get price of products as per the id
+     * to get price of products as per the $product_id
      * @author  Franklin
      * @access  public
-     * @param : number,array
-     * @return : boolean
+     * @param : $product_id,$order_id
+     * @return : array
      */
     public function getPrice($product_id,$order_id) {
         $this->db->select('id,base_price,product_id');

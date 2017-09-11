@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Checkout
  * @package    CI
@@ -14,12 +13,9 @@ class Checkout extends CI_Controller {
         $this->load->model('Cart_model');
         $this->load->model('User_addres_model');
         $this->load->model('My_orders_model');
-        $this->load->library('email');
-        $this->load->library('parser');
+        $this->load->library('parser');//$this->load->library('email');
       
         $session_data = $this->session->userdata('user_login');  
-
-
 
         if (!empty($session_data)) {
             $last_page_visited = 'checkout';
@@ -27,7 +23,7 @@ class Checkout extends CI_Controller {
         }else{
             $last_page_visited = 'checkout';
             $this->session->set_userdata('last_page_visited', $last_page_visited);
-            redirect(base_url() . 'index.php/user_login');
+            redirect(base_url() . 'User_login');
         }
     }
 
@@ -41,8 +37,8 @@ class Checkout extends CI_Controller {
         $data = '';
         $product_details = $this->session->userdata('cart');
         //echo'<pre>';print_r($this->session->userdata());exit;
-        $total = $this->session->checkout;
-        $grand_total = $this->session->grand_total;
+        $total = $this->session->userdata('checkout');
+        $grand_total = $this->session->userdata('grand_total');
         
         if ($product_details) {
             $product_id = array_keys($product_details);
@@ -68,18 +64,19 @@ class Checkout extends CI_Controller {
             foreach ($data['cart_products'] as $value) {
                 $data['total'][] = $value['total_price'];
             }
+
             $data['total'] = array_sum($data['total']);
-            $data['discount'] = $this->session->discount;
+            $data['discount'] = $this->session->userdata('discount');
             $user_login_details = $this->session->userdata('user_login');
             $user_id = $user_login_details[0]['id'];
 
             $data['user_address'] = $this->Checkout_model->getUserAddress($user_id);
         }
-
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/checkout', $data);
         $this->load->view('frontend/footer');
     }
+
 
     /*
      * user_address_details
@@ -97,16 +94,17 @@ class Checkout extends CI_Controller {
         $data['user_id'] = $user_login_details[0]['id'];
         $data['created_date'] = date('Y-m-d h:i:s');
         $data['status'] = 'P';
-        $data['grand_total'] = $this->session->grand_total;
+        $data['grand_total'] = $this->session->userdata('grand_total');
         $data['shipping_method'] = $shipping_method;
+
+        //$data['payment_gateway_id'] = $shipping_method;
         $data['coupon_id'] = $this->session->userdata('coupon_id');       
         $data['shipping_charges'] = $this->session->userdata('shipping_charges');
-
 
         $last_id = $this->Checkout_model->insert($data);
 
         $this->session->set_userdata('last_id', $last_id);  // sets session and gets the last id of user_order table
-        $product_details = $this->session->cart;
+        $product_details = $this->session->userdata('cart');
 
         $product_id = array_keys($product_details);
         $i = 0;
@@ -126,7 +124,6 @@ class Checkout extends CI_Controller {
         $user_address_confirmation = array();
 
         if ($billing_addr_id) {
-
             $billing_user_addr = $this->User_addres_model->getUserAddress_By_Id($billing_addr_id);
           
             $billing_user_addr = $billing_user_addr[0];
@@ -167,12 +164,13 @@ class Checkout extends CI_Controller {
     public function payment_success() {
         $data = $this->session->userdata();
 
-        $data['email'] = $this->session->email;  //user email address has to be saved from above $data, need to create a proper array
+        $data['user_id'] = $data['user_login'][0]['id'];
+
+        $data['email'] = $data['user_login'][0]['email']; //user email address has to be saved from above $data, need to create a proper array
 
         $data['sub_total'] = $data['checkout'];  //total amount of the order is not acheived,instead only product amount is received in case of amount less then 500rs.
 
         $data['cart_products'] = $this->My_orders_model->getOrderDetails($data['last_id']);
-
         $order_details_template = '';
         $curr_date = date('Y-m-d');
 
@@ -188,23 +186,16 @@ class Checkout extends CI_Controller {
 
         $data['order_details_template'] = $order_details_template;
 
-       /* echo"<pre>";
-        print_r($data['discount']);
-        die();*/
+        if (empty($data['discount'])) {
 
-        if (empty($data['discount'])) {         // $data['discount'] = Undefined index: discount, require_once
             $data['discount_price'] = 0;
             $cart_prod_total = array();
             foreach ($data['cart_products'] as $value) {
                 $cart_prod_total[] = $value['amount'];
             }
             $data['sub_total'] = array_sum($cart_prod_total);
-
             if ($data['sub_total'] < 500) {
-
                 $data['grand_total'] = $data['sub_total'] + 50;
-
-
                 $data['shipping_charges'] = '&#8377;50';
             } else {
                 $data['grand_total'] = $data['sub_total'];
@@ -222,39 +213,57 @@ class Checkout extends CI_Controller {
         }
        
         if ($data['order_details_template'] != '') {
-            $template1 = $this->parser->parse('payment_cod_template', $data);
+            $template1 = $this->parser->parse('frontend/payment_cod_template', $data);
         }
 
-         redirect('index.php/thank_you');
+        $order_id = $data['last_id'];
+        $mail_add = $data['email'];
 
-          $config = Array(
+        $config = Array(
                             'protocol' => 'smtp',
                             'smtp_host' => 'smtp.wwindia.com',
                             'smtp_port' => 25,
-                            'smtp_user' => 'rashmi.nalwaya@wwindia.com', // change it to yours
-                            'smtp_pass' => 'RashmI123', // change it to yours
+                            'smtp_user' => 'rashmi.nalwaya@wwindia.com', 
+                            'smtp_pass' => 'RashmI123', 
                             'mailtype' => 'html',
                             'charset' => 'utf-8',
                             'wordwrap' => TRUE,
                             'newline' =>'\r\n'
                         );
-
         $this->email->initialize($config);
         $this->load->library('email', $config);
         $this->email->from('franklinfargoj1991@gmail.com');
-        $this->email->to('franklin.fargoj@neosofttech.com');  // change it to yours 
-        $this->email->subject('Order Details');
+        $this->email->to($mail_add);  // Order details is sent on the user mail 
+        $this->email->subject('Order details');
         $this->email->message($template1);
         $this->email->send();
-        $order_id = $data['last_id'];
-       
+
+        $config = Array(
+                            'protocol' => 'smtp',
+                            'smtp_host' => 'smtp.wwindia.com',
+                            'smtp_port' => 25,
+                            'smtp_user' => 'rashmi.nalwaya@wwindia.com', 
+                            'smtp_pass' => 'RashmI123', 
+                            'mailtype' => 'html',
+                            'charset' => 'utf-8',
+                            'wordwrap' => TRUE,
+                            'newline' =>'\r\n'
+                        );
+        $this->email->initialize($config);
+        $this->load->library('email', $config);
+        $this->email->from('franklinfargoj1991@gmail.com');
+        $this->email->to('franklinfargoj1991@gmail.com');  // Order details is sent on the admin mail 
+        $this->email->subject('Order details');
+        $this->email->message($template1);
+        $this->email->send();
+
         $unset_data = array('cart', 'discount', 'coupon_id', 'checkout', 'checkout', 'last_id', 'billing_address', 'shipping_address',
             'grand_total');
+
         $this->session->unset_userdata($unset_data);
         redirect(base_url() . 'index.php/payment_complete/cod_succes/' . $order_id);
-
-
-
     }
 
 }
+
+        

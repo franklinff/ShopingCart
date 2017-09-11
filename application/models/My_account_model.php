@@ -1,5 +1,4 @@
 <?php
-
 class My_account_model extends CI_Model{
 
 	function __construct()
@@ -11,10 +10,10 @@ class My_account_model extends CI_Model{
 
      /*
      * function name : user_information
-     * insert the data into users table for new user registration
+     * Retreives data from users table
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $user_id
      * @return : array
      */
     public function user_information($user_id)
@@ -26,14 +25,23 @@ class My_account_model extends CI_Model{
         return $query->result_array();
     }
 
+
+    /*
+     * function name : update
+     * Updates the users table 
+     * @author  Franklin
+     * @access  public
+     * @param : $new_data,$user_id
+     */
     public function update($new_data,$user_id)
     {
         $this->db->where('id',$user_id);
         $r = $this->db->update('users',$new_data);
         return $r;
     }
-}
 
+
+}
 ?>
 
 

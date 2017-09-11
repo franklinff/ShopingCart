@@ -25,25 +25,27 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
 
-            <li><a href="<?php echo base_url(); ?>index.php/user"><i class="fa fa-book"></i> <span>User</span></a></li>
+            <li><a href="<?php echo base_url(); ?>user"><i class="fa fa-book"></i> <span>User</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/user/config_data"><i class="fa fa-book"></i> <span>Configuration</span></a></li>
+            <li><a href="<?php echo base_url(); ?>user/config_data"><i class="fa fa-book"></i> <span>Configuration</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/banner"><i class="fa fa-book"></i> <span>Banner</span></a></li>
+            <li><a href="<?php echo base_url(); ?>banner"><i class="fa fa-book"></i> <span>Banner</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/category"><i class="fa fa-book"></i> <span>Categories</span></a></li>
+            <li><a href="<?php echo base_url(); ?>category"><i class="fa fa-book"></i> <span>Categories</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/product"><i class="fa fa-book"></i> <span>Products</span></a></li>
+            <li><a href="<?php echo base_url(); ?>product"><i class="fa fa-book"></i> <span>Products</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/coupon"><i class="fa fa-book"></i> <span>Coupon</span></a></li>
+            <li><a href="<?php echo base_url(); ?>coupon"><i class="fa fa-book"></i> <span>Coupon</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>index.php/Contact_us_admin/"><i class="fa fa-book"></i> <span>Contact us</span></a></li>
+            <li><a href="<?php echo base_url(); ?>Contact_us_admin/"><i class="fa fa-book"></i> <span>Contact us</span></a></li>
 
-             <li><a href="<?php echo base_url(); ?>index.php/Cms/"><i class="fa fa-book"></i> <span>CMS</span></a></li>
+             <li><a href="<?php echo base_url(); ?>Cms/"><i class="fa fa-book"></i> <span>CMS</span></a></li>
+
+            <li><a href="<?php echo base_url(); ?>Orders/"><i class="fa fa-book"></i> <span>Orders</span></a></li>
 
 
             <li class="treeview">
-            <a href="<?php echo base_url();?>index.php">
+            <a href="<?php echo base_url();?>index.php"> 
                 <i class="fa fa-dashboard"></i> <span>Reports</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -51,9 +53,9 @@
             </a>
               
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url();?>index.php/Reports/get_sales_data"><i class="fa fa-circle-o"></i>Sales report</a></li>
-                <li><a href="<?php echo base_url();?>index.php/Reports/getCustomers"><i class="fa fa-circle-o"></i>Customer registered</a></li>
-                <li><a href="<?php echo base_url();?>index.php/Reports/getCoupons"><i class="fa fa-circle-o"></i>Coupon used</a></li>
+                <li><a href="<?php echo base_url();?>Reports/sales_reports"><i class="fa fa-circle-o"></i>Sales report</a></li>
+                <li><a href="<?php echo base_url();?>Reports/customers_registered"><i class="fa fa-circle-o"></i>Customer registered</a></li>
+                <li><a href="<?php echo base_url();?>Reports/coupons_used"><i class="fa fa-circle-o"></i>Coupon used</a></li>
               </ul>
             </li>
 

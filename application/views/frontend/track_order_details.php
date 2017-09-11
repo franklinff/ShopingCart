@@ -27,7 +27,7 @@
                                         if (!empty($transaction_id)) {
                                             echo $transaction_id;
                                         } else {
-                                            echo '8437656986596SDF';
+                                            //echo 'ABCDEF';  //by default
                                         }
                                         ?>
                                     </td>

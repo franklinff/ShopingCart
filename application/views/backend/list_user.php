@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
                 <li>
-                    <h4><a href="<?php echo base_url(); ?>index.php/user/add_user">Add User</a></h4></li>
+                    <h4><a href="<?php echo base_url(); ?>user/add_user">Add User</a></h4></li>
         </ol>
 
             <p class="login-box-msg" style="color:green;">

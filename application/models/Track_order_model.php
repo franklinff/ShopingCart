@@ -1,17 +1,17 @@
 <?php
-
 class Track_order_model extends CI_Model{
+
     public function __construct() {
         parent::__construct();
     }
     
-    /**
-     * getOrderDetails
+    /*
+     * function name : getOrderDetails
      * Get order details
-     *
-     * @access public
-     * @param $order_id
-     * @return array
+     * @author  Franklin
+     * @access  public
+     * @param : $order_id
+     * @return : array
      */
     public function getOrderDetails($order_id) {
         $this->db->select('order_details.*,product.name,product.id,product.price');
@@ -22,13 +22,14 @@ class Track_order_model extends CI_Model{
         return $r->result_array();
     }
     
-    /**
-     * getOrderAddress
+
+    /*
+     * function name : getOrderAddress
      * Get order address
-     *
-     * @access public
-     * @param $order_id,$addr
-     * @return array
+     * @author  Franklin
+     * @access  public
+     * @param : $order_id,$addr
+     * @return : array
      */
     public function getOrderAddress($order_id,$addr = true) {
         if($addr == true){
@@ -41,14 +42,14 @@ class Track_order_model extends CI_Model{
         $r = $this->db->get();
         return $r->result_array();
     }
-    
-    /**
-     * getOrderDetailsById
+
+    /*
+     * function name : getOrderDetailsById
      * Get order details by id
-     *
-     * @access public
-     * @param $order_id,$user_id
-     * @return array
+     * @author  Franklin
+     * @access  public
+     * @param : $order_id,$user_id
+     * @return : array
      */
     public function getOrderDetailsById($order_id,$user_id) {
         $this->db->select('status,user_id,transaction_id,grand_total,shipping_method,created_date');
@@ -58,4 +59,5 @@ class Track_order_model extends CI_Model{
         $r = $this->db->get();
         return $r->result_array();
     }
+
 }

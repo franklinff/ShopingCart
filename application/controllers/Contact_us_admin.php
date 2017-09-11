@@ -5,17 +5,12 @@ class Contact_us_admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Contact_admin_model');
-        $this->load->helper(array('form', 'url'));
-
-        $this->load->library('parser');
-        $this->load->library('email');
-
-        $this->load->helper('string');
-
+        $this->load->model('Contact_admin_model');    
+        $this->load->library('parser');        
+        //$this->load->helper('string');//$this->load->helper(array('form', 'url'));//$this->load->library('email');
         if (!$this->session->userdata('admin_login')) {
-                    redirect('index.php/login');
-                    }
+            redirect('Login');
+        }
     }
 
     public function index()
@@ -45,15 +40,19 @@ class Contact_us_admin extends CI_Controller
        $id = $this->input->post('reply_id');
        $content =  $this->input->post('name');
 
-       $this->Contact_admin_model->resolution($content,$id);   //inserts the resolution given by admin in db-Contact us table.
+       $this->Contact_admin_model->resolution($content,$id);//inserts the resolution given by admin in db-Contact us table.
+
        $data['result'] = $this->Contact_admin_model->user_email_as_per_id($id); 
+
        $email = $data['result'][0]['email'];
        $name = $data['result'][0]['name'];
-       $message = 'Hello ' . $name . ',<br><br>' . '       ' .$content;  // string helper is required.
+       $customer_query = $data['result'][0]['message'];
 
-        if($this->input->server('REQUEST_METHOD') == 'POST'){
-     
-            $config = Array(
+       $mesg = 'Hello ' . $name . ',<br><br>' . $customer_query . '<br><br>' . ' Answer:' .$content;  // string helper is required.
+
+       if($this->input->server('REQUEST_METHOD') == 'POST'){
+
+                $config = Array(
                                 'protocol' => 'smtp',
                                 'smtp_host' => 'smtp.wwindia.com',
                                 'smtp_port' => 25,
@@ -67,12 +66,13 @@ class Contact_us_admin extends CI_Controller
              $this->email->initialize($config);
              $this->load->library('email', $config);
              $this->email->from('franklinfargoj1991@gmail.com');
-             $this->email->to($email);  // Query details is sent on the email of the user 
+             $this->email->to($email);  //Customer resolution is sent on the email of the customer 
              $this->email->subject('Query resolution');
-             $this->email->message($message);
+             $this->email->message($mesg);
              $this->email->send();
-             redirect("index.php/Contact_us_admin");
+             redirect("Contact_us_admin");
         }
     }
 
 }
+

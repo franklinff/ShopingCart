@@ -13,8 +13,7 @@ class Banner_model extends CI_Model
      * insert the data into banners table
      * @author  Franklin
      * @access  public
-     * @param : array
-     * @return : array
+     * @param : $new_data
      */
     public function insert_banner($new_data)
     {
@@ -28,8 +27,7 @@ class Banner_model extends CI_Model
      * delete individual row(hard delete) from banners table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $id
      */
     public function delete_banner($id)
     {
@@ -39,12 +37,12 @@ class Banner_model extends CI_Model
 
 
 
-     /*
+    /*
      * function name : list_banner
      * retreives the data from banners table
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : null
      * @return : array
      */       
     public function list_banner()
@@ -59,8 +57,7 @@ class Banner_model extends CI_Model
      * updates the data from banners table
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $new_data, $id
      */
     public function update($new_data, $id)
     {
@@ -75,7 +72,7 @@ class Banner_model extends CI_Model
      * retreives individual row from banners table as per the id
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $id
      * @return : array
      */
     public function getById($id)

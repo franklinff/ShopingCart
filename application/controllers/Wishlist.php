@@ -10,39 +10,38 @@ class Wishlist extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Wishlist_model', 'wishlist');
-        $this->load->model('Shop_model', 'shop');
+        $this->load->model('Wishlist_model');
+        $this->load->model('Shop_model');
  
-        if (empty($this->session->userdata('user_login'))){      
-           redirect(base_url() . 'index.php/user_login');
-        }
+/*        if (empty($this->session->userdata('user_login'))){      
+           redirect(base_url() . 'User_login');
+        }*/
     }
 
-    /**
+    /*
      * index
      * Displays products added to the wishlist. 
-     *
      * @access public
      * @param null 
      * @return view file
      */
     public function index() {
         $data = '';
-/*        $user_id = $this->session->id;*/
 
         $user_login_details = $this->session->userdata('user_login');
         $user_id = $user_login_details[0]['id'];
 
-        $wishlist = $this->wishlist->getWishlistData($user_id);
-        $wishlist_count = $this->shop->check_prod_id('', $user_id);
+        $wishlist = $this->Wishlist_model->getWishlistData($user_id);
+        $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
         $wishlist_count = COUNT($wishlist_count);
-        $this->session->set_userdata('wishlist_count', $wishlist_count);
+        $this->session->set_userdata('wishlist_count', $wishlist_count); //session - wishlist_count is set.
+
         if ($wishlist) {
             $wishlist_product_ids = array();
             foreach ($wishlist as $value) {
                 $wishlist_product_ids[] = $value['product_id'];
             }
-            $data['wishlist_products'] = $this->wishlist->getWishlistProducts($wishlist_product_ids);
+            $data['wishlist_products'] = $this->Wishlist_model->getWishlistProducts($wishlist_product_ids);
         }
 
         $this->load->view('frontend/header.php');
@@ -50,18 +49,20 @@ class Wishlist extends CI_Controller {
         $this->load->view('frontend/footer');
     }
 
-    /**
+    /*
      * delete_wishlist_product
      * Deletes product added to the wishlist. 
-     *
      * @access public
      * @param $product_id 
      * @return json
      */
     public function delete_wishlist_product($product_id) {
-        $result = $this->wishlist->delete($product_id);
-        $user_id = $this->session->id;
-        $wishlist_count = $this->shop->check_prod_id('', $user_id);
+        $result = $this->Wishlist_model->delete($product_id);
+
+        $user_login_details = $this->session->userdata('user_login');
+        $user_id = $user_login_details[0]['id'];
+
+        $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
         $wishlist_count = COUNT($wishlist_count);
         $delete_wishlist_prod = array(
             'status' => 'Deleted',
@@ -70,10 +71,9 @@ class Wishlist extends CI_Controller {
         echo json_encode($delete_wishlist_prod);
     }
 
-    /**
+    /*
      * add_to_cart
      * Adds product to cart. 
-     *
      * @access public
      * @param $product_id 
      * @param $price 
@@ -81,8 +81,9 @@ class Wishlist extends CI_Controller {
      */
     public function add_to_cart($product_id, $price, $prod_quantity) {
 
+        $user_login_details = $this->session->userdata('user_login');
+        $user_id = $user_login_details[0]['id'];
 
-        $user_id = $this->session->id;
         if ($this->session->userdata('cart')) {
             $existing_cart_data = $this->session->userdata('cart');
             $available = false;
@@ -101,10 +102,10 @@ class Wishlist extends CI_Controller {
                     'total_price' => $total_price
                 );
                 $this->session->set_userdata('cart', $existing_cart_data);
-                $reslt = $this->wishlist->delete($product_id);
-                $wishlist_count = $this->shop->check_prod_id('', $user_id);
+                $reslt = $this->Wishlist_model->delete($product_id);
+                $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
                 $wishlist_count = COUNT($wishlist_count);
-                $cart_amount = COUNT($this->session->cart);
+                $cart_amount = COUNT($this->session->userdata('cart'));
 
                 $cart_array = array(
                     'messge' => 'Added to the cart!',
@@ -121,8 +122,8 @@ class Wishlist extends CI_Controller {
                     }
                 }
                 $this->session->set_userdata('cart', $existing_cart_data);
-                $reslt = $this->wishlist->delete($product_id);
-                $wishlist_count = $this->shop->check_prod_id('', $user_id);
+                $reslt = $this->Wishlist_model->delete($product_id);
+                $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
                 $wishlist_count = COUNT($wishlist_count);
                 $cart_amount = COUNT($this->session->cart);
 
@@ -130,10 +131,10 @@ class Wishlist extends CI_Controller {
                     'messge' => 'Product Quantity Updated!',
                     'total_cart_prod' => $cart_amount,
                     'total_wishlist_prod' => $wishlist_count);
-
                 echo json_encode($cart_array);
             }
         } else {
+
             $total_price = $price * $prod_quantity;
             $new_product[$product_id] = array(
                 'quantity' => $prod_quantity,
@@ -141,17 +142,18 @@ class Wishlist extends CI_Controller {
                 'total_price' => $total_price
             );
             $this->session->set_userdata('cart', $new_product);
-            $reslt = $this->wishlist->delete($product_id);
-            $wishlist_count = $this->shop->check_prod_id('', $user_id);
+            $reslt = $this->Wishlist_model->delete($product_id);
+            $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
             $wishlist_count = COUNT($wishlist_count);
             $this->session->set_userdata('cart', $new_product);
-            $cart_amount = COUNT($this->session->cart);
+            $cart_amount = COUNT($this->session->userdata('cart'));
             $cart_array = array(
                 'messge' => 'Added to the cart!',
                 'total_cart_prod' => $cart_amount,
                 'total_wishlist_prod' => $wishlist_count);
             echo json_encode($cart_array);
         }
+
     }
 
 }

@@ -42,7 +42,7 @@ class Wishlist_model extends CI_Model {
                     (SELECT pm.image_name FROM product_images pm 
                     WHERE pm.product_id = product.id ORDER BY pm.id ASC LIMIT 1 ) AS image_name');
         $this->db->from('product');
-//        $this->db->join('product_images', 'product.id = product_images.product_id');
+        //$this->db->join('product_images', 'product.id = product_images.product_id');
         $this->db->where_in('product.id', $product_ids);
         $r = $this->db->get();
         return $r->result_array();

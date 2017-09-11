@@ -156,15 +156,12 @@
                     </div> 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="proceed_btn" data-dismiss="modal"> Confirm </button>
+                        <button type="button" class="btn btn-default" id="proceed_btn" data-dismiss="modal"> Proceed </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
         </div> 
-
-
-
 
 
 
@@ -337,7 +334,8 @@
                                                     echo '0';
                                                 }
                                             }
-                                            ?></span>
+                                            ?>         
+                                        </span>
                                     </td>
                                 </tr>
                             </table>
@@ -346,8 +344,6 @@
                 </tbody>
             </table>
         </div>
-
-
 
         <div class="payment-options">
             <span>
@@ -443,8 +439,6 @@
                     },
                 });
             }
-
         });
-
     });
 </script>

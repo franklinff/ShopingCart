@@ -7,9 +7,9 @@ class Banner extends CI_Controller
         parent::__construct();
         $this->load->model('Banner_model');
         $this->load->helper(array('form', 'url'));
-        if (!$this->session->userdata('admin_login')) {
-                    redirect('index.php/login');
-                    }
+        if (empty($this->session->userdata('admin_login'))) {
+        redirect('Login');
+        }
     }
 
     public function index()
@@ -40,29 +40,31 @@ class Banner extends CI_Controller
 		$this->upload->initialize($config);
 
 		if ( ! $this->upload->do_upload('uploadFile'))
-         {
-             $error = array('error' => $this->upload->display_errors());   
-         }
+        {
+            $error = array('error' => $this->upload->display_errors());   
+        }
         else
-         {
-             $data = array('upload_data' => $this->upload->data());
-             $new_data['banner_path'] = $data['upload_data']['file_name'];            
-             $result = $this->Banner_model->insert_banner($new_data);
-             $this->session->set_flashdata('success', 'Registration successfull!');
-             redirect('index.php/banner');
-          }
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $new_data['banner_path'] = $data['upload_data']['file_name'];            
+            $result = $this->Banner_model->insert_banner($new_data);
+            $this->session->set_flashdata('success', 'Banner successfully added!');
+            redirect('Banner');
+        }
 	}
 
-	public function delete_banner($id){
+	public function delete_banner($id)
+    {
 		$this->Banner_model->delete_banner($id);
-        redirect('index.php/banner');
+        redirect('Banner');
 	}
 
 
-    public function edit_banner($id){
+    public function edit_banner($id)
+    {
         $data['current_banner'] = $this->Banner_model->getById($id); //able to get data of the row as per the id.
     // echo '<pre>';
-    // print_r( $data['current_banner']);
+    // print_r($data['current_banner']);
     // die();
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
@@ -78,18 +80,18 @@ class Banner extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if ( ! $this->upload->do_upload('uploadFile'))
-         {
+        {
              $error = array('error' => $this->upload->display_errors());   
-         }
+        }
         else
-         {
-             $data = array('upload_data' => $this->upload->data());
+        {
+            $data = array('upload_data' => $this->upload->data());
              $new_data['banner_path'] = $data['upload_data']['file_name']; 
              $new_data['status']= $this->input->post('optionsRadios');           
              $result = $this->Banner_model->update($new_data,$id);
-             $this->session->set_flashdata('success', 'Successfully updated!');
-             redirect('index.php/banner');
-          }
+             $this->session->set_flashdata('success', 'Banner successfully updated!');
+             redirect('Banner');
+        }
 
     }
 }

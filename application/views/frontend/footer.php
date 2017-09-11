@@ -89,9 +89,9 @@
 						<div class="single-widget">
 							<h2>Policies</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="<?php echo base_url();?>index.php/Cms_frontend/co_terms/">Terms of Use</a></li>
-								<li><a href="<?php echo base_url();?>index.php/Cms_frontend/co_privacy/">Privacy Policy</a></li>
-								<li><a href="<?php echo base_url();?>index.php/Cms_frontend/co_refund/">Refund Policy</a></li>
+								<li><a href="<?php echo base_url();?>Cms_frontend/co_terms/">Terms of Use</a></li>
+								<li><a href="<?php echo base_url();?>Cms_frontend/co_privacy/">Privacy Policy</a></li>
+								<li><a href="<?php echo base_url();?>Cms_frontend/co_refund/">Refund Policy</a></li>
 							</ul>
 						</div>
 					</div>
@@ -100,8 +100,8 @@
 						<div class="single-widget">
 							<h2>About Shopper</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="<?php echo base_url();?>index.php/Cms_frontend/co_information/">Company Information</a></li>
-								<li><a href="<?php echo base_url();?>index.php/Cms_frontend/co_copyright/">Copyright</a></li>
+								<li><a href="<?php echo base_url();?>Cms_frontend/co_information/">Company Information</a></li>
+								<li><a href="<?php echo base_url();?>Cms_frontend/co_copyright/">Copyright</a></li>
 							</ul>
 						</div>
 					</div>

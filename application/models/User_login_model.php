@@ -1,5 +1,4 @@
 <?php
-
 class User_login_model extends CI_Model{
 
 	function __construct()
@@ -8,29 +7,35 @@ class User_login_model extends CI_Model{
         parent::__construct();
     }
 
- 
-
-     /*
+    /*
      * function name : registration
      * insert the data into users table for new user registration
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $data
      */
     public function registration($data)
     {
-        $result =$this->db->insert('users',$data);
+        $data1['firstname'] =$data['firstname'];
+        $data1['lastname'] = $data['lastname'];
+        $data1['email'] = $data['email'];
+        $data1['password'] = md5($data['password']);
+        $data1['created_date'] = $data['created_date'];
+        $data1['role_type'] = $data['role_type'];
+        $data1['status'] = $data['status'];
+
+        $result =$this->db->insert('users',$data1);
         return $result;
     }
 
 
-     /*
+
+    /*
      * function name : login
      * insert the data into users table for new user registration
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $email,$password
      * @return : array
      */
     public function login($email,$password)
@@ -46,12 +51,13 @@ class User_login_model extends CI_Model{
     }
 
 
-     /*
+
+    /*
      * function name : fb_login
      * insert the data into users table for new user registration
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $email
      * @return : array
      */
     public function fb_login($email)
@@ -65,14 +71,12 @@ class User_login_model extends CI_Model{
         /*echo '<pre>';print_r($query);die();  */      
     }
 
-
-     /*
+    /*
      * function name : registration_through_fb
      * insert the data into users table for new user registration
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $first_name,$last_name,$email,$id
      */
     public function registration_through_fb($first_name,$last_name,$email,$id)
     {
@@ -89,14 +93,12 @@ class User_login_model extends CI_Model{
         $result =$this->db->insert('users',$data);
         return $result;
     }
-
  
      /*
      * function name : gmail_login
-     * 
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $email
      * @return : array
      */
     public function gmail_login($email)
@@ -113,14 +115,11 @@ class User_login_model extends CI_Model{
         die();  */      
     }
 
-
-     /*
+    /*
      * function name : registration_through_gmail
-     * 
      * @author  Franklin
      * @access  public
-     * @param : number
-     * @return : array
+     * @param : $first_name,$last_name,$email,$id
      */
     public function registration_through_gmail($first_name,$last_name,$email,$id)
     {
@@ -133,14 +132,25 @@ class User_login_model extends CI_Model{
             'role_type' => 5,
             'registration_method' => 'g'
             );
-        /*echo '<pre>';
-        print_r($data);
-        die();*/
+
         $result =$this->db->insert('users',$data);
         return $result;
 
     }
 
+    /*
+     * function name : getEmailTemplate
+     * @author  Franklin
+     * @access  public
+     * @param : $first_name,$last_name,$email,$id
+     */
+    public function getEmailTemplate($title) {
+        $this->db->select('*');
+        $this->db->from('email_template');
+        $this->db->where('title', $title);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 }
 ?>

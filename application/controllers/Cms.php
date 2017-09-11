@@ -9,6 +9,7 @@ class Cms extends CI_Controller
         $this->load->model('Cms_model');
     }
 
+
     public function index() 
     {
         $data['cms_data'] = $this->Cms_model->getAll();
@@ -39,7 +40,7 @@ class Cms extends CI_Controller
         if ($this->form_validation->run() == TRUE)
         {
             $this->Cms_model->insert_cms_data($data_info);
-            redirect('index.php/Cms');
+            redirect('Cms');
         }
 
         $this->load->view('backend/header.php');
@@ -47,7 +48,6 @@ class Cms extends CI_Controller
         $this->load->view('backend/cms.php',$data_info);
         $this->load->view('backend/footer.php'); 
     }
-
 
 
     public function update_cms($id)
@@ -74,7 +74,7 @@ class Cms extends CI_Controller
         if ($this->form_validation->run() == TRUE)
         {
             $result = $this->Cms_model->update_cms_data($data_info,$id);
-            redirect('index.php/Cms');
+            redirect('Cms');
         }
 
         $this->load->view('backend/header.php');

@@ -13,10 +13,10 @@
         </ol>
 
         <p class="login-box-msg" style="color:green;">
-            <?php // echo $this->session->flashdata('success'); ?>
+            <?php  echo $this->session->flashdata('success'); ?>
         </p>
         <p class="login-box-msg" style="color:green;">
-            <?php // echo $this->session->flashdata('success1'); ?>
+            <?php  echo $this->session->flashdata('success1'); ?>
         </p>
         </section>
 

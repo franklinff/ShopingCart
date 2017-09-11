@@ -62,6 +62,6 @@ class User_Authentication extends CI_Controller
         $this->session->unset_userdata('userData');
 
         // Redirect to login page
-        redirect('        ');
+        redirect('User_login');
     }
 }

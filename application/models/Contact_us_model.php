@@ -5,15 +5,17 @@ class Contact_us_model extends CI_Model{
         parent::__construct();
     }
     
+
     /*
-     * insert
+     * function name : insert
      * Insert contact details
-     * @access public
-     * @param $data
-     * @return boolean
-     */
+     * @author  Franklin
+     * @access  public
+     * @param : $data
+     */    
     public function insert($data) {
         $r = $this->db->insert('contact_us',$data);
         return $r;
     }
+
 }

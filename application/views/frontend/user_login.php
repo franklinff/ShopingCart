@@ -6,7 +6,7 @@
 					<div class="login-form"><!--login form-->
 
 
-						<span><?php echo $this->session->flashdata('new_password_success'); ?></span>
+						<span style="color:green;"><?php echo $this->session->flashdata('new_password_success'); ?></span>
 
 						<h2>Login to your account</h2>
 

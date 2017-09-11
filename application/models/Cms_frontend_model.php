@@ -7,6 +7,15 @@ class Cms_frontend_model extends CI_Model
         parent::__construct();
     }
 
+
+    /*
+     * function name : getData
+     * Retreives the data from cms table
+     * @author  Franklin
+     * @access  public
+     * @param : id
+     * @return : array
+     */
     public function getData($id)
     {
     	$this->db->select('*');

@@ -7,8 +7,7 @@ class Forgot_password extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Forgot_password_model');
-        $this->load->library('email');
-        $this->load->library('session'); 
+        //$this->load->library('email'); // $this->load->library('session');   
     } 
 
     public function index()
@@ -37,27 +36,22 @@ class Forgot_password extends CI_Controller
                           $this->email->initialize($config);
                           $this->load->library('email', $config);
                           $this->email->from('franklinfargoj1991@gmail.com');
-                          $this->email->to('franklin.fargoj@neosofttech.com');  // change it to yours 
+                          $this->email->to($email);  // change it to yours 
                           $this->email->subject('Forgot password test mail');
                           $this->email->message('Testing the email class.');
-                          
-                         
+                                                  
                           if($this->email->send()) {
-
                               $this->session->set_flashdata('new_password_success', 'We have sent new password to registered email address!!.');  
-                         
-
                             } else {
                               print_r($this->email->print_debugger());  
-                           
                             }
                 }
                 else
                 {
-                  redirect('index.php/User_login');
+                  redirect('User_login');
                 }
 
-            redirect('index.php/User_login');        
+            redirect('User_login');        
           }
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/forgot_pwd.php');

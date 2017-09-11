@@ -8,11 +8,11 @@ class Forgot_password_model extends CI_Model
     }
 
      /*
-     * function name :fetch_products
-     *  To get  all active products
+     * function name :search_email
+     * Searches whether email address if exist 
      * @author  Franklin
      * @access  public
-     * @param : number
+     * @param : $email
      * @return : array
      */
     public function search_email($email)

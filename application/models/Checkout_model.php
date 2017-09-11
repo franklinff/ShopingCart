@@ -1,12 +1,9 @@
 <?php
-
-
 class Checkout_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
     }
-
 
     /*
      * function name : getUserAddress
@@ -34,7 +31,6 @@ class Checkout_model extends CI_Model {
      * @author  Franklin
      * @access  public
      * @param : $data
-     * @return : int
      */
     public function insert($data) {
         $r = $this->db->insert('user_order', $data);
@@ -49,12 +45,11 @@ class Checkout_model extends CI_Model {
      * @author  Franklin
      * @access  public
      * @param : $prod_cart_details
-     * @return : boolean
      */
     public function insert_order_details($prod_cart_details) {
         $r = $this->db->insert_batch('order_details', $prod_cart_details);
         return $r;
-        }
+    }
 
 
     /*
@@ -63,7 +58,6 @@ class Checkout_model extends CI_Model {
      * @author  Franklin
      * @access  public
      * @param : $data,$addrss,$result_data
-     * @return : boolean
      */
     public function update($data, $addrss, $result_data) {
         if ($addrss == 1) {
@@ -76,7 +70,6 @@ class Checkout_model extends CI_Model {
                 'billing_country' => $data['count_name'],
                 'billing_zipcode' => $data['zipcode']
             );
-
             $this->db->set($data);
         }
 
@@ -90,9 +83,9 @@ class Checkout_model extends CI_Model {
                 'shipping_country' => $data['count_name'],
                 'shipping_zipcode' => $data['zipcode']
             );
-
             $this->db->set($data);
-        };
+        }//( ; ) removed on dt- 07/09/2017
+
         $this->db->where('id', $result_data);
         $r = $this->db->update('user_order', $data);
         return $r;
@@ -101,13 +94,12 @@ class Checkout_model extends CI_Model {
 
     /*
      * function name : update_trans_id
-     * Update transaction id in user order table
+     * Update transaction id in user_order table
      * @author  Franklin
      * @access  public
      * @param : $transaction_id,$last_id
-     * @return : boolean
      */
-    public function update_trans_id($transaction_id, $last_id) {
+    public function update_trans_id($transaction_id, $last_id) {  //Express checkout
         $data['transaction_id'] = $transaction_id;
         $data['status'] = 'O';
         $this->db->where('id', $last_id);
@@ -122,12 +114,12 @@ class Checkout_model extends CI_Model {
      * @author  Franklin
      * @access  public
      * @param : $coupon_used
-     * @return : boolean
      */
-    public function insert_coupon_used($coupon_used) {
+    public function insert_coupon_used($coupon_used) {       //Express checkout and Payment_complete controller
         $coupon_used['created_date'] = date('Y-m-d h:i:s');
         $r = $this->db->insert('coupons_used', $coupon_used);
         return $r;
     }
+
 
 }

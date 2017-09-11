@@ -7,7 +7,7 @@ class Track_order extends CI_Controller {
         $this->load->model('Track_order_model');
 
         if(empty($this->session->userdata('user_login'))){
-            redirect('index.php/User_login');
+            redirect('User_login');
         }
     }
 
@@ -24,6 +24,7 @@ class Track_order extends CI_Controller {
         $this->load->view('frontend/track_order');
         $this->load->view('frontend/footer');
     }
+
 
     /*
      * track_order_details
@@ -69,7 +70,7 @@ class Track_order extends CI_Controller {
             $this->load->view('frontend/footer');
         }else{
             $this->session->set_flashdata('error','Enter a valid order id!');
-            redirect('index.php/Track_order');
+            redirect('Track_order');
         }
     }
 

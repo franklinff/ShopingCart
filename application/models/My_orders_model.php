@@ -1,10 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
     class My_orders_model extends CI_Model{
     
     public function __construct() {
@@ -39,7 +34,7 @@
     
     /*
      * function name :getOrderDetails
-     *  Get order details
+     * Get order details
      * @access	public
      * @param : $order_id
      * @return : array
@@ -52,6 +47,8 @@
         $r = $this->db->get();
         return $r->result_array();
     }
+    
+
     
     /*
      * function name :getOrderAddress

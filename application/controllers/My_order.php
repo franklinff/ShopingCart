@@ -2,7 +2,6 @@
 
 class My_order extends CI_Controller
 {   
-
     public function __construct()
     {
         parent::__construct();
@@ -10,35 +9,41 @@ class My_order extends CI_Controller
         $this->load->model('Cart_model');
         $this->load->model('User_addres_model');
         $this->load->model('My_orders_model');
+        $this->load->library('pagination');
 
         if(empty($this->session->userdata('user_login'))){
-        	redirect('index.php/user_login');
+        	redirect('User_login');
         }
     } 
 
 
     public function index(){
 
-    	if ($this->uri->segment(4)) {
-            $page = ($this->uri->segment(4));
+        if ($this->uri->segment(5)) {
+            $page = ($this->uri->segment(5));
         } else {
-            $page = 0;
+            $page = 1;
         }
 
-        $login_info = $this->session->user_login;
-        $user_id = $login_info[0]['id'];
-        
+        $login_info = $this->session->userdata('user_login');
+        $user_id = $login_info[0]['id'];       
         $data['order_count'] = $this->My_orders_model->getOrders(true,'', '',$user_id);
-        
-        $config['per_page'] = 10;
-        $config['base_url'] = base_url() . 'index.php/my_orders/index/page/';
+
+        $config['page_query_string'] = TRUE;
+        $config['per_page'] = 3;
+        $config['base_url'] = base_url() . 'index.php/My_order/index/page/';
         $config['total_rows'] = $data['order_count'][0]['order_count'];
-        $config['uri_segment'] = 4;
+        $config['uri_segment'] = 5;
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Previous';
         
+        $this->pagination->initialize($config);  
+
         $data['orders'] = $this->My_orders_model->getOrders(false,$config['per_page'], $page,$user_id);
 
-        //$this->pagination->initialize($config);
-
+     /* echo"<pre>";
+        print_r($data['orders']);
+        die();*/
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/my_order_view', $data);
         $this->load->view('frontend/footer');
@@ -67,7 +72,7 @@ class My_order extends CI_Controller
             $discount = $percent * $data['sub_total'];
             $data['discount'] = $discount;
         }
-//        echo '<pre>';print_r($data);echo '<br>';
+        //echo '<pre>';print_r($data);echo '<br>';
         if (empty($data['billing_address']['coupon_id'])) {
             
             if ($data['sub_total'] < 500) {
@@ -87,8 +92,8 @@ class My_order extends CI_Controller
                 $data['shipping_charges'] = 'FREE';
             }
         }
+
         $data['order_id'] = $order_id;
-//        print_r($data);exit;
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/order_details', $data);

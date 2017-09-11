@@ -22,17 +22,12 @@ class Mailchimp extends CI_Controller
         $email = $this->input->post('email_id');
 
         $x = $this->Mailchimp_model->verify_if_registered($email);
-
         $user_email = $x[0]['email'];
-
-      /*  echo"<pre>";
-        print_r($user_email);
-        die();*/
 
         	if($user_email === $email)
         	{    		 
 				$this->session->set_flashdata('error_X','Email address already registered');
-				redirect('index.php/User_login');
+				redirect('User_login');
         	}
         	else
         	{
@@ -43,7 +38,6 @@ class Mailchimp extends CI_Controller
 
         			$apiKey = '9abd45585f7d661a122c6bcb403afb97-us16';
                     $listID = '00f6eb47dc';
-
                     $memberID = md5(strtolower($email));
                     $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
                     $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . $memberID;
@@ -52,7 +46,6 @@ class Mailchimp extends CI_Controller
                     $json = json_encode([
                         'email_address' => $email,
                         'status' => 'subscribed',
-
                     ]);
 
                     // send a HTTP POST request with curl
@@ -70,9 +63,7 @@ class Mailchimp extends CI_Controller
 
                     // store the status message based on response code
                     if ($httpCode == 200) {
-                        
                         $this->Mailchimp_model->insert_user_mail($email);
-
                         $this->session->set_flashdata('mailchimp_msg', '<p style="color: #34A853">You have successfully subscribed to Eshopper.</p>');
                     } else {
                         switch ($httpCode) {
@@ -83,22 +74,19 @@ class Mailchimp extends CI_Controller
                                 $msg = 'Some problem occurred, please try again.';
                                 break;
                         }
-
                         $this->session->set_flashdata('mailchimp_msg', '<p style="color: #EA4335">' . $msg . '</p>');
                         //$_SESSION['msg'] = '<p style="color: #EA4335">' . $msg . '</p>';
                     }
         		$this->session->set_flashdata('success_X','Email address registered');
-        		
         	}else {
                    $this->session->set_flashdata('mailchimp_error_msg', '<p style="color: #EA4335">Please enter valid email address.</p>');
                 }
-
-            redirect('index.php/Shop');
+            redirect('Shop');
     		}
-
 		} 
-}
 
+
+}
 
 //9abd45585f7d661a122c6bcb403afb97-us16
 //00f6eb47dc

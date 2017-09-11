@@ -4,16 +4,18 @@ if (!defined('BASEPATH'))
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+
 class Product extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Product_model');
-        $this->load->helper(array('form','url'));
+      /*  $this->load->helper(array('form','url'));*/
 
         if (!$this->session->userdata('admin_login')) {
-                redirect('index.php/login');
+                redirect('Login');
             }
     }
     
@@ -53,7 +55,7 @@ class Product extends CI_Controller
         $this->form_validation->set_rules('name', 'Product name', 'required');
         $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]');
         $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('special_price', 'Special price', 'required|regex_match[/^[0-9]+$/]');
+        $this->form_validation->set_rules('special_price', 'Special price', 'regex_match[/^[0-9]+$/]');
         $this->form_validation->set_rules('sku', 'SKU', 'required');
         $this->form_validation->set_rules('short_description', 'Short desc.', 'required');
         $this->form_validation->set_rules('long_description', 'Long desc.', 'required');
@@ -86,6 +88,7 @@ class Product extends CI_Controller
             foreach ($postData['image_name'] as $value)
             {             
                 $config['file_name'] = $value;
+
                 if (!empty($config['file_name']))
                 {
                     $this->load->library('upload', $config);
@@ -103,7 +106,7 @@ class Product extends CI_Controller
                 }
                 $i++;   
             }
-        redirect('index.php/product'); 
+        redirect('Product'); 
         }
         $data['categories'] = $this->Product_model->getByCat();
         $this->load->view('backend/header.php');
@@ -119,6 +122,7 @@ class Product extends CI_Controller
         $data['current_product'] = $this->Product_model->getProduct($id); //retrives product information 
         $data['current_image'] = $this->Product_model->getProduct_image($id);// retrives the product image
         $data['category'] = $this->Product_model->getCurrentCategory($id);
+
 
         $data_info = array(
                 'name' => $this->input->post('name'),
@@ -141,7 +145,7 @@ class Product extends CI_Controller
         $this->form_validation->set_rules('name', 'Product name', 'required');
         $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]');
         $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('special_price', 'Special price', 'required|regex_match[/^[0-9]+$/]');
+        $this->form_validation->set_rules('special_price', 'Special price','regex_match[/^[0-9]+$/]');
         $this->form_validation->set_rules('sku', 'SKU', 'required');
         $this->form_validation->set_rules('short_description', 'Short desc.', 'required');
         $this->form_validation->set_rules('long_description', 'Long desc.', 'required');
@@ -161,6 +165,8 @@ class Product extends CI_Controller
 
         if ($this->form_validation->run() == TRUE)
         {
+            $this->Product_model->delete_product_images($id); //Images get deleted as per the id of product table 
+
             $i = 0;
             $config['file_name'] = '';
             $postData['image_name'] = array( 
@@ -169,36 +175,34 @@ class Product extends CI_Controller
                                  2 => $rand3 . $time3 . strrchr($_FILES['uploadFile_2']['name'],'.')
                                  );
 
-            $this->Product_model->update_product_info($data_info,$id);
-
+            $p_id = $this->Product_model->update_product_info($data_info,$id);
+ 
             foreach ($postData['image_name'] as $value)
-            {  
+            {             
                 $config['file_name'] = $value;
-
                 if (!empty($config['file_name']))
-                 {
+                {
                     $this->load->library('upload', $config);
                     $this->upload->initialize($config);
 
                     if ($this->upload->do_upload('uploadFile_'.$i))
                         {
-
                             $data['image'] = $this->upload->data();
-                            $this->Product_model->update_product_images($data,$data_info,$id);
+                            $this->Product_model->insert_product_imghh($data,$data_info,$p_id);
                         } 
                         else
                         {
                             $error = array('error' => $this->upload->display_errors());
                             $this->session->set_flashdata('image_error' . $i, $error['error']);
                         } 
-                  }
+                }
                 $i++;   
-            }          
-        redirect('index.php/product'); 
+            }
+           
+        redirect('Product'); 
         }
 
         $data['categories'] = $this->Product_model->getByCat();// for getting categories in dropdown.
-
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
         $this->load->view('backend/edit_product.php',$data);
@@ -207,10 +211,11 @@ class Product extends CI_Controller
 
 
 
+
     public function delete_product($id)
     {       
         $this->Product_model->delete_product($id);
-        redirect('index.php/product');
+        redirect('Product');
     }
 }
 ?>
