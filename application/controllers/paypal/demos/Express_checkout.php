@@ -6,22 +6,17 @@ class Express_checkout extends CI_Controller {
     function __construct() {
 
         parent::__construct();
-        // Load helpers
-        $this->load->helper('url');
+        //$this->load->helper('url'); //$this->load->library('session'); //$this->load->library('email');
         $this->load->model('checkout_model', 'checkout');
         $this->load->model('cart_model', 'cart');
         $this->load->model('user_addres_model', 'user_address');
-        $this->load->model('User_login_model', 'user_login');
-        // Load session library
-        $this->load->library('session');
+        $this->load->model('User_login_model', 'user_login');           
         if (empty($this->session->userdata('user_login'))) {
-            redirect('index.php/user_login');
+            redirect('User_login');
         }
+
         // Load PayPal library config
         $this->config->load('paypal');
-
-        $this->load->library('email');
-
         $config = array(
             'Sandbox' => $this->config->item('Sandbox'), // Sandbox / testing mode option.
             'APIUsername' => $this->config->item('APIUsername'), // PayPal API username of the API caller
@@ -47,8 +42,8 @@ class Express_checkout extends CI_Controller {
     */
     function index() {
         $data = '';
-        $product_details = $this->session->cart;
-        $total = $this->session->checkout;
+        $product_details = $this->session->userdata('cart');
+        $total = $this->session->userdata('checkout');
         $order_id = $this->session->userdata('last_id');
 
         if ($product_details) {
@@ -80,11 +75,13 @@ class Express_checkout extends CI_Controller {
             foreach ($data['cart_products'] as $value) {
                 $data['total'][] = $value['total_price'];
             }
-
             $data['total'] = array_sum($data['total']);
-            $data['discount'] = $this->session->discount;
 
-            $user_id = $this->session->userdata('id');
+            $data['discount'] = $this->session->userdata('discount');
+
+            $user_info = $this->session->userdata('user_login');
+            $user_id = $user_info[0]['id'];
+
             $data['user_address'] = $this->checkout->getUserAddress($user_id);
             $this->session->set_userdata('shopping_cart', $data);
         }
@@ -102,10 +99,9 @@ class Express_checkout extends CI_Controller {
 
         // Get cart data from session userdata
         $cart = $this->session->userdata('shopping_cart');
-        $cart['grand_total'] = $this->session->grand_total;
-        $cart['billing_address'] = $this->session->billing_address;
-        $cart['shipping_address'] = $this->session->shipping_address;
-
+        $cart['grand_total'] = $this->session->userdata('grand_total');
+        $cart['billing_address'] = $this->session->userdata('billing_address');
+        $cart['shipping_address'] = $this->session->userdata('shipping_address');
         /*
          * Here we are setting up the parameters for a basic Express Checkout flow.
          * The template provided at /vendor/angelleye/paypal-php-library/templates/SetExpressCheckout.php
@@ -121,7 +117,6 @@ class Express_checkout extends CI_Controller {
             'brandname' => 'Angell EYE', // A label that overrides the business name in the PayPal account on the PayPal hosted checkout pages.  127 char max.
             'customerservicenumber' => '816-555-5555', // Merchant Customer Service number displayed on the PayPal Review page. 16 char max.
         );
-
         /*
          * Now we begin setting up our payment(s).
          * Express Checkout includes the ability to setup parallel payments,
@@ -134,9 +129,8 @@ class Express_checkout extends CI_Controller {
          */
         $Payments = array();
         $Payment = array(
-            'amt' => $cart['grand_total'], // Required.  The total cost of the transaction to the customer.  If shipping cost and tax charges are known, include them in this value.If not, this value should be the current sub-total of the order.
-        );
-
+        'amt' => $cart['grand_total'] );//Required.The total cost of the transaction to the customer.  If shipping cost and tax charges are known,include them in this value.If not, this value should be the current sub-total of the order.
+        
         /*
          * Here we push our single $Payment into our $Payments array.
          */
@@ -182,23 +176,18 @@ class Express_checkout extends CI_Controller {
      * GetExpressCheckoutDetails
      */
     function GetExpressCheckoutDetails() {
-
         // Get cart data from session userdata
         $cart = $this->session->userdata('shopping_cart');
-        $cart['grand_total'] = $this->session->grand_total;
-        /*
-        print_r($cart['grand_total']);
-        die();
-        */
-        $cart['billing_address'] = $this->session->billing_address;
-        $cart['shipping_address'] = $this->session->shipping_address;
+        $cart['grand_total'] = $this->session->userdata('grand_total');
+        $cart['billing_address'] = $this->session->userdata('billing_address');
+        $cart['shipping_address'] = $this->session->userdata('shipping_address');
+
         if ($cart['total'] > 500) {
             $cart['shipping_charges'] = 0;
         } else {
             $cart['shipping_charges'] = 50;
         }
-        //echo '<pre>';
-        //print_r($cart);exit;
+        //echo '<pre>'; //print_r($cart);exit;      
         // Get PayPal data from session userdata
         $SetExpressCheckoutPayPalResult = $this->session->userdata('PayPalResult');
 
@@ -258,10 +247,8 @@ class Express_checkout extends CI_Controller {
              * At this point, we now have the buyer's shipping address available in our app.
              * We could now run the data through a shipping calculator to retrieve rate
              * information for this particular order.
-             *
              * This would also be the time to calculate any sales tax you may need to
              * add to the order, as well as handling fees.
-             *
              * We're going to set static values for these things in our static
              * shopping cart, and then re-calculate our grand total.
              */
@@ -311,7 +298,7 @@ class Express_checkout extends CI_Controller {
         // Get cart data from session userdata
         $cart = $this->session->userdata('shopping_cart');
 
-        $cart['last_id'] = $this->session->last_id;
+        $cart['last_id'] = $this->session->userdata('last_id');
 
         if ($cart['total'] > 500) {
             $cart['shipping_charges'] = 0;
@@ -351,7 +338,7 @@ class Express_checkout extends CI_Controller {
             );
         } else {
             $Payment = array(
-                'amt' => $cart['grand_total'], // Required.  The total cost of the transaction to the customer.  If shipping cost and tax charges are known, include them in this value.  If not, this value should be the current sub-total of the order.
+                'amt' => $cart['grand_total'], // Required.The total cost of the transaction to the customer.  If shipping cost and tax charges are known, include them in this value.  If not, this value should be the current sub-total of the order.
                 'itemamt' => $cart['total'], // Subtotal of items only.
                 'currencycode' => 'USD', // A three-character currency code.  Default is USD.
                 'shippingamt' => $cart['shipping_charges'], // Total shipping costs for this order.  If you specify SHIPPINGAMT you mut also specify a value for ITEMAMT.
@@ -365,12 +352,10 @@ class Express_checkout extends CI_Controller {
                 'paymentaction' => 'Sale', // How you want to obtain the payment.  When implementing parallel payments, this field is required and must be set to Order.
             );
         }
-
         /*
          * Here we push our single $Payment into our $Payments array.
          */
         array_push($Payments, $Payment);
-
         /**
          * Now we gather all of the arrays above into a single array.
          */
@@ -378,10 +363,7 @@ class Express_checkout extends CI_Controller {
             'DECPFields' => $DECPFields,
             'Payments' => $Payments,
         );
-
-
-
-        /**
+        /*
          * Here we are making the call to the DoExpressCheckoutPayment function in the library,
          * and we're passing in our $PayPalRequestData that we just set above.
          */
@@ -434,13 +416,12 @@ class Express_checkout extends CI_Controller {
             // Set example cart data into session
             $this->session->set_userdata('shopping_cart', $cart);
             $coupon_used = array();
-            $coupon_used['coupon_id'] = $this->session->coupon_id;
-            $login_info = $this->session->user_login;
-
+            $coupon_used['coupon_id'] = $this->session->userdata('coupon_id');
+            $login_info = $this->session->userdata('user_login');
             $coupon_used['user_id'] = $login_info[0]['id'];
-            $coupon_used['order_id'] = $this->session->last_id;
-//                        echo '<pre>';
-//                        print_r($this->session->userdata());exit;
+            $coupon_used['order_id'] = $this->session->userdata('last_id');
+            //echo '<pre>';
+            //print_r($this->session->userdata());exit;
             if ($coupon_used['coupon_id'] != '') {
                 $coupon_used_insert = $this->checkout->insert_coupon_used($coupon_used);
             }
@@ -455,11 +436,11 @@ class Express_checkout extends CI_Controller {
     function OrderComplete() {
         // Get cart from session userdata
         $cart = $this->session->userdata('shopping_cart');
-        $cart['grand_total'] = $this->session->grand_total;
-        $cart['billing_address'] = $this->session->billing_address;
-        $cart['shipping_address'] = $this->session->shipping_address;
-        $cart['order_id'] = $this->session->last_id;
-        $cart['email'] = $this->session->email;
+        $cart['grand_total'] = $this->session->userdata('grand_total');
+        $cart['billing_address'] = $this->session->userdata('billing_address');
+        $cart['shipping_address'] = $this->session->userdata('shipping_address');
+        $cart['order_id'] = $this->session->userdata('last_id');
+        $cart['email'] = $this->session->userdata('email');
         $cart['sub_total'] = $cart['total'];  
 
         $curr_date = date('Y-m-d');
@@ -480,9 +461,11 @@ class Express_checkout extends CI_Controller {
         $cart['billing_information'] = $cart['billing_address']['address_1'] . ',' . $cart['billing_address']['address_2'] . ',' . '<br />' .
                 $cart['billing_address']['ct_name'] . ',' . $cart['billing_address']['st_name'] . ',' . $cart['billing_address']['count_name'] . '<br />' .
                 $cart['billing_address']['zipcode'] . '<br />';
+
         $cart['shipping_information'] = $cart['shipping_address']['address_1'] . ',' . $cart['shipping_address']['address_2'] . ',' . '<br />' .
                 $cart['shipping_address']['ct_name'] . ',' . $cart['shipping_address']['st_name'] . ',' . $cart['shipping_address']['count_name'] . '<br />' .
                 $cart['shipping_address']['zipcode'] . '<br />';
+
         $cart['order_details_template'] = $order_details_template;
 
         if (!empty($cart['total'])) {
@@ -522,9 +505,7 @@ class Express_checkout extends CI_Controller {
         }
 
         /*$title = 'payment_template';
-
         $email_template_data = $this->user_login->getEmailTemplate($title);
-
         $email_template_data = $email_template_data[0];
 
         if ($cart['order_details_template'] != '') {
@@ -570,25 +551,20 @@ class Express_checkout extends CI_Controller {
             'grand_total','shipping_charges', 'shopping_cart', 'PayPalResult');
         $this->session->unset_userdata($unset_data);
         $order_id = $cart['order_id'];
-        
-       /* print_r($order_id);
-        die();*/
-        //echo '<pre>';print_r($this->session->userdata());exit;
+
         // Successful call.  Load view or whatever you need to do here.
         redirect(base_url() . 'index.php/payment_complete/index/' . $order_id);               
         //$this->session->unset_userdata('cart');
     }
 
-    /**
+    /*
      * Order Cancelled - Pay Cancel Url
      */
     function OrderCancelled() {
         // Clear PayPalResult from session userdata
         $this->session->unset_userdata('PayPalResult');
-
         // Clear cart from session userdata
         $this->session->unset_userdata('shopping_cart');
-
         // Successful call.  Load view or whatever you need to do here.
         $this->load->view('index.php/paypal/demos/express_checkout/order_cancelled');
     }

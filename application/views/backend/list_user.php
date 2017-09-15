@@ -73,11 +73,11 @@
                                             
                                             <td>
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/user/delete_user/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                                     </a>
 
-                                                    <a href="<?php echo base_url(); ?>index.php/user/edit/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>User/edit/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>

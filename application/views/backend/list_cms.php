@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
             <li>
-            <h4><a href="<?php echo base_url(); ?>index.php/Cms/cms_data">Add cms</a></h4></li>
+            <h4><a href="<?php echo base_url(); ?>Cms/cms_data">Add cms</a></h4></li>
         </ol>
 
         <p class="login-box-msg" style="color:green;">
@@ -65,7 +65,7 @@
 
                                             <td style="text-align: center;"> 
                                                 <div class="buttons">
-                                                     <a href="<?php echo base_url(); ?>index.php/Cms/update_cms/<?php echo $row['id']; ?>">
+                                                     <a href="<?php echo base_url(); ?>Cms/update_cms/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>                                                          
@@ -90,23 +90,20 @@
         <!-- /.content -->
     </div>
     <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
+    <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+                 
 <div class="control-sidebar-bg"></div>
   
         <!-- page script -->
-        <script>
-            $(function() {
-                $("#dataOne").DataTable();
-                
-            });
-        </script>
+<script>
+    $(function() {
+        $("#dataOne").DataTable();              
+    });
+</script>
 
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button {
-
         padding: 0px; 
-
     }
 </style>
 

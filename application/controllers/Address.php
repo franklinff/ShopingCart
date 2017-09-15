@@ -9,7 +9,7 @@ class Address extends CI_Controller
         $this->load->model('User_addres_model');
 
         if (empty($this->session->userdata('user_login'))){  //user_login is a session set in User_login controller
-           redirect(base_url() . 'User_login');              //User_login is a controller
+          redirect(base_url() . 'User_login');              //User_login is a controller
         }
     } 
 
@@ -53,7 +53,6 @@ class Address extends CI_Controller
     public function get_states() 
     {
         $result = $this->db->where('country_id', $_POST['id'])->get('states')->result_array();
-
         $data = array();
         foreach ($result as $r) {
             $data['value'] = $r['id'];
@@ -108,8 +107,7 @@ class Address extends CI_Controller
         $this->form_validation->set_rules('country', 'Country', 'required');
         $this->form_validation->set_rules('zip_code', 'Zip code', 'required');
 
-         if ($this->form_validation->run() == TRUE){
-            
+         if ($this->form_validation->run() == TRUE){  
             $data_info = array(
                     'address_1' => $this->input->post('address_1'),
                     'address_2' => $this->input->post('address_2'),
@@ -119,7 +117,6 @@ class Address extends CI_Controller
                     'zipcode' => $this->input->post('zip_code'),
                     'user_id'=> $x
                     );
-
              $this->User_addres_model->insert_user_address($data_info);
              redirect('Address'); 
         }
@@ -176,8 +173,7 @@ class Address extends CI_Controller
                     'zipcode' => $this->input->post('zip_code'),
                     'user_id'=> $x
                     );
-            /* print_r($data_info);
-              die();*/
+
              $this->User_addres_model->modify_user_address($data_info,$id);
              redirect('Address'); 
         }

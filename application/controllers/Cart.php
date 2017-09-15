@@ -60,7 +60,7 @@ class Cart extends CI_Controller {
             $data['sub_total'] = array_sum($data['sub_total']);
 
             $this->session->set_userdata('checkout', $data['sub_total']);
-            $data['discount'] = $this->session->coupon_id;
+            $data['discount'] = $this->session->userdata('coupon_id');
                         
             if ($this->session->has_userdata('coupon_id')) {
                 $data['coupon_id'] = $this->session->userdata('coupon_id');
@@ -74,13 +74,11 @@ class Cart extends CI_Controller {
             }
 
             if ($data['discount'] == '') {
-
                 if ($data['sub_total'] < 500) {
                     $data['grand_total'] = $data['sub_total'] + 50;
                     $data['shipping_charges'] = '&#8377;50';
                     $this->session->set_userdata('grand_total',$data['grand_total']);
                     $this->session->set_userdata('shipping_charges',$data['shipping_charges']);
-
                 } else {
                     $data['grand_total'] = $data['sub_total'];
                     $data['shipping_charges'] = 'FREE';
@@ -135,20 +133,18 @@ class Cart extends CI_Controller {
      * @return json
      */
     public function delete_cart_product($product_id) {
-        $cart_product = $this->session->cart;
-        $discount = $this->session->discount;
+        $cart_product = $this->session->userdata('cart');
+        $discount = $this->session->userdata('discount');
         if (array_key_exists($product_id, $cart_product)) {
             unset($cart_product[$product_id]);
         }
         
-
         $this->session->set_userdata('cart', $cart_product);
         $this->session->unset_userdata('shipping_charges');
         $this->session->unset_userdata('discount');
         $this->session->unset_userdata('coupon_id');
 
-
-        $product_details = $this->session->cart;
+        $product_details = $this->session->userdata('cart');
         $sub_total = array();
         foreach ($product_details as $value) {
             $sub_total_prices[] = $value['total_price'];
@@ -164,15 +160,15 @@ class Cart extends CI_Controller {
             }
         }
 
-        $grand_total = $this->session->grand_total;
-        $discount = $this->session->discount;
+        $grand_total = $this->session->userdata('grand_total');
+        $discount = $this->session->userdata('discount');
 
         if (!empty($discount['coupon_code'])) {
             $coupon_percent_off = $this->Cart_model->getcoupondata($discount['coupon_code']);
             $coupon_percent_off = $coupon_percent_off[0];
             $discount_price = $sub_total * $coupon_percent_off['percent_off'] / 100;
             $total = $sub_total - $discount_price;
-            $cart_count = COUNT($this->session->cart);
+            $cart_count = COUNT($this->session->userdata('cart'));
             $cart_price = array(
                 'sub_total' => $sub_total,
                 'discount_price' => $discount_price,
@@ -186,7 +182,7 @@ class Cart extends CI_Controller {
             $this->session->set_userdata('discount', $price);
         } else {
 
-            $cart_count = COUNT($this->session->cart);
+            $cart_count = COUNT($this->session->userdata('cart'));
             $cart_price = array(
                 'sub_total' => $sub_total,
                 'discount_price' => '0',
@@ -208,15 +204,15 @@ class Cart extends CI_Controller {
      * @return null
      */
     public function update_cart_quantity($quantity, $product_id, $total_price) {
-        $cart_product = $this->session->cart;
-        $discount = $this->session->discount;
+        $cart_product = $this->session->userdata('cart');
+        $discount = $this->session->userdata('discount');
 
         if (array_key_exists($product_id, $cart_product)) {
             $cart_product[$product_id]['quantity'] = $quantity;
             $cart_product[$product_id]['total_price'] = $total_price;
         }
         $this->session->set_userdata('cart', $cart_product);
-        $product_details = $this->session->cart;
+        $product_details = $this->session->userdata('cart');
         $sub_total = array();
         foreach ($product_details as $value) {
             $sub_total_prices[] = $value['total_price'];
@@ -231,8 +227,8 @@ class Cart extends CI_Controller {
             }
         }
 
-        $grand_total = $this->session->grand_total;
-        $discount = $this->session->discount;
+        $grand_total = $this->session->userdata('grand_total');
+        $discount = $this->session->userdata('discount');
 
         if (!empty($discount['coupon_code'])) {
             $coupon_percent_off = $this->Cart_model->getcoupondata($discount['coupon_code']);
@@ -280,23 +276,19 @@ class Cart extends CI_Controller {
 
                     $this->session->set_userdata('coupon_id', $result[0]['id']);  //coupon_id session is set.
 
-                    $product_details = $this->session->cart;
+                    $product_details = $this->session->userdata('cart');
                     $product_id = array_keys($product_details);
                     $product_quantity = array();
                     $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
 
-
                     $i = 0;
                     foreach ($data['cart_products'] as $cart_prod) {
-
                         foreach ($product_details as $key => $quantity) {
-
                             if ($key == $cart_prod['id']) {
                                 $data['cart_products'][$i]['quantity'] = $quantity['quantity'];
                             }
                         }
                         foreach ($product_details as $key => $total_price) {
-
                             if ($key == $cart_prod['id']) {
                                 $data['cart_products'][$i]['total_price'] = $total_price['total_price'];
                             }

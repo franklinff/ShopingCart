@@ -10,11 +10,14 @@ class My_account extends CI_Controller
 
     public function index()
 	{
-		if(!empty($this->session->userdata('user_login')))
+		if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('gmail_data')) )
 		{
 			$user_data = $this->session->userdata('user_login');
 			$user_id = $user_data[0]['id'];
 			$data['user']= $this->My_account_model->user_information($user_id);
+
+			//$data['gmail'] = $this->session->userdata('gmail_data');
+
 			$this->load->view('frontend/header');
 			$this->load->view('frontend/my_account',$data); 
 			$this->load->view('frontend/footer');

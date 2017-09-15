@@ -14,7 +14,6 @@
 
         <!-- /.box -->
 
-
         <div class="row">
             <div class="col-xs-12">
                 <?php
@@ -41,7 +40,7 @@
                             <tbody>    
                                 <?php
                                 foreach ($order_details as $cart_item) {
-//                                    print_r($cart_item);exit;
+                                //print_r($cart_item);exit;
                                     ?>
                                     <tr>
                                         <td class="prod_id"><?php echo $cart_item['product_id']; ?></td>

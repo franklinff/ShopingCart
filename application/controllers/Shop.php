@@ -27,6 +27,9 @@ class Shop extends CI_Controller {
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
+ /*       print_r($data['user_id']);
+        die();*/
+
         $data['categories'] = $this->Shop_model->getCategories();  
         $data['sub_categories'] = $this->Shop_model->getSub_categories();           
 
@@ -139,7 +142,7 @@ class Shop extends CI_Controller {
                     }
                     $this->session->set_userdata('cart', $existing_cart_data);
 
-                    $cart_amount = COUNT($this->session->userdata('cart'));  //total count of the items in cart
+                    $cart_amount = COUNT($this->session->userdata('cart')); //total count of the items in cart
 
                     $cart_array = array(
                         'messge' => 'Added to the cart!',

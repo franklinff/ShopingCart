@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
             <li>
-            <h4><a href="<?php echo base_url(); ?>index.php/Coupon/add_coupon">Add Coupon</a></h4></li>
+            <h4><a href="<?php echo base_url(); ?>Coupon/add_coupon">Add Coupon</a></h4></li>
         </ol>
 
 
@@ -49,10 +49,10 @@
                                
                                             <td style="text-align: center;"> 
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/coupon/edit_coupon/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>Coupon/edit_coupon/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
-                                                    <a href="<?php  echo base_url(); ?>index.php/coupon/delete_coupon/<?php echo $row['id']; ?>">
+                                                    <a href="<?php  echo base_url(); ?>Coupon/delete_coupon/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_edit" >Delete</button>
                                                     </a>
                                                 </div>                                                          

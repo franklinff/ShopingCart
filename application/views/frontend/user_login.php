@@ -26,15 +26,20 @@
 							</fb:login-button>
 							<br></br>
 
-							
-							<meta name="google-signin-client_id" 
+					
+						<!-- 	<meta name="google-signin-client_id" 
 							content="439039940405-074bbibdr5ddvbgk9cr96tj2i88hd3bc.apps.googleusercontent.com">
 							<div class="g-signin2" data-onsuccess="onSignIn"></div>
-							</br>
+							</br> -->
+						
+
+						<a href="<?php echo base_url("User_authentication_gmail");?>"><img src="<?php echo base_url("/Eshopper/images/home/sign-in-button.png")?>" style="width: 145px; height: 50px"></a></br>
+
+
 
 							
-							<a href="<?php echo base_url(); ?>index.php/Forgot_password")?> Forgot password?</a>
 
+							<a href="<?php echo base_url(); ?>Forgot_password")?> Forgot password?</a>
 
 
 							<button type="submit" class="btn btn-default">Login</button>
@@ -145,9 +150,13 @@
 	</script>
 
 
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
-	<script type="text/javascript">
+<script type="text/javascript">
+
+	//<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	<!-- <script type="text/javascript">
 		function onSignIn(googleUser) {    //gmail registration
 		 
 		  var profile = googleUser.getBasicProfile();
@@ -176,7 +185,7 @@
 	    		});
 		}
 	</script>
-
+ -->
 	<script>
 		function statusChangeCallback(response){
 		    console.log('statusChangeCallback');
@@ -222,10 +231,8 @@
 	    	var id = response.id;
 	    	var name = response.name;
 	        var email = response.email;
-	        /*console.log(email);
-	        console.log(id);
-	        console.log(name);*/
-
+	        /*console.log(email);console.log(id);console.log(name);*/
+	        	        
 	        var url= '<?php echo base_url();?>index.php/User_login/facebook_login/';
 	        //console.log(url);
 
@@ -238,14 +245,12 @@
 	      		//window.location = "http://localhost/project/index.php/Home";
 			   success: function (data) {
               	// alert('hiiiiiiiiiiiiiiiiiiii');
-                    window.location = "http://localhost/project/index.php/User_login/facebook_login/";
-                  
+                    window.location = "http://localhost/project/index.php/User_login/facebook_login/";              
 	            },
 	            failure: function (data) {
 	                //alert('failllllllllllllllllllll');
 	                die();
 	            }
-
 
 	    		});
 	  	 })

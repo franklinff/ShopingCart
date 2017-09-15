@@ -63,9 +63,7 @@ class Banner extends CI_Controller
     public function edit_banner($id)
     {
         $data['current_banner'] = $this->Banner_model->getById($id); //able to get data of the row as per the id.
-    // echo '<pre>';
-    // print_r($data['current_banner']);
-    // die();
+
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
         $this->load->view("backend/edit_banner.php", $data);
@@ -86,11 +84,11 @@ class Banner extends CI_Controller
         else
         {
             $data = array('upload_data' => $this->upload->data());
-             $new_data['banner_path'] = $data['upload_data']['file_name']; 
-             $new_data['status']= $this->input->post('optionsRadios');           
-             $result = $this->Banner_model->update($new_data,$id);
-             $this->session->set_flashdata('success', 'Banner successfully updated!');
-             redirect('Banner');
+            $new_data['banner_path'] = $data['upload_data']['file_name']; 
+            $new_data['status']= $this->input->post('optionsRadios');           
+            $result = $this->Banner_model->update($new_data,$id);
+            $this->session->set_flashdata('success', 'Banner successfully updated!');
+            redirect('Banner');
         }
 
     }

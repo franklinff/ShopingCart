@@ -17,6 +17,7 @@ class User_login extends CI_Controller
 	
 	public function index()
 	{
+
 	    $data = array(
 			'firstname' => $this->input->post('first_name'),
 			'lastname' => $this->input->post('last_name'),
@@ -98,17 +99,19 @@ class User_login extends CI_Controller
 
 	public function login()
 	{
+
 			$data = array(
 			'email' => $this->input->post('login_email'),
 			'password' => md5($this->input->post('login_password')),
 			);
-			/*print_r($data);
-			die();*/
+
 			if(!empty($data))
 			{
+/*	echo"hello login";
+	die();*/
+
 		    $this->form_validation->set_rules('login_email', 'Email', 'required');
 		    $this->form_validation->set_rules('login_password', 'Password', 'required');
-
 		    	if($this->form_validation->run() == TRUE )
 		    	{
 		    		$email = $this->input->post('login_email');
@@ -169,20 +172,16 @@ class User_login extends CI_Controller
 
 	public function gmail_login()
 	{
-	   $name = $this->input->post('name');
-       $email = $this->input->post('email');
-       $id = $this->input->post('id');
-       $result = $this->User_login_model->gmail_login($email);
-      /* print_r( $result);
-       die();*/
+
        	if(!empty($result)){
 	       	$this->session->set_userdata('user_login',$result);    
 	       	redirect('Shop');     
        	}else{
+
 			$name2 =  (explode(" ",$name));
 			$first_name = $name2[0];
-			$last_name =$name2[1];
-	
+			$last_name = $name2[1];
+
 			$data = array(
 			'firstname' => $this->input->post('first_name'),
 			'lastname' => $this->input->post('last_name'),
@@ -204,6 +203,9 @@ class User_login extends CI_Controller
 		$this->session->unset_userdata('my_acc');  //set in My_account controller
 		$this->session->unset_userdata('coupon_id');
 		$this->session->unset_userdata('discount');
+		$this->session->unset_userdata('gmail_data');
+
+		$this->session->sess_destroy();
 		redirect('User_login');
 	}
 

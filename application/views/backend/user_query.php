@@ -6,11 +6,8 @@
         <h1>
             User query
         </h1>
-<!-- 
-        <ol class="breadcrumb">
-                <li>
-                    <h4><a href="<?php echo base_url(); ?>index.php/user/add_user">Add User</a></h4></li>
-        </ol> -->
+<!-- <ol class="breadcrumb">
+    <li><h4><a href="<?php echo base_url(); ?>index.php/user/add_user">Add User</a></h4></li></ol> -->
 
             <p class="login-box-msg" style="color:green;">
                 <?php echo $this->session->flashdata('success'); ?>
@@ -64,7 +61,7 @@
                                             
                                             <td>
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/Contact_us_admin/reply_to_query/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>Contact_us_admin/reply_to_query/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Reply</button>
                                                     </a>
                                                 </div>

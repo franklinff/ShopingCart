@@ -101,7 +101,7 @@
 							
 							<li>
 							<a href="<?php echo base_url('User_login') ?>" class="active">
-							<?php if(!empty($this->session->userdata('user_login'))){   ?>
+							<?php if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('userData'))){   ?>
 								<a href="<?php echo site_url('user_login/logout')?>"><i class="fa fa-lock"></i>Logout</a>
 							<?php }else{ ?>
 							        <i class="fa fa-lock"></i>Login

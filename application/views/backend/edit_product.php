@@ -78,8 +78,6 @@
                 <!-- /.form group -->
 
 
-
-
                 <label>Upload product image</label></br>
                 <div class="col-md-12">              
                 <span>
@@ -88,8 +86,6 @@
                 <input id="uploadFile_1" name="uploadFile_0" type="file" placeholder="Choose File" 
                 class="mandatory_fildes"> 
                 </div>
-
-
 
                
                 <label>Upload product image</label></br>
@@ -109,8 +105,6 @@
                 </span> 
                 <input id="uploadFile_3" name="uploadFile_2" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div>
-
-
 
                 <label>SKU</label>
                 <div class="col-xl-12">
@@ -182,8 +176,6 @@
                 </div></br> 
 
 
-
-
                 <label>Select category</label>
                   <select multiple="" class="form-control" name="role_type">
                   <?php
@@ -207,9 +199,6 @@
                       }
                   ?>
                   </select></br>
-
-
-
 
 
                 <div  align="center" >

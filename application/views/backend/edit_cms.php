@@ -4,31 +4,34 @@
 
 <!-- <form action="<?php echo base_url(); ?>index.php/Cms/update_cms/" method="post" id="add_product" > -->
 <form action="" method="post" id="update_cms" >
+
+
 <?php  foreach ($individual_cms as $row) {  ?>
 
-                <div >
+              <div >
                 <label style="margin-left: 280px">Title</label>
                 
                   <select multiple="" class="xx" name="role_type">  
-                  <?php
-                    foreach ($cms_da as $c) {
-                      if($c['title'] == $individual_cms[0]['title'] )
-                          {
-                             $select_val="selected=selected";
-                          }
-                          else
-                          {
-                           $select_val="";
-                          }
-                  ?>
-                  <option value="<?php echo $c['title']; ?>" <?php echo $select_val;?> >
-                      <?php echo $c['title'];?> 
-                  </option>
+                      <?php
+                        foreach ($cms_da as $c) {
+                          if($c['title'] == $individual_cms[0]['title'] )
+                              {
+                                $select_val="selected=selected";
+                              }
+                              else
+                              {
+                                $select_val="";
+                              }
+                      ?>
+                      <option value="<?php echo $c['title']; ?>" <?php echo $select_val;?> >
+                          <?php echo $c['title'];?> 
+                      </option>
 
-                  <?php 
-                      }
-                  ?>
-                  </select></div></br>
+                      <?php 
+                          }
+                      ?>
+                  </select>
+              </div></br>
 
 
                 <div class="box-bodypad">
@@ -72,8 +75,7 @@
 
 <script>
   $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
+    // Replace the <textarea id="editor1"> with a CKEditor instance, using default configuration.
     CKEDITOR.replace('editor1');
     //bootstrap WYSIHTML5 - text editor
     $(".textarea").wysihtml5();
@@ -92,7 +94,4 @@
     margin-left: 280px;
     width: 850px;
     }
-
-
-
 </style>

@@ -152,5 +152,18 @@ class User_login_model extends CI_Model{
         return $query->result_array();
     }
 
+
+
+
+    public function getId($user_id)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id', $user_id);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }
 ?>

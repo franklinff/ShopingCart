@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
             <li>
-            <h4><a href="<?php echo base_url(); ?>index.php/Category/add_category">Add category</a></h4></li>
+            <h4><a href="<?php echo base_url(); ?>Category/add_category">Add category</a></h4></li>
         </ol>
 
         <p class="login-box-msg" style="color:green;">
@@ -50,11 +50,11 @@
 
                                             <td style="text-align: center;">
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/category/delete_category/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>Category/delete_category/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                                     </a>
 
-                                                    <a href="<?php echo base_url(); ?>index.php/category/edit_categy/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>Category/edit_categy/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>
@@ -92,9 +92,7 @@
 
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button {
-
         padding: 0px; 
-
     }
 </style>
 
