@@ -1,5 +1,5 @@
 <div>
-<form action="<?php echo base_url();?>index.php/Contact_us_admin/data_submit" method="post">
+<form action="<?php echo base_url();?>index.php/Contact_us_admin/dataSubmit" method="post">
 
                     <div class="query">
                     <input type="hidden" name="reply_id" value="<?php echo $id; ?>">

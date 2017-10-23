@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
             <li>
-            <h4><a href="<?php echo base_url(); ?>Cms/cms_data">Add cms</a></h4></li>
+            <h4><a href="<?php echo base_url(); ?>Cms/cmsData">Add cms</a></h4></li>
         </ol>
 
         <p class="login-box-msg" style="color:green;">
@@ -41,14 +41,14 @@
                                 </thead>
 
                                 <tbody>
-                                <?php   foreach($cms_data as $row) { ?>
+                                <?php foreach($cms_data as $row) { ?>
                                         <tr>
                                             <td style="text-align: center;">           
                                                  <?php echo $row['title'];  ?>
                                             </td>
 
-                                            <td style="text-align: center;">
-                                                <?php echo substr($row['content'],0,30);?>
+                                            <td>
+                                                <?php echo $row['content'];?>
                                             </td>
 
                                             <td style="text-align: center;">
@@ -65,15 +65,16 @@
 
                                             <td style="text-align: center;"> 
                                                 <div class="buttons">
-                                                     <a href="<?php echo base_url(); ?>Cms/update_cms/<?php echo $row['id']; ?>">
+                                                     <a href="<?php echo base_url(); ?>Cms/updateCms/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>                                                          
                                             </td>
-
                                         </tr>
 
-                                <?php    }     ?>
+                                <?php 
+                                   }  
+                                ?>
 
                                 </tbody>
 

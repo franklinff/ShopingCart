@@ -22,7 +22,7 @@
                                     <h4 class="modal-title">Change the order status</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?php echo base_url(); ?>admin/orders/update_order_status" method="post" class="searchform">
+                                    <form action="<?php echo base_url(); ?>admin/orders/updateOrderStatus" method="post" class="searchform">
                                         <input type="radio" name="status" value="P"> Pending<br>
                                         <input type="radio" name="status" value="O"> Processing<br>
                                         <input type="radio" name="status" value="S"> Shipped<br>
@@ -91,7 +91,7 @@
             if(start_date && end_date){
                 $.ajax({
                     type: 'post',
-                    url: '<?php echo base_url(); ?>index.php/reports/customers_registered/?start_date=' + encodeURIComponent(start_date) +'&end_date='+ encodeURIComponent(end_date),
+                    url: '<?php echo base_url(); ?>index.php/reports/customersRegistered/?start_date=' + encodeURIComponent(start_date) +'&end_date='+ encodeURIComponent(end_date),
                     success: function (data) {
 
                     }

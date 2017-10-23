@@ -1,33 +1,25 @@
-<form action="cms_data" method="post" id="add_product" >
+
+<form action="cmsData" method="post" id="add_product" >
+</br>
 
                 <div class="xx" style="width:50%">
                   <label>Title</label>
-                  <select multiple="" class="form-control" name="role_type">
-                    <option value="Company Information">Company Information</option>
-                    <option value="Terms of Use">Terms of Use</option>
-                    <option value="Privacy Policy">Privacy Policy</option>
-                    <option value="Refund Policy">Refund Policy</option>
-                    <option value="Copyright">Copyright</option>
-                  </select>
+                  <input name="role_type" id="role_type" placeholder="Cms title" type="text" class="form-control alphacapital" >
                 </div>
 
-				<!-- /.box-header -->
-		        <div class="box-bodypad">
-		        	<label>Content</label>
-		            <!-- <form> -->
-		                <textarea id="editor1" name="editor1" rows="10" cols="80">
-		                        <!-- This is my textarea to be replaced with CKEditor. -->
-		                </textarea>
-		           <!--  </form> -->
-		        </div></br>
-		          <!-- /.box -->
+    		        <div class="box-bodypad">
+    		        	<label>Content</label>
+    		                <textarea id="editor1" name="editor1" rows="10" cols="80">    
+    		                </textarea>
+    		        </div></br>
+    		          
 
-
-          		<div class="xx">
+          		  <div class="xx">
                 <label>Meta title</label>
                 <br>
                 <input name="meta_title" id="meta_title" placeholder="Meta title" type="text" class="form-control" >
-                </div></br>
+                </div>
+                </br>
 
 
                 <div class="xx" >
@@ -48,6 +40,11 @@
                 </div></br>
 </form>
 
+
+
+
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 
 
 <script>
@@ -74,3 +71,30 @@
     }
 
 </style>
+
+
+
+
+
+
+<!-- 
+<script>
+$(document).ready(function(){
+
+$("#frmSubscription").validate({    
+    rules:{
+      status:{
+        required:true,
+        digits: true
+      }
+    },
+
+    messages:{
+      name:{
+        remote: 'This subscription number already exists'
+      },
+    }
+  });
+
+});
+</script> -->

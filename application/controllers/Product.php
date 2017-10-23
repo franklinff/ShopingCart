@@ -32,7 +32,7 @@ class Product extends CI_Controller
     }
 
 
-    public function add_product()
+    public function addProduct()
     {
        $data_info = array(
                 'name' => $this->input->post('name'),
@@ -53,9 +53,9 @@ class Product extends CI_Controller
                 );
        
         $this->form_validation->set_rules('name', 'Product name', 'required');
-        $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('special_price', 'Special price', 'regex_match[/^[0-9]+$/]');
+        $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]|greater_than[0]');
+        $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]|greater_than[0]');
+        $this->form_validation->set_rules('special_price', 'Special price', 'regex_match[/^[0-9]+$/]|greater_than[0]');
         $this->form_validation->set_rules('sku', 'SKU', 'required');
         $this->form_validation->set_rules('short_description', 'Short desc.', 'required');
         $this->form_validation->set_rules('long_description', 'Long desc.', 'required');
@@ -117,7 +117,7 @@ class Product extends CI_Controller
 
 
 
-    public function edit_product($id)
+    public function editProduct($id)
     {
         $data['current_product'] = $this->Product_model->getProduct($id); //retrives product information 
         $data['current_image'] = $this->Product_model->getProduct_image($id);// retrives the product image
@@ -143,9 +143,9 @@ class Product extends CI_Controller
                 );
 
         $this->form_validation->set_rules('name', 'Product name', 'required');
-        $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]');
-        $this->form_validation->set_rules('special_price', 'Special price','regex_match[/^[0-9]+$/]');
+        $this->form_validation->set_rules('price', 'Product price', 'required|regex_match[/^[0-9]+$/]|greater_than[0]');
+        $this->form_validation->set_rules('quantity', 'Product quantity','required|regex_match[/^[0-9]+$/]|greater_than[0]');
+        $this->form_validation->set_rules('special_price', 'Special price','regex_match[/^[0-9]+$/]|greater_than[0]');
         $this->form_validation->set_rules('sku', 'SKU', 'required');
         $this->form_validation->set_rules('short_description', 'Short desc.', 'required');
         $this->form_validation->set_rules('long_description', 'Long desc.', 'required');
@@ -212,7 +212,7 @@ class Product extends CI_Controller
 
 
 
-    public function delete_product($id)
+    public function deleteProduct($id)
     {       
         $this->Product_model->delete_product($id);
         redirect('Product');

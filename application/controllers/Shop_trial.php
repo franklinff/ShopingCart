@@ -53,7 +53,7 @@ class Shop extends CI_Controller {
         $this->load->view("frontend/footer");
     }
 
-    public function add_to_cart($id, $final_price) {
+    public function addToCart($id, $final_price) {
         $cart = $this->session->userdata('cart');
         //print_r($cart);exit;
         $available = false;

@@ -43,7 +43,7 @@
                         <td class="quantity"><?php echo $value['created_date']; ?></td>
 
 
-                        <td class="total"><br><a href="<?php echo base_url(); ?>My_order/order_details/<?php echo $value['id'];  ?>" class="btn btn-default add-to-cart">View Details</a></td>
+                        <td class="total"><br><a href="<?php echo base_url(); ?>MyOrder/orderDetails/<?php echo $value['id'];  ?>" class="btn btn-default add-to-cart">View Details</a></td>
                         
                     </tr>
                     <?php }}else{ ?>

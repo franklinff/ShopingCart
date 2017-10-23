@@ -2,11 +2,11 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>Shop">Home</a></li>
                 <li class="active">Check out</li>
             </ol>
         </div><!--/breadcrums-->
-        <a href="<?php echo base_url(); ?>index.php/address/add_user_adds"><button type="submit" class="btn btn-default">Add Address</button></a>
+        <a href="<?php echo base_url(); ?>Address/addUserAdds"><button type="submit" class="btn btn-default">Add Address</button></a>
      
 
    <!-- confirmation page-->
@@ -354,7 +354,7 @@
                 <label>Paypal</label>
             </span>
             <p id="err_payment_method" class="err_msg"></p>
-            <button class="btn btn-default" id="proceed" data-toggle="modal" data-target="#myModal">Proceedxxxxxx</button>
+            <button class="btn btn-default" id="proceed" data-toggle="modal" data-target="#myModal">Proceed</button>
         </div>
     </div>
 </section> <!--/#cart_items-->
@@ -426,7 +426,7 @@
                 
                 $.ajax({
                     type: "post",
-                    url: "<?php echo base_url() . 'index.php/checkout/user_address_details/' ?>" + billing_addr_id + "/" + shipping_addr_id + "/" + shipping_method,
+                    url: "<?php echo base_url() . 'index.php/checkout/userAddressDetails/' ?>" + billing_addr_id + "/" + shipping_addr_id + "/" + shipping_method,
                     success: function (data) {
 //                   alert(data);
                         var payment_method = JSON.parse(data);
@@ -434,7 +434,7 @@
                         if (payment_method == 'success_paypal') {
                             window.location = '<?php echo base_url() . 'index.php/paypal/demos/express_checkout'; ?>';
                         } else {
-                            window.location = '<?php echo base_url() . 'index.php/checkout/payment_success'; ?>';
+                            window.location = '<?php echo base_url() . 'index.php/checkout/paymentSuccess'; ?>';
                         }
                     },
                 });

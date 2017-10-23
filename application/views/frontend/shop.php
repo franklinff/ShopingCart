@@ -162,7 +162,7 @@
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
 
-<a href="<?php echo base_url();?>Product_details/index/<?php echo $product['id']; ?>">
+<a href="<?php echo base_url();?>ProductDetails/index/<?php echo $product['id']; ?>">
                                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $product['image_name']; ?>" class="img_style" style="width: 100%; " alt="" />
                                                 </a>   
 
@@ -254,13 +254,12 @@
     function display_cart_prod(product_id, price, quantity) {
         $.ajax({
             type: "post",
-            url: "<?php echo base_url() . 'index.php/shop/add_to_cart/' ?>" + product_id + "/" + price + "/" + quantity,
+            url: "<?php echo base_url() . 'index.php/shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
 //           data: 'product_id='+product_id,
             success: function (data) {
                 var messge = JSON.parse(data);
                 $('#cart_count_total').text(messge.total_cart_prod);
                 $('#added_prod_to_cart_' + product_id).html('<span style="color:#FE980F">' + messge.messge + '</span>');
-
             },
         });
     }
@@ -272,7 +271,7 @@
             console.log(price_range);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url(); ?>index.php/shop/price_range/" + price_range,
+                url: "<?php echo base_url(); ?>index.php/shop/priceRange/" + price_range,
                 success: function (data) {
                     var products = JSON.parse(data);
 //console.log(products.price_range_products);
@@ -286,6 +285,8 @@
                 }
             });
         });
+
+
 
         $('.add-to-cart').click(function () {
             var product_id = $(this).attr('data-value');
@@ -306,21 +307,22 @@
 //           console.log(product_id);
         });
 
+
+
         $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
             var product_id = $(this).attr('data-value');
+            console.log(product_id);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/shop/add_to_wishlist/' ?>" + product_id,
+                url: "<?php echo base_url() . 'index.php/shop/addToWishlist/' ?>" + product_id,
                 success: function (data) {
                     if (data == 'login') {
                         window.location = '<?php echo base_url(); ?>index.php/user_login';
                     }
                     var messge = JSON.parse(data);
-                    console.log(messge);
-                    
+                    //console.log(messge);
                     $('#added_to_wishlist_' + product_id).html(messge.message);
                     $('#wishlist_count_total').text(messge.quantity);
-
                 }
             });
         });
@@ -339,3 +341,6 @@
     padding: 10px 15px;
 }
 </style>
+
+
+

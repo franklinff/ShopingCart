@@ -21,7 +21,7 @@ class Banner extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
-    public function upload_image()
+    public function uploadImage()
     {
     	$this->load->view('backend/header.php');
 	    $this->load->view('backend/sidebar.php');
@@ -53,14 +53,14 @@ class Banner extends CI_Controller
         }
 	}
 
-	public function delete_banner($id)
+	public function deleteBanner($id)
     {
 		$this->Banner_model->delete_banner($id);
         redirect('Banner');
 	}
 
 
-    public function edit_banner($id)
+    public function editBanner($id)
     {
         $data['current_banner'] = $this->Banner_model->getById($id); //able to get data of the row as per the id.
 

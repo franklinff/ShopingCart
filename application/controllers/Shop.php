@@ -27,7 +27,7 @@ class Shop extends CI_Controller {
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
- /*       print_r($data['user_id']);
+ /*     print_r($data['user_id']);
         die();*/
 
         $data['categories'] = $this->Shop_model->getCategories();  
@@ -104,7 +104,7 @@ class Shop extends CI_Controller {
      * @param $price
      * @return json
      */
-    public function add_to_cart($product_id, $price, $prod_quantity) {
+    public function addToCart($product_id, $price, $prod_quantity) {
 
         $prod_limit = $this->Shop_model->getProdQuantity($product_id); 
         $prod_limit = $prod_limit->product_quantity;  //total quantity of added items in cart are saved
@@ -221,10 +221,10 @@ class Shop extends CI_Controller {
      * @param $product_id
      * @return json
      */
-    public function add_to_wishlist($product_id) {
+    public function addToWishlist($product_id) {
 
-        if (!empty($this->session->userdata('user_login'))) {
-            echo 'login';
+        if (empty($this->session->userdata('user_login')) || empty($this->session->userdata('gmail_data'))) {
+            echo 'loginyyyyyyyyyyyyyyyyyyyy';
         } else {
             $data['product_id'] = $product_id;
 
@@ -263,7 +263,7 @@ class Shop extends CI_Controller {
 
 }
 
- /*   public function price_range($price_range) {
+/*    public function price_range($price_range) {
 
         $login_info = $this->session->user_login;
         $data['user_id'] = $login_info[0]['id'];

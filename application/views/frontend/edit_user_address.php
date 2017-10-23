@@ -17,7 +17,7 @@
                                 <!--login form-->
                                 <h2>Modify Address</h2>  
 
-                                <a href="http://localhost/project/index.php/Home/">list</a>
+                                <a href="http://localhost/project/Home/">list</a>
 
                                 <form action="" method="post" id="address_form_edit">
 
@@ -176,7 +176,7 @@
     /*Get the country list */
       $.ajax({
         type: "GET",
-        url: "<?php echo base_url(); ?>index.php/Home/get_countries",
+        url: "<?php echo base_url(); ?>index.php/Home/getCountries",
         data:{id:$(this).val()}, 
         beforeSend :function(){
             $('.country').find("option:eq(0)").html("Please wait..");
@@ -200,7 +200,7 @@
     $('.country').change(function(){
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>index.php/Home/get_states",
+        url: "<?php echo base_url(); ?>index.php/Home/getStates",
         data:{id:$(this).val()}, 
         beforeSend :function(){
             $(".state option:gt(0)").remove(); 
@@ -227,7 +227,7 @@
     $('.state').change(function(){
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>index.php/Home/get_cities",
+        url: "<?php echo base_url(); ?>index.php/Home/getCities",
         data:{id:$(this).val()}, 
           beforeSend :function(){
             $(".city option:gt(0)").remove(); 

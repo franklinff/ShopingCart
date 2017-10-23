@@ -20,7 +20,7 @@ class Cms extends CI_Controller
     }
 
 
-    public function cms_data()
+    public function cmsData()
     {
         $data_info = array(
                 'title' => $this->input->post('role_type'),
@@ -31,6 +31,9 @@ class Cms extends CI_Controller
                 'created_by'=> '2',
                 'created_date'=> date('Y-m-d')
                 );
+
+       // print_r($data_info);
+
 
         $this->form_validation->set_rules('role_type', 'Long desc.', 'required');
         $this->form_validation->set_rules('meta_title', 'Meta keywd', 'required');
@@ -50,7 +53,7 @@ class Cms extends CI_Controller
     }
 
 
-    public function update_cms($id)
+    public function updateCms($id)
     {
         $data['individual_cms']=$this->Cms_model->getById($id);
         $data['cms_data'] = $this->Cms_model->getAll();

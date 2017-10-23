@@ -11,8 +11,7 @@ class Wishlist extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Wishlist_model');
-        $this->load->model('Shop_model');
- 
+        $this->load->model('Shop_model'); 
 /*        if (empty($this->session->userdata('user_login'))){      
            redirect(base_url() . 'User_login');
         }*/
@@ -56,7 +55,7 @@ class Wishlist extends CI_Controller {
      * @param $product_id 
      * @return json
      */
-    public function delete_wishlist_product($product_id) {
+    public function deleteWishlistProduct($product_id) {
         $result = $this->Wishlist_model->delete($product_id);
 
         $user_login_details = $this->session->userdata('user_login');
@@ -79,7 +78,7 @@ class Wishlist extends CI_Controller {
      * @param $price 
      * @return json
      */
-    public function add_to_cart($product_id, $price, $prod_quantity) {
+    public function addToCart($product_id, $price, $prod_quantity) {
 
         $user_login_details = $this->session->userdata('user_login');
         $user_id = $user_login_details[0]['id'];

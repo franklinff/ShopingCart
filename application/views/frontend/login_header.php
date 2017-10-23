@@ -25,6 +25,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+    <style type="text/css">
+    .alphacapital{
+      text-transform: capitalize;
+    }
+	</style>
+
 </head><!--/head-->
 
 
@@ -64,7 +72,7 @@
 					<div class="col-sm-4">
 
 						<div class="logo pull-left">
-							<a href="<?php echo base_url("User_login");?>"><img src="<?php echo base_url("/Eshopper/images/home/logo.png")?>"></a>
+							<a href="<?php echo base_url("UserLogin");?>"><img src="<?php echo base_url("/Eshopper/images/home/logo.png")?>"></a>
 						</div>
 
 					</div>
@@ -82,7 +90,7 @@
 							
 
 							<li>
-							<a href="<?php echo base_url('User_login/') ?>" class="active" style="margin-top: 18%;">
+							<a href="<?php echo base_url('UserLogin/') ?>" class="active" style="margin-top: 18%;">
 							<?php if(!empty($this->session->userdata('user_login'))){   ?>
 								<a href="<?php echo site_url('user_login/logout')?>">
 									<i class="fa fa-lock"></i>Logout</a>

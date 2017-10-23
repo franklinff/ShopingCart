@@ -17,7 +17,7 @@ class Mailchimp extends CI_Controller
 	$this->load->view('frontend/footer.php');
     }
 
-    public function insert_news_letter()
+    public function insertNewsLetter()
     {
         $email = $this->input->post('email_id');
 

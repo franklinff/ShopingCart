@@ -12,7 +12,7 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     
-                    <form role="form" method="post" id="change_passwd" action="<?php echo base_url(); ?>/index.php/Change_password/update_password">
+                    <form role="form" method="post" id="change_passwd" action="<?php echo base_url(); ?>/index.php/ChangePassword/updatePassword">
                         <div class="box-body">
 
                             <div class="form-group">

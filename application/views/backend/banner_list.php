@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
             <li>
-            <h4><a href="<?php echo base_url(); ?>index.php/Banner/upload_image">Add banner</a></h4></li>
+            <h4><a href="<?php echo base_url(); ?>index.php/Banner/uploadImage">Add banner</a></h4></li>
         </ol>
 
         <p class="login-box-msg" style="color:green;">
@@ -64,11 +64,11 @@
 
                                             <td style="text-align: center;">
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/banner/delete_banner/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>index.php/banner/deleteBanner/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                                     </a>
 
-                                                    <a href="<?php echo base_url(); ?>index.php/banner/edit_banner/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>index.php/banner/editBanner/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>

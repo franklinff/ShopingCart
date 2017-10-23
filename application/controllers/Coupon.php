@@ -22,7 +22,7 @@ class Coupon extends CI_Controller
         $this->load->view('backend/footer.php');   
     }
 
-    public function add_coupon()
+    public function addCoupon()
     {
        $data_info = array(
                     'code' => $this->input->post('code'),
@@ -44,13 +44,13 @@ class Coupon extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
-    public function delete_coupon($id)
+    public function deleteCoupon($id)
     {
         $this->Coupon_model->delete_coupon($id);
         redirect('Coupon');
     }
 
-    public function edit_coupon($id)
+    public function editCoupon($id)
     {
       $data['current_coupon'] = $this->Coupon_model->getCoupon($id);
 
@@ -60,6 +60,9 @@ class Coupon extends CI_Controller
                           'no_of_uses' => $this->input->post('no_of_uses'),    
                           );
 
+/*        print_r($data_info);
+        die();
+*/
         $id = $data['current_coupon'][0]['id'];
 
         $this->form_validation->set_rules('code', 'Coupon code', 'required');

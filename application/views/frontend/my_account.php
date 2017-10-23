@@ -79,9 +79,9 @@ echo $a['gmail_data']['email'];
 					</br>
 
 					<div class="name_fileds">
-						<a href="<?php echo base_url('User_login/') ?>" class="active">
+						<a href="<?php echo base_url('UserLogin/') ?>" class="active">
 							<?php if(!empty($this->session->userdata('user_login'))){   ?>
-								<a href="<?php echo site_url('Change_password')?>">Change password</a>
+								<a href="<?php echo site_url('ChangePassword')?>">Change password</a>
 							<?php } ?>  
 						</a>
 					</div>

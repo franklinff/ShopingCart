@@ -24,7 +24,7 @@
 
                 <label>Coupon code</label>
                 <div class="col-xl-12">
-                  <input name="code" id="code" type="text" class="form-control"  
+                  <input name="code" id="code" type="text" class="form-control alphacapital"  
                   value="<?php echo $current_coupon[0]['code'];?>" >
                 </div></br>
                

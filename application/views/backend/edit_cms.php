@@ -1,6 +1,6 @@
-        <h1 class="xx">
+<h1 class="xx">
            Edit Cms 
-        </h1>
+</h1>
 
 <!-- <form action="<?php echo base_url(); ?>index.php/Cms/update_cms/" method="post" id="add_product" > -->
 <form action="" method="post" id="update_cms" >
@@ -52,7 +52,7 @@
                 <div class="xx" >
                 <label>Meta description</label>
                 <br>            
-                <textarea name="long_description" id="long_description" class="form-control" rows="3"  >
+                <textarea name="long_description" id="long_description" class="form-control" rows="2"  >
                   <?php echo $row['meta_description'];?>
                 </textarea>
                 </div></br>

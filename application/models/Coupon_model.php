@@ -90,7 +90,7 @@ class Coupon_model extends CI_Model
         $created_date = date('y-m-d');
         $cou_id       = $id;
         //;print_r($id);exit;
-        $result       = $this->db->query("CALL update_coupon('$code','$percent_off','56','$created_date','$no_of_uses','1','$cou_id')");
+        $result       = $this->db->query("CALL update_coupon('$code','$percent_off','56','$created_date','$no_of_uses','0','$cou_id')");
     }
     
 

@@ -8,7 +8,7 @@
       <h1>
         Add user
       </h1>
-    </section>
+    </section> 
 
 <div style="width: 75%">
     <!-- Main content -->
@@ -20,16 +20,16 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-              <form action="add_user" method="post" id="add_user">
+              <form action="addUser" method="post" id="add_user">
 
                 <label>Firstname</label><br></br>
                 <div class="col-sm-12" style="width: 92%">
-                  <input name="firstname" id="firstname" placeholder="Firstname" type="text" class="form-control"  >
+                  <input name="firstname" id="firstname" placeholder="Firstname" type="text" class="form-control alphacapital"  >
                 </div><br></br>
 
                 <label>Lastname</label><br></br>
                 <div class="col-sm-12" style="width: 92%">
-                    <input name="lastname" id="lastname" placeholder="Lastname" type="text" class="form-control" >
+                    <input name="lastname" id="lastname" placeholder="Lastname" type="text" class="form-control alphacapital" >
                 </div><br></br><br></br>
 
                 <label>Email</label><br></br>

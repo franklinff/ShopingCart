@@ -74,7 +74,7 @@
 						<div class="mainmenu pull-right">
 							<ul class="nav navbar-nav">
 							
-							<li><a href="<?php echo site_url('Contact_us')?>">Contact</a></li>
+							<li><a href="<?php echo site_url('ContactUs')?>">Contact</a></li>
 
 							<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
@@ -86,12 +86,12 @@
 
                             <li class="dropdown"><a href="#">Account<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu" class="nav navbar-nav collapse navbar-collapse">
-                                		<li><a href="<?php echo base_url('My_account') ?>">My account</a></li>
+                                		<li><a href="<?php echo base_url('MyAccount') ?>">My account</a></li>
 
                                         <li><a href="<?php echo site_url('Address')?>">Address</a></li>
                                        
-										<li><a href="<?php echo base_url("Track_order")?>">Track order</a></li> 
-										<li><a href="<?php echo base_url("My_order")?>">My order details</a></li>
+										<li><a href="<?php echo base_url("TrackOrder")?>">Track order</a></li> 
+										<li><a href="<?php echo base_url("MyOrder")?>">My order details</a></li>
                                 </ul>
                             </li>
 
@@ -100,9 +100,9 @@
 						    <li><a href="<?php echo base_url('Cart') ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							
 							<li>
-							<a href="<?php echo base_url('User_login') ?>" class="active">
+							<a href="<?php echo base_url('UserLogin') ?>" class="active">
 							<?php if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('userData'))){   ?>
-								<a href="<?php echo site_url('user_login/logout')?>"><i class="fa fa-lock"></i>Logout</a>
+								<a href="<?php echo site_url('UserLogin/logout')?>"><i class="fa fa-lock"></i>Logout</a>
 							<?php }else{ ?>
 							        <i class="fa fa-lock"></i>Login
 							<?php } ?>		

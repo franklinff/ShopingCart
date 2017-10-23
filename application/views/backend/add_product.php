@@ -20,11 +20,11 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-              <form action="add_product" method="post" id="add_product" enctype="multipart/form-data">
+              <form action="addProduct" method="post" id="add_product" enctype="multipart/form-data">
 
                 <label>Product name</label>
                 <div class="col-xl-12">
-                  <input name="name" id="name" placeholder="Product name" type="text" class="form-control"  >
+                  <input name="name" id="name" placeholder="Product name" type="text" class="form-control alphacapital" >
                 </div></br>
                
                 <label>Product price</label>
@@ -70,17 +70,17 @@
 
                 <label>Upload product image</label></br>
                 <div class="col-md-12">
-                  <input id="uploadFile_1" name="uploadFile_0" type="file" placeholder="Choose File" class="mandatory_fildes">             
+                  <input id="uploadFile_0" name="uploadFile_0" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div><br></br>
                
                 <label>Upload product image</label></br>
                 <div class="col-md-12">
-                  <input id="uploadFile_2" name="uploadFile_1" type="file" placeholder="Choose File" class="mandatory_fildes">             
+                  <input id="uploadFile_1" name="uploadFile_1" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div><br></br>
 
                 <label>Upload product image</label></br>
                 <div class="col-md-12">
-                  <input id="uploadFile_3" name="uploadFile_2" type="file" placeholder="Choose File" class="mandatory_fildes">             
+                  <input id="uploadFile_2" name="uploadFile_2" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div><br></br>
 
                 <label>SKU</label>
@@ -109,9 +109,12 @@
                 </div></br>
 
                 <label>Meta description</label>
-                <div class="col-xl-12" >
-                <textarea  name="meta_description" id="meta_description" class="form-control" rows="5" placeholder="Meta description"></textarea>
+                <div class="col-xl-12">
+                <textarea id="meta_description" name="meta_description" rows="10" cols="80"> </textarea>   
+                        
                 </div></br>
+
+
 
                 <label>Status</label>                  
                 <div class="radio">
@@ -199,6 +202,27 @@
 </script>
 
 <script src="<?php echo base_url("jquery.validate.js")?>"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('meta_description');
+    //bootstrap WYSIHTML5 - text editor
+    // $(".textarea").wysihtml5();
+  });
+</script>
+
+
+
+
+
+
+
 
 <!-- page script -->
 <script>
@@ -214,21 +238,58 @@
     });
   });
 
+
+$('#quantity').keyup(function(){
+  if ($(this).val() <= 0){
+    alert("Quantity needs to be gretater then zero.");
+    $(this).val('100');
+  }
+});
+
+$('#price').keyup(function(){
+  if ($(this).val() <= 0){
+    alert("Price needs to be a positie integer.");
+    $(this).val('100');
+  }
+});
+
+$('#special_price').keyup(function(){
+  if ($(this).val() <= 0){
+    alert("Special price needs to be a positie integer.");
+    $(this).val('100');
+  }
+});
+
+
+
+/*var pricevar = $("#quantity").val();
+console.log(pricevar);
+
+if (pricevar == '' || pricevar == '0') {
+    var errormessage = 'Product Price is empty or zero. Please enter it above.';
+    alert("Product Price is empty or zero. Please enter it above.");
+    $("#errordiv").html(errormessage).slideDown();
+    
+}*/
+
+
    $("#add_product").validate({
     rules: {
             name: "required",            
             price: {
                 required: true,
                 number: true,
-
-            },
+                maxlength: 5
+                },
             quantity: {
                 required: true,
-                number: true
+                number: true,
+                maxlength: 3
             },
             special_price: {
                 required: true,
                 number: true
+               
             },
             sku: "required",
             short_description: "required",
@@ -236,24 +297,37 @@
             meta_title: "required",
             meta_keywords: "required",
             meta_description: "required",
-            uploadFile_0: "required",
-            uploadFile_1: "required",
-            uploadFile_2: "required",
+            uploadFile_0: {
+              required:true,
+             
+               accept: "image/jpg,image/png,image/jpeg" 
+            },
+            uploadFile_1: {
+              required:true,
+              accept: "image/jpg,image/png,image/jpeg"
+      
+            },
+            uploadFile_2: {
+              required:true,
+              accept: "image/jpg,image/png,image/jpeg"
+            }
             },
 
     messages: {
             name: "Please enter product name",
             price: {
                 required:"Please enter product price",
-                number: "Please select numericals"
+                number: "Please select numericals",
+                maxlength: "The price can't exceed the above limit."
             },
             quantity:  {
                 required: "Please enter product quantity",
-                 number: "Please select numericals"
+                number: "Please select numericals",
+                maxlength: "Product quantity can't exceed the above limit."
             },
             special_price: {
                 required: "Please provide a special price",
-                 number: "Please select numericals"
+                number: "Please select numericals"
             },
             sku: "Please enter sku",
             short_description: "Please enter short description",
@@ -261,9 +335,19 @@
             meta_title: "Please enter meta title",
             meta_keywords: "Please enter meta keywords",
             meta_description: "Please enter meta description",
-            uploadFile_0: "Please select image",
-            uploadFile_1: "Please select image",
-            uploadFile_2: "Please select image"       
+
+            uploadFile_0: {
+              required: "Please select image",
+              accept: "Please select file with .jpg/.jpeg/.png extension only."
+            },
+            uploadFile_1: {
+              required: "Please select image",
+              accept: "Please select file with .jpg/.jpeg/.png extension only."
+            },
+            uploadFile_2: {
+              required: "Please select image",
+              accept: "Please select file with .jpg/.jpeg/.png extension only."
+            }       
       }
  });
 

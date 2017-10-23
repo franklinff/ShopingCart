@@ -12,7 +12,7 @@ class Reports extends CI_Controller{
         }       
     } 
 
-    public function coupons_used()
+    public function couponsUsed()
     {
 		$data['coupons'] = $this->Reports_model->getCoupons();
         $this->load->view('backend/header');
@@ -21,7 +21,7 @@ class Reports extends CI_Controller{
         $this->load->view('backend/footer');
     }
 
-    public function customers_registered($start_date='',$end_date='')
+    public function customersRegistered($start_date='',$end_date='')
     {	
 		//$data['customers'] = $this->Reports_model->getCustomers();
         if(!empty($start_date) && !empty($end_date)){
@@ -43,7 +43,7 @@ class Reports extends CI_Controller{
     }
 
 
-    public function sales_reports()
+    public function salesReports()
     {
     	$data['sales_reports'] = $this->Reports_model->get_sales_data();
 

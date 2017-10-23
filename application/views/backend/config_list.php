@@ -33,7 +33,7 @@
                                                     
                                             <td>
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>index.php/user/edit_configuration/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>index.php/user/editConfiguration/<?php echo $row['id']; ?>">
                                                     <button class="btn btn_delete">Edit</button>
                                                     </a>
                                                 </div>                              

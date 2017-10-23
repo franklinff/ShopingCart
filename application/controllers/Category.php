@@ -27,7 +27,7 @@ class Category extends CI_Controller
         $this->load->view('backend/footer.php');
     }
     
-    public function add_category()
+    public function addCategory()
     {
         $data['categories'] = $this->Category_model->getAll(); //to display the category in select category dropdown   
 
@@ -54,14 +54,14 @@ class Category extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
-    public function delete_category($id)
+    public function deleteCategory($id)
     {
         $this->Category_model->delete_categry($id);
         redirect('Category');
     }
 
 
-    public function edit_categy($id)
+    public function editCategy($id)
     {
     $data['current_catg'] = $this->Category_model->getCategory($id);
     $data['get_name'] = $this->Category_model->getAll();

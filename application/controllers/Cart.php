@@ -132,7 +132,7 @@ class Cart extends CI_Controller {
      * @param integer $product_id 
      * @return json
      */
-    public function delete_cart_product($product_id) {
+    public function deleteCartProduct($product_id) {
         $cart_product = $this->session->userdata('cart');
         $discount = $this->session->userdata('discount');
         if (array_key_exists($product_id, $cart_product)) {
@@ -203,7 +203,7 @@ class Cart extends CI_Controller {
      * @param integer $total_price 
      * @return null
      */
-    public function update_cart_quantity($quantity, $product_id, $total_price) {
+    public function updateCartQuantity($quantity, $product_id, $total_price) {
         $cart_product = $this->session->userdata('cart');
         $discount = $this->session->userdata('discount');
 
@@ -263,7 +263,7 @@ class Cart extends CI_Controller {
      * @param alphanumeric $coupon_code 
      * @return json
      */
-    public function coupon_code($coupon_code) {
+    public function couponCode($coupon_code) {
         if (!empty($coupon_code)) {
             $result = $this->Cart_model->getcoupondata($coupon_code);
 

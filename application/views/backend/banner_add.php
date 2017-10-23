@@ -25,7 +25,7 @@
                     'id' => 'do_upload',
                     'method' => 'post'
                     );
-                  echo form_open_multipart('index.php/banner/upload_image',$attributes);
+                  echo form_open_multipart('index.php/banner/uploadImage',$attributes);
                 ?>
      <!--  <form action="do_upload" method="post" id="do_upload"> -->
 

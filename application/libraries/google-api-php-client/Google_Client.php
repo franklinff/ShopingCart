@@ -36,6 +36,7 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
 // hack around with the include paths a bit so the library 'just works'
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
+
 require_once "config.php";
 // If a local configuration file is found, merge it's values with the default configuration
 if (file_exists(dirname(__FILE__)  . '/local_config.php')) {

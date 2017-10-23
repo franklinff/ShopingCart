@@ -25,14 +25,14 @@
 
                 <label>Firstname</label><br></br>
                 <div class="col-sm-10" style="width: 92%">
-                  <input name="firstname" id="firstname"  type="text" class="form-control"
+                  <input name="firstname" id="firstname"  type="text" class="form-control alphacapital"
                    value="<?php echo $current_user[0]['firstname']; ?>">
                 
                 </div><br></br>
 
                 <label>Lastname</label><br></br>
                 <div class="col-sm-10" style="width: 92%">
-                    <input name="lastname" id="lastname" type="text" class="form-control" value="<?php echo $current_user[0]['lastname']; ?>" >
+                    <input name="lastname" id="lastname" type="text" class="form-control alphacapital" value="<?php echo $current_user[0]['lastname']; ?>" >
                 </div><br></br>
 
                 <label>Email</label><br></br>

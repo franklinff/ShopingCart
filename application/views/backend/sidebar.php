@@ -27,7 +27,7 @@
 
             <li><a href="<?php echo base_url(); ?>user"><i class="fa fa-book"></i> <span>User</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>user/config_data"><i class="fa fa-book"></i> <span>Configuration</span></a></li>
+            <li><a href="<?php echo base_url(); ?>user/configData"><i class="fa fa-book"></i> <span>Configuration</span></a></li>
 
             <li><a href="<?php echo base_url(); ?>banner"><i class="fa fa-book"></i> <span>Banner</span></a></li>
 
@@ -37,7 +37,7 @@
 
             <li><a href="<?php echo base_url(); ?>coupon"><i class="fa fa-book"></i> <span>Coupon</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>Contact_us_admin/"><i class="fa fa-book"></i> <span>Contact us</span></a></li>
+            <li><a href="<?php echo base_url(); ?>ContactUsAdmin/"><i class="fa fa-book"></i> <span>Contact us</span></a></li>
 
              <li><a href="<?php echo base_url(); ?>Cms/"><i class="fa fa-book"></i> <span>CMS</span></a></li>
 
@@ -53,9 +53,9 @@
             </a>
               
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url();?>Reports/sales_reports"><i class="fa fa-circle-o"></i>Sales report</a></li>
-                <li><a href="<?php echo base_url();?>Reports/customers_registered"><i class="fa fa-circle-o"></i>Customer registered</a></li>
-                <li><a href="<?php echo base_url();?>Reports/coupons_used"><i class="fa fa-circle-o"></i>Coupon used</a></li>
+                <li><a href="<?php echo base_url();?>Reports/salesReports"><i class="fa fa-circle-o"></i>Sales report</a></li>
+                <li><a href="<?php echo base_url();?>Reports/customersRegistered"><i class="fa fa-circle-o"></i>Customer registered</a></li>
+                <li><a href="<?php echo base_url();?>Reports/couponsUsed"><i class="fa fa-circle-o"></i>Coupon used</a></li>
               </ul>
             </li>
 

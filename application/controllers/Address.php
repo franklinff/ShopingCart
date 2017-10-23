@@ -8,8 +8,8 @@ class Address extends CI_Controller
         parent::__construct();
         $this->load->model('User_addres_model');
 
-        if (empty($this->session->userdata('user_login'))){  //user_login is a session set in User_login controller
-          redirect(base_url() . 'User_login');              //User_login is a controller
+        if (empty($this->session->userdata('user_login')) && empty($this->session->userdata('gmail_data'))){  //user_login is a session set in User_login controller
+          redirect(base_url() . 'UserLogin');              //User_login is a controller
         }
     } 
 
@@ -29,7 +29,7 @@ class Address extends CI_Controller
      * function name : get_countries 
      * @access  public
      */
-    public function get_countries()
+    public function getCountries()
     {
         $query = $this->db->get('countries');
         $result = $query->result_array();
@@ -50,7 +50,7 @@ class Address extends CI_Controller
      * @access  public 
      * @return : void
      */
-    public function get_states() 
+    public function getStates() 
     {
         $result = $this->db->where('country_id', $_POST['id'])->get('states')->result_array();
         $data = array();
@@ -70,7 +70,7 @@ class Address extends CI_Controller
      * @access  public 
      * @return : void
      */
-    public function get_cities()
+    public function getCities()
     {
         $result = $this->db->where('state_id', $_POST['id'])
                 ->get('cities')
@@ -93,7 +93,7 @@ class Address extends CI_Controller
      * @access  public 
      * @return : void
      */
-    public function add_user_adds()
+    public function addUserAdds()
     {
         $user = $this->session->userdata('user_login'); // user_login is session name in User_login controller.
         $x = $user[0]['id'];  
@@ -128,7 +128,7 @@ class Address extends CI_Controller
 
 
 
-    public function delete_address($id)
+    public function deleteAddress($id)
     {
         $this->User_addres_model->delete_address($id);
         redirect('Address');   
@@ -143,7 +143,7 @@ class Address extends CI_Controller
      * @param : id
      * @return : void
      */
-    public function update_address($id)
+    public function updateAddress($id)
     {
         $user = $this->session->userdata('user_login'); // user_login is session name in User_login controller.
         $x = $user[0]['id'];

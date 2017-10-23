@@ -22,7 +22,7 @@ class User extends CI_Controller
         $this->load->view('backend/footer.php');
     }
     
-    public function add_user()
+    public function addUser()
     {
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
@@ -90,13 +90,13 @@ class User extends CI_Controller
         $this->load->view('backend/footer.php');             
     }
     
-    public function delete_user($id)
+    public function deleteUser($id)
     {
         $this->User_model->delete_user($id);
         redirect('User');
     }
 
-    public function config_data()
+    public function configData()
     {
         $data['resultz'] = $this->User_model->config();
     
@@ -106,7 +106,7 @@ class User extends CI_Controller
         $this->load->view('backend/footer.php');        
     }
 
-    public function edit_configuration($id)
+    public function editConfiguration($id)
     {
         $data['current_config'] = $this->User_model->getConfigId($id);
 

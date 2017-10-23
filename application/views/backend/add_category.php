@@ -24,7 +24,7 @@
 
                 <label>Enter category</label><br></br>
                 <div class="col-sm-12" style="width: 92%">
-                  <input name="category_name" id="category_name" placeholder="Enter category" type="text" class="form-control"  >
+                  <input name="category_name" id="category_name" placeholder="Enter category" type="text" class="form-control alphacapital"  >
                 </div><br></br>
                 <br></br>
 

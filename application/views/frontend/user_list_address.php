@@ -5,7 +5,7 @@
                 <li><a href="<?php echo base_url(); ?>index.php/shop">Home</a></li>
                 <li class="active">Addresses</li>
             </ol>
-            <a href="<?php echo base_url(); ?>index.php/Address/add_user_adds"><button type="submit" class="btn btn-default">Add Address</button></a>
+            <a href="<?php echo base_url(); ?>index.php/Address/addUserAdds"><button type="submit" class="btn btn-default">Add Address</button></a>
         </div><br>
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
@@ -49,11 +49,11 @@
                                 </td>
 
                                 <td class="total">
-                                      <a href="<?php echo base_url(); ?>index.php/Address/delete_address/<?php echo $row['id']; ?>">
+                                      <a href="<?php echo base_url(); ?>index.php/Address/deleteAddress/<?php echo $row['id']; ?>">
                                       <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                       </a>
 
-                                      <a href="<?php echo base_url(); ?>index.php/Address/update_address/<?php echo $row['id']; ?>">
+                                      <a href="<?php echo base_url(); ?>index.php/Address/updateAddress/<?php echo $row['id']; ?>">
                                       <button class="btn btn_delete">Edit</button>
                                       </a>                               
                                 </td>

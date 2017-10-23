@@ -9,7 +9,7 @@
 
         <ol class="breadcrumb">
                 <li>
-                    <h4><a href="<?php echo base_url(); ?>user/add_user">Add User</a></h4></li>
+                    <h4><a href="<?php echo base_url(); ?>User/addUser">Add User</a></h4></li>
         </ol>
 
             <p class="login-box-msg" style="color:green;">
@@ -73,7 +73,7 @@
                                             
                                             <td>
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>User/deleteUser/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                                     </a>
 

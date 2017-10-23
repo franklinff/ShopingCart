@@ -17,13 +17,13 @@ class Checkout extends CI_Controller {
       
         $session_data = $this->session->userdata('user_login');  
 
-        if (!empty($session_data)) {
+        if (!empty($session_data) || !empty($this->session->userdata('gmail_data'))) {
             $last_page_visited = 'checkout';
             $this->session->set_userdata('last_page_visited', $last_page_visited);
         }else{
             $last_page_visited = 'checkout';
             $this->session->set_userdata('last_page_visited', $last_page_visited);
-            redirect(base_url() . 'User_login');
+            redirect(base_url() . 'UserLogin');
         }
     }
 
@@ -85,7 +85,7 @@ class Checkout extends CI_Controller {
      * @param $billing_addr_id, $shipping_addr_id,$shipping_method  
      * @return json
      */
-    public function user_address_details($billing_addr_id, $shipping_addr_id, $shipping_method) {
+    public function userAddressDetails($billing_addr_id, $shipping_addr_id, $shipping_method) {
 
         //$this->session->unset_userdata('last_page_visited');
         //echo'<pre>';print_r($this->session->userdata());exit;
@@ -161,7 +161,7 @@ class Checkout extends CI_Controller {
      * @param null
      * @return view file
      */
-    public function payment_success() {
+    public function paymentSuccess() {
         $data = $this->session->userdata();
 
         $data['user_id'] = $data['user_login'][0]['id'];
@@ -261,7 +261,7 @@ class Checkout extends CI_Controller {
             'grand_total');
 
         $this->session->unset_userdata($unset_data);
-        redirect(base_url() . 'index.php/payment_complete/cod_succes/' . $order_id);
+        redirect(base_url() . 'index.php/PaymentComplete/codSucces/' . $order_id);
     }
 
 }

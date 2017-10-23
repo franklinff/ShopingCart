@@ -95,7 +95,7 @@
             var prod_name = $('#prod_name_'+product_id).text();
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/wishlist/delete_wishlist_product/' ?>" + product_id,
+                url: "<?php echo base_url() . 'index.php/wishlist/deleteWishlistProduct/' ?>" + product_id,
                 success: function (data) {
                     var status = JSON.parse(data);
                     $("#prod_del_" + product_id).closest("tr").remove();
@@ -116,7 +116,7 @@
            console.log(price);   
            $.ajax({
                type:"post",
-               url:"<?php echo base_url().'index.php/wishlist/add_to_cart/'?>"+product_id+"/"+price + "/" + quantity,
+               url:"<?php echo base_url().'index.php/wishlist/addToCart/'?>"+product_id+"/"+price + "/" + quantity,
                success:function(data){
                    var messge = JSON.parse(data);
 //                   console.log(messge);

@@ -35,7 +35,7 @@ class Orders extends CI_Controller{
      * @param $order_id
      * @return view file
      */
-    public function order_details($order_id) {
+    public function orderDetails($order_id) {
 
         $data['order_details'] = $this->Orders_model->getOrderDetails($order_id);
         $data['billing_address'] = $this->Orders_model->getOrderAddress($order_id, true);
@@ -69,7 +69,7 @@ class Orders extends CI_Controller{
      * @param null
      * @return null
      */
-    public function update_order_status() {
+    public function updateOrderStatus() {
 
         $order_status = $this->input->post();
 

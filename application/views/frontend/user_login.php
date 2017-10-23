@@ -12,7 +12,7 @@
 
 						<p class="login-box-msg" style="color:red;"><?php echo $this->session->flashdata('fail'); ?></p>
 
-						<form action="User_login/login" method="POST" id="login">
+						<form action="UserLogin/login" method="POST" id="login">
 							<input type="email" placeholder="Email Address" id="login_email" name="login_email" class="form-control" />
 							<input type="password" placeholder="Password" id="login_password" name="login_password" class="form-control" />
 							</br>
@@ -56,11 +56,12 @@
 					<?php echo validation_errors(); ?>
 						<h2>New User Signup!</h2>
 						<p class="login-box-msg" style="color:green;"><?php echo $this->session->flashdata('success'); ?></p>
-						<form action="User_login" method="POST" id="register">
-							<input type="text" placeholder="First name" id="first_name" name="first_name"/>
+						<form action="UserLogin" method="POST" id="register">
+						
+							<input type="text" placeholder="First name" id="first_name" name="first_name"  class="form-control alphacapital"/>
 							<span class="Firstname" id="err"></span>
 
-							<input type="text" placeholder="Last name" id="last_name" name="last_name"/>
+							<input type="text" placeholder="Last name" id="last_name" name="last_name" class="form-control alphacapital"/>
 							<span class="Lastname" id="err"></span>
 							
 							<input type="email" placeholder="Email Address" id="email_add" name="email_add"/>

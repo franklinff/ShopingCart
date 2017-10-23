@@ -20,11 +20,11 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-              <form action="add_coupon" method="post" id="add_coupon" >
+              <form action="addCoupon" method="post" id="add_coupon" >
 
                 <label>Coupon code</label>
                 <div class="col-xl-12">
-                  <input name="code" id="code" placeholder="Coupon code" type="text" class="form-control"  >
+                  <input name="code" id="code" placeholder="Coupon code" type="text" class="form-control alphacapital"  >
                 </div></br>
                
                 <label>Percent off</label>

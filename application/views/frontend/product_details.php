@@ -20,14 +20,14 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <?php if (isset($category['sub_categories'])) { ?>
-                                                <a href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                                                <a href="<?php echo base_url(); ?>index.php/Shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
                                                 <a data-toggle="collapse" data-parent="#accordian" href="#<?php echo $category['id']; ?>">
                                                     <span class="badge pull-right">
                                                         <i class="fa fa-plus"></i>
                                                     </span>
                                                 </a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?>
+                                                <a href="<?php echo base_url(); ?>index.php/Shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?>
                                                 </a>
                                             <?php } ?>
                                         </h4>
@@ -43,7 +43,7 @@
                                                             if ($this->uri->segment(2) == 'index?category_id=' . $sub_category['id']) {
                                                                 echo 'active';
                                                             }
-                                                            ?>" href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $sub_category['id']; ?>" name="category_id" ><?php echo $sub_category['name']; ?> </a></li>
+                                                            ?>" href="<?php echo base_url(); ?>index.php/Shop/index?category_id=<?php echo $sub_category['id']; ?>" name="category_id" ><?php echo $sub_category['name']; ?> </a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>
@@ -156,7 +156,7 @@
 
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'shop/add_to_cart/' ?>" + product_id + "/" + price + "/" + quantity,
+                url: "<?php echo base_url() . 'shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
                 success: function (data) {
                     var messge = JSON.parse(data);
                     $('#cart_count_total').text(messge.total_cart_prod);

@@ -103,7 +103,7 @@ foreach ($cart_data as $cart) {
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>/index.php/shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>/index.php/Shop">Home</a></li>
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
@@ -155,7 +155,7 @@ foreach ($cart_data as $cart) {
 
                             <tr>
                                 <td class="cart_product">
-                                    <a href="<?php echo base_url(); ?>index.php/product_details/<?php echo $cart_product['id']; ?>">
+                                    <a href="<?php echo base_url(); ?>index.php/productDetails/<?php echo $cart_product['id']; ?>">
                                         <img src="<?php echo base_url(); ?>uploads/<?php echo $cart_product['image_name']; ?>" class="cart_img_style" style="width: 100px" alt="">
                                     </a>
                                 </td>
@@ -277,7 +277,7 @@ foreach ($cart_data as $cart) {
                     <?php
                     if (!empty($cart_products)) {
                         ?>
-                        <a class="btn btn-default check_out" href="<?php echo base_url() . 'index.php/checkout' ?>">Check Out</a>
+                        <a class="btn btn-default check_out" href="<?php echo base_url() . 'Checkout' ?>">Check Out</a>
                     <?php } else { ?>
                         <a class="btn btn-default check_out" href="">Check Out</a>
 <?php } ?>
@@ -351,7 +351,7 @@ foreach ($cart_data as $cart) {
             console.log(price);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/update_cart_quantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -383,7 +383,7 @@ foreach ($cart_data as $cart) {
             console.log(product_id);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/update_cart_quantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -418,7 +418,7 @@ foreach ($cart_data as $cart) {
             console.log(total_price);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/update_cart_quantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -464,7 +464,7 @@ foreach ($cart_data as $cart) {
             }
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/coupon_code/' ?>" + coupon_code,
+                url: "<?php echo base_url() . 'index.php/cart/couponCode/' ?>" + coupon_code,
                 success: function (data) {
                     var discount = JSON.parse(data);
                     if (discount.discount_price || discount.discount_total) {

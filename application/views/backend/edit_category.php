@@ -26,7 +26,7 @@
                                             <br></br>
                                             <div class="col-sm-12" style="width: 92%">
                                                 <input name="category_name" id="category_name" type="text" 
-                                                class="form-control"
+                                                class="form-control  alphacapital"
                                                 value="<?php echo $current_catg[0]['name'];?>" >
                                             </div>
                                             <br></br>

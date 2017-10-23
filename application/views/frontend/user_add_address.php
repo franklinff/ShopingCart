@@ -19,7 +19,7 @@
 
                                 <a href="http://localhost/project/index.php/Address/">list</a>
 
-                                <form action="<?php echo base_url(); ?>index.php/Address/add_user_adds" method="post" id="address_form">
+                                <form action="<?php echo base_url(); ?>index.php/Address/addUserAdds" method="post" id="address_form">
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Address line 1</label>
@@ -145,7 +145,7 @@
     /*Get the country list */
       $.ajax({
         type: "GET",
-        url: "<?php echo base_url(); ?>index.php/Address/get_countries",
+        url: "<?php echo base_url(); ?>index.php/Address/getCountries",
         data:{id:$(this).val()}, 
         beforeSend :function(){
             $('.country').find("option:eq(0)").html("Please wait..");
@@ -169,7 +169,7 @@
     $('.country').change(function(){
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>index.php/Address/get_states",
+        url: "<?php echo base_url(); ?>index.php/Address/getStates",
         data:{id:$(this).val()}, 
         beforeSend :function(){
             $(".state option:gt(0)").remove(); 
@@ -196,7 +196,7 @@
     $('.state').change(function(){
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>index.php/Address/get_cities",
+        url: "<?php echo base_url(); ?>index.php/Address/getCities",
         data:{id:$(this).val()}, 
           beforeSend :function(){
             $(".city option:gt(0)").remove(); 

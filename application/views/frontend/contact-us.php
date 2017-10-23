@@ -18,7 +18,7 @@
 	    				<h2 class="title text-center">Get In Touch</h2>
 	    				<div class="status alert alert-success" style="display: none"></div>
 
-                        <form id="main-contact-form" class="contact-form row" action="<?php echo base_url(); ?>index.php/contact_us/add" name="contact-form" method="post">
+                        <form id="main-contact-form" class="contact-form row" action="<?php echo base_url(); ?>index.php/contactUs/add" name="contact-form" method="post">
 				            
 				            <div class="form-group col-md-6">
 				                <input type="text" name="name" class="form-control" required="required" placeholder="Name" style="text-transform:capitalize">
@@ -37,7 +37,18 @@
 				            </div>
 				            
 				            <div class="form-group col-md-12">
-				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your Message Here" style="text-transform:capitalize"></textarea>
+				                <!-- <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your Message Here" style="text-transform:capitalize"></textarea> -->
+
+				            <!--     <textarea id="message" name="message" rows="10" cols="80" placeholder="Your Message Here">    
+    		                </textarea>
+ -->
+
+	<textarea cols="10" id="message" name="message" rows="10" >Type your message here.
+	</textarea>
+
+
+
+
 				            </div>                        
 				            
 				            <div class="form-group col-md-12">
@@ -81,6 +92,27 @@
 	    	</div>  
     	</div>	
     </div><!--/#contact-page-->
+
+
+
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js"></script>
+<script>
+  $(function () {
+
+    CKEDITOR.replace('message',{
+			extraPlugins: 'placeholder',
+			height: 220
+		} );
+
+    $(".textarea").wysihtml5();
+
+    config.extraPlugins = 'placeholder';
+  });
+</script>
+
+
+
     
 <script type="text/javascript">
     $(document).ready(function(){
