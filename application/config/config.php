@@ -512,3 +512,9 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+
+$config['DB Name'] = 'id3373211_demoproject';
+$config['DB User'] = 'id3373211_demoproject';
+$config['password'] = 'franklinf123';
