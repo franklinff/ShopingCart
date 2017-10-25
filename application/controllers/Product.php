@@ -31,7 +31,6 @@ class Product extends CI_Controller
         $this->load->view('backend/footer.php');   
     }
 
-
     public function addProduct()
     {
        $data_info = array(
@@ -71,48 +70,45 @@ class Product extends CI_Controller
         $rand3 = rand(10000000, 999999999);
         $time1 = time();
         $time2 = time();
-        $time3 = time();       
-               
+        $time3 = time();   
 
 
-
-
-
-/*        function isvalidjpeg($file) 
-        { 
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        return is_resource($finfo) && 
-               (finfo_file($finfo, $file) === 'image/jpeg') && 
-               finfo_close($finfo);
-        }
-        if(isvalidjpeg($_FILES['file']['tmp_name'])) {
-           $newIm = @imagecreatefromjpeg($_FILES['file']['tmp_name']);*/
-
-
-
-
-               
         if ($this->form_validation->run() == TRUE)
         {
             $i = 0;
             $config['file_name'] = '';
+
             $postData['image_name'] = array( 
                                  0 => $rand1 . $time1 . strrchr($_FILES['uploadFile_0']['name'],'.'),
                                  1 => $rand2 . $time2 . strrchr($_FILES['uploadFile_1']['name'],'.'),
                                  2 => $rand3 . $time3 . strrchr($_FILES['uploadFile_2']['name'],'.')
                                  );
-      
-           $p_id = $this->Product_model->insert_product_info($data_info);
+
+            $photo1 = $_FILES['uploadFile_0']['tmp_name'];     //gd library
+            $photo2 = $_FILES['uploadFile_1']['tmp_name'];     //gd library
+            $photo3 = $_FILES['uploadFile_2']['tmp_name'];     //gd library
+            $info1 = @getimagesize($photo1);    //gd library
+            $info2 = @getimagesize($photo2);    //gd library
+            $info3 = @getimagesize($photo3);    //gd library
+
+            if($info1 && $info2 && $info3)      //gd library
+            {
+
+               $p_id = $this->Product_model->insert_product_info($data_info);
 
             foreach ($postData['image_name'] as $value)
-            {             
+            {  
+
+
                 $config['file_name'] = $value;
 
-                if (!empty($config['file_name']))
+
+               if (!empty($config['file_name']))
                 {
+
                     $this->load->library('upload', $config);
                     $this->upload->initialize($config);
-                    if ($this->upload->do_upload('uploadFile_'.$i))
+                    if ($this->upload->do_upload('uploadFile_'.$i) )
                         {
                             $data['image'] = $this->upload->data();
                             $this->Product_model->insert_product_img($data,$data_info,$p_id);
@@ -125,14 +121,26 @@ class Product extends CI_Controller
                 }
                 $i++;   
             }
-        redirect('Product'); 
+        redirect('Product');
         }
+                else{
+                        $data['categories'] = $this->Product_model->getByCat();
+                        $this->load->view('backend/header.php');
+                        $this->load->view('backend/sidebar.php');
+                        $this->load->view('backend/add_product.php',$data);
+                        $this->load->view('backend/footer.php');
+                } 
+        }
+        else
+        {
+
         $data['categories'] = $this->Product_model->getByCat();
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
         $this->load->view('backend/add_product.php',$data);
         $this->load->view('backend/footer.php');
     }
+}
 
 
 
@@ -194,6 +202,21 @@ class Product extends CI_Controller
                                  2 => $rand3 . $time3 . strrchr($_FILES['uploadFile_2']['name'],'.')
                                  );
 
+
+
+
+
+            $photo1 = $_FILES['uploadFile_0']['tmp_name'];     //gd library
+            $photo2 = $_FILES['uploadFile_1']['tmp_name'];     //gd library
+            $photo3 = $_FILES['uploadFile_2']['tmp_name'];     //gd library
+            $info1 = @getimagesize($photo1);    //gd library
+            $info2 = @getimagesize($photo2);    //gd library
+            $info3 = @getimagesize($photo3);    //gd library
+
+            if($info1 && $info2 && $info3)      //gd library
+            {
+
+
             $p_id = $this->Product_model->update_product_info($data_info,$id);
  
             foreach ($postData['image_name'] as $value)
@@ -221,13 +244,23 @@ class Product extends CI_Controller
         redirect('Product'); 
         }
 
+                else{
+                    $data['categories'] = $this->Product_model->getByCat();// for getting categories in dropdown.
+                    $this->load->view('backend/header.php');
+                    $this->load->view('backend/sidebar.php');
+                    $this->load->view('backend/edit_product.php',$data);
+                    $this->load->view('backend/footer.php');
+                } 
+        }
+        else
+        {
         $data['categories'] = $this->Product_model->getByCat();// for getting categories in dropdown.
         $this->load->view('backend/header.php');
         $this->load->view('backend/sidebar.php');
         $this->load->view('backend/edit_product.php',$data);
         $this->load->view('backend/footer.php');
     }
-
+}
 
 
 

@@ -83,7 +83,7 @@
                 <span>
                 <img src="<?php echo base_url();?>uploads/<?php echo $current_image[0]['image_name']; ?>" style= "width: 100px">
                 </span>  
-                <input id="uploadFile_1" name="uploadFile_0" type="file" placeholder="Choose File" 
+                <input id="uploadFile_0" name="uploadFile_0" type="file" placeholder="Choose File" 
                 class="mandatory_fildes"> 
                 </div>
 
@@ -93,7 +93,7 @@
                 <span>
                 <img src="<?php echo base_url();?>uploads/<?php echo $current_image[1]['image_name']; ?>" style="width: 100px">
                 </span>                
-                <input id="uploadFile_2" name="uploadFile_1" type="file" placeholder="Choose File" class="mandatory_fildes">             
+                <input id="uploadFile_1" name="uploadFile_1" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div>
 
 
@@ -103,7 +103,7 @@
                  <span>
                 <img src="<?php echo base_url();?>uploads/<?php echo $current_image[2]['image_name']; ?>" style="width: 100px">
                 </span> 
-                <input id="uploadFile_3" name="uploadFile_2" type="file" placeholder="Choose File" class="mandatory_fildes">             
+                <input id="uploadFile_2" name="uploadFile_2" type="file" placeholder="Choose File" class="mandatory_fildes">             
                 </div>
 
                 <label>SKU</label>
