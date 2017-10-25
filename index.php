@@ -1,5 +1,5 @@
 <?php
-echo 'hello test';exit;
+
 /**
  * CodeIgniter
  *
@@ -67,9 +67,7 @@ echo 'hello test';exit;
 switch (ENVIRONMENT)
 {
 	case 'development':
-		// error_reporting(-1);
-		// ini_set('display_errors', 1);
-		error_reporting(E_ALL);
+		error_reporting(-1);
 		ini_set('display_errors', 1);
 	break;
 
@@ -293,5 +291,3 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
