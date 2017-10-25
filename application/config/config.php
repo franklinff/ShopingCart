@@ -515,6 +515,6 @@ $config['proxy_ips'] = '';
 
 
 
-$config['DB Name'] = 'id3373211_demoproject';
+/*$config['DB Name'] = 'id3373211_demoproject';
 $config['DB User'] = 'id3373211_demoproject';
-$config['password'] = 'franklinf123';
+$config['password'] = 'franklinf123';*/

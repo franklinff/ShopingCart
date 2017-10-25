@@ -73,6 +73,25 @@ class Product extends CI_Controller
         $time2 = time();
         $time3 = time();       
                
+
+
+
+
+
+/*        function isvalidjpeg($file) 
+        { 
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        return is_resource($finfo) && 
+               (finfo_file($finfo, $file) === 'image/jpeg') && 
+               finfo_close($finfo);
+        }
+        if(isvalidjpeg($_FILES['file']['tmp_name'])) {
+           $newIm = @imagecreatefromjpeg($_FILES['file']['tmp_name']);*/
+
+
+
+
+               
         if ($this->form_validation->run() == TRUE)
         {
             $i = 0;
