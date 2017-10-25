@@ -78,8 +78,7 @@ $db['default'] = array(
 	'hostname' => ' 180.149.245.182',  
 	'username' => 'lead_sharad',   	
 	'password' => 's_Q6W4&+d]JjWxh[',		
-	'database' => 'demoFranklinP',		
-
+	'database' => 'demoFranklinP',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
