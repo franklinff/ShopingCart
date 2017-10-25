@@ -75,10 +75,20 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'demo',
+/*	'hostname' => 'localhost',  sql12.freemysqlhosting.net
+	'username' => 'root',   	sql12201239
+	'password' => 'root',		hSVTEUg4Gi
+	'database' => 'demo',		sql12201239*/
+	
+
+	'hostname' => 'sql12.freemysqlhosting.net',  
+	'username' => 'sql12201239',   	
+	'password' => 'hSVTEUg4Gi',		
+	'database' => 'sql12201239',		
+
+
+
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +104,17 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+/*
+Server: sql12.freemysqlhosting.net
+Name: sql12201239
+Username: sql12201239
+Password: hSVTEUg4Gi
+Port number: 3306*/
+
+
+
+
+/*$config['DB Name'] = 'id3373211_demoproject';
+$config['DB User'] = 'id3373211_demoproject';
+$config['password'] = 'franklinf123';*/
