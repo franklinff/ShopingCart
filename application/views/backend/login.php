@@ -50,7 +50,7 @@
 
       <div class="form-group has-feedback">
         <input id="password" name="password" type="password" placeholder="Password" class="form-control"   >
-        <?php// echo form_error('Password'); ?>
+        
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
 
