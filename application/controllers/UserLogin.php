@@ -9,9 +9,7 @@ class UserLogin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        echo '<pre>';
-		print_r($_SESSION);
-		echo '</pre>';
+        
         // Load facebook library
         /*$this->load->library('facebook');*/
 

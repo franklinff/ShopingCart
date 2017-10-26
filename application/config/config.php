@@ -380,7 +380,7 @@ $config['cache_query_string'] = FALSE;
 
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 1440;
+$config['sess_expiration'] = 144000;
 $config['sess_save_path'] = APPPATH . 'cache/sessions/'; 
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
