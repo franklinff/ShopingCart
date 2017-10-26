@@ -1,12 +1,5 @@
 <?php
-    // ob_start();
-    session_start();
-
-
-// $_SESSION['test'] = 'testrkljghs';
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+session_start();
 /**
  * CodeIgniter
  *
@@ -74,8 +67,8 @@ echo '</pre>';
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
+		// error_reporting(E_ALL);
+		// ini_set('display_errors', 1);
 	break;
 
 	case 'testing':
@@ -298,6 +291,3 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
