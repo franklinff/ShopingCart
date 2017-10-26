@@ -1,4 +1,6 @@
 <?php
+
+$_SESSION['test'] = 'testrkljghs';
 echo '<pre>';
 print_r($_SESSION);
 echo '</pre>';
