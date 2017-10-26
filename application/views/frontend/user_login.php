@@ -33,7 +33,7 @@
 							</br> -->
 						
 
-						<a href="<?php echo base_url("UserAuthenticationGmail");?>"><img src="<?php echo base_url("/Eshopper/images/home/sign-in-button.png")?>" style="width: 145px; height: 50px"></a></br>
+						<a href="<?php echo base_url()."UserAuthenticationGmail";?>"><img src="<?php echo base_url("/Eshopper/images/home/sign-in-button.png")?>" style="width: 145px; height: 50px"></a></br>
 
 							<a href="<?php echo base_url(); ?>ForgotPassword")?> Forgot password?</a>
 
