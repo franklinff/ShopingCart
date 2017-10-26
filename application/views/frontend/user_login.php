@@ -39,7 +39,7 @@
 
 							
 
-							<a href="<?php echo base_url(); ?>Forgot_password")?> Forgot password?</a>
+							<a href="<?php echo base_url(); ?>ForgotPassword")?> Forgot password?</a>
 
 
 							<button type="submit" class="btn btn-default">Login</button>
