@@ -11,7 +11,7 @@
                             <div class="panel-body">
                               
 
-                              <form action="Forgot_password" class="form" method="POST" id="password">
+                              <form action="ForgotPassword" class="form" method="POST" id="password">
                                 <fieldset>
                                   <div class="form-group">
                                     <div class="input-group">
