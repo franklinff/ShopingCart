@@ -19,7 +19,7 @@ class UserAuthenticationGmail extends CI_Controller
 		// Google Project API Credentials
 		$clientId = '439039940405-074bbibdr5ddvbgk9cr96tj2i88hd3bc.apps.googleusercontent.com';
         $clientSecret = 'Xixn9mG9uzSXXjKPq-z4j6e9';
-        $redirectUrl ='http://localhost/project/UserAuthenticationGmail';
+        $redirectUrl ='https://murmuring-wildwood-23106.herokuapp.com/UserAuthenticationGmail/index';
 
 		// Google Client Configuration
         $gClient = new Google_Client();

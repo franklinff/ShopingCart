@@ -27,7 +27,7 @@ $apiConfig = array(
     // OAuth2 Settings, you can get these keys at https://code.google.com/apis/console
     'oauth2_client_id' => '439039940405-074bbibdr5ddvbgk9cr96tj2i88hd3bc.apps.googleusercontent.com',
     'oauth2_client_secret' => 'Xixn9mG9uzSXXjKPq-z4j6e9',
-    'oauth2_redirect_uri' => 'http://localhost/project/index.php/User_authentication_gmail/index',
+    'oauth2_redirect_uri' => 'http://localhost/project/UserAuthenticationGmail/index',  //http://localhost/project/UserAuthenticationGmail/
 
     // The developer key, you get this at https://code.google.com/apis/console
     'developer_key' => '',
