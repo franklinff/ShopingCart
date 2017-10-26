@@ -17,9 +17,12 @@
                                 <!--login form-->
                                 <h2>Enter Address</h2>  
 
-                                <a href="http://localhost/project/index.php/Address/">list</a>
+                            <!--     <a href="http://localhost/project/index.php/Address/">list</a> -->
 
-                                <form action="<?php echo base_url(); ?>index.php/Address/addUserAdds" method="post" id="address_form">
+                                <a href="<?php echo base_url("Address/")?>">List</a>
+
+
+                                <form action="<?php echo base_url(); ?>Address/addUserAdds" method="post" id="address_form">
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Address line 1</label>

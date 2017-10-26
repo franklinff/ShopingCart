@@ -14,7 +14,11 @@
 
 <link rel="stylesheet" type="text/css" href = "<?php echo base_url("/application/admin/dist/css/AdminLTE.min.css")?>">
 
-<link rel="stylesheet" type="text/css" href = "http://localhost/project/application/admin/plugins/iCheck/square/blue.css">
+<link rel="stylesheet" type="text/css" href = "<?php echo base_url("/application/admin/plugins/iCheck/square/blue.css")?>">
+
+
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -72,12 +76,13 @@
 </div>
 </form>
 
-<script src="http://localhost/project/application/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+<script src="<?php echo base_url("/application/admin/plugins/jQuery/jquery-2.2.3.min.js")?>"></script>
 <!-- Bootstrap 3.3.6 -->
 
-<script src="http://localhost/project/application/admin/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url("/application/admin/bootstrap/js/bootstrap.min.js")?>"></script>
 <!-- iCheck -->
-<script src="http://localhost/project/application/admin/plugins/iCheck/icheck.min.js"></script>
+<script src="<?php echo base_url("/application/admin/plugins/iCheck/icheck.min.js")?>"></script>
 
 <script>
   $(function () {

@@ -5,7 +5,7 @@
                 <li><a href="<?php echo base_url(); ?>index.php/shop">Home</a></li>
                 <li class="active">Addresses</li>
             </ol>
-            <a href="<?php echo base_url(); ?>index.php/Address/addUserAdds"><button type="submit" class="btn btn-default">Add Address</button></a>
+            <a href="<?php echo base_url(); ?>Address/addUserAdds"><button type="submit" class="btn btn-default">Add Address</button></a>
         </div><br>
         <div class="table-responsive cart_info">
             <table class="table table-condensed">

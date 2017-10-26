@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>index.php/Shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>Shop">Home</a></li>
                 <li class="active">My Account</li>
             </ol>
         </div><!--/breadcrums-->

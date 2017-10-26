@@ -246,7 +246,9 @@
 	      		//window.location = "http://localhost/project/index.php/Home";
 			   success: function (data) {
               	// alert('hiiiiiiiiiiiiiiiiiiii');
-                    window.location = "http://localhost/project/index.php/User_login/facebook_login/";              
+                //window.location = "http://localhost/project/index.php/User_login/facebook_login/";              
+	            window.location = "<?php echo base_url("index.php/User_login/facebook_login/")?>";  
+
 	            },
 	            failure: function (data) {
 	                //alert('failllllllllllllllllllll');
