@@ -19,7 +19,7 @@ class UserAuthenticationGmail extends CI_Controller
 		// Google Project API Credentials
 		$clientId = '439039940405-074bbibdr5ddvbgk9cr96tj2i88hd3bc.apps.googleusercontent.com';
         $clientSecret = 'Xixn9mG9uzSXXjKPq-z4j6e9';
-        $redirectUrl ='http://localhost/project/index.php/User_authentication_gmail/index';
+        $redirectUrl ='http://localhost/project/UserAuthenticationGmail';
 
 		// Google Client Configuration
         $gClient = new Google_Client();
@@ -77,7 +77,7 @@ class UserAuthenticationGmail extends CI_Controller
                 $this->session->set_userdata('userData',$userData);
                 
                 //redirect('homepagecontroller/test/'.$userID,'refresh');
-                redirect('User_authentication_gmail/gmail_trial/'.$userID);
+                redirect('UserAuthenticationGmail/gmail_trial/'.$userID);
             } else {
                $data['userData'] = array();
             }
@@ -115,7 +115,7 @@ class UserAuthenticationGmail extends CI_Controller
 		$this->session->unset_userdata('userData');
         $this->session->unset_userdata('gmail_data');
         $this->session->sess_destroy();
-		redirect('User_authentication_gmail');
+		redirect('UserAuthenticationGmail');
     }
 
 }

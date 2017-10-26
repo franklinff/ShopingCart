@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+phpinfo();
+die();*/
 class UserLogin extends CI_Controller
 { 
 
