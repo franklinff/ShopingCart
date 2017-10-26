@@ -1,4 +1,5 @@
 <?php
+    ob_start();
 
 // $_SESSION['test'] = 'testrkljghs';
 echo '<pre>';
