@@ -58,13 +58,9 @@ class UserAuthenticationGmail extends CI_Controller
             $this->session->set_userdata('gmail_data',$data);
             echo"<pre>";
             print_r($this->session->userdata('gmail_data'));
-            
             echo"<pre>";
             print_r($data['gmail_data']);*/
             //die();
-
-
-
             $data['userData'] = $userData;
             $this->session->set_userdata('userData',$userData);
 
@@ -77,7 +73,7 @@ class UserAuthenticationGmail extends CI_Controller
                 $this->session->set_userdata('userData',$userData);
                 
                 //redirect('homepagecontroller/test/'.$userID,'refresh');
-                redirect('UserAuthenticationGmail/gmail_trial/'.$userID);
+                redirect('UserAuthenticationGmail/gmailTrial/'.$userID);
             } else {
                $data['userData'] = array();
             }
@@ -105,7 +101,7 @@ class UserAuthenticationGmail extends CI_Controller
         }
         else
         {
-            redirect('UserLsogin');
+            redirect('UserLogin');
         }
 
     }

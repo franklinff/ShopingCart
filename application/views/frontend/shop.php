@@ -314,7 +314,7 @@
             console.log(product_id);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/shop/addToWishlist/' ?>" + product_id,
+                url: "<?php echo base_url() . 'Shop/addToWishlist/' ?>" + product_id,
                 success: function (data) {
                     if (data == 'login') {
                         window.location = '<?php echo base_url(); ?>index.php/UserLogin';

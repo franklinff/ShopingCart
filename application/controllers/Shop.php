@@ -261,6 +261,7 @@ class Shop extends CI_Controller {
     }
 
 
+
 }
 
 /*    public function price_range($price_range) {
