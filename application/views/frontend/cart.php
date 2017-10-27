@@ -306,7 +306,7 @@ foreach ($cart_data as $cart) {
             var prod_name = $('#prod_name_' + product_id).text();
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/delete_cart_product/' ?>" + product_id,
+                url: "<?php echo base_url() . 'index.php/cart/deleteCartProduct/' ?>" + product_id,
                 success: function (data) {
 //                    $("#prod_del_" + product_id).closest("tr").slideUp(1000,function(){
 //                        $("#prod_del_" + product_id).closest("tr").fadeOut("slow");

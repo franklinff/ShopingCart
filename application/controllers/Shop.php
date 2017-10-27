@@ -223,7 +223,7 @@ class Shop extends CI_Controller {
      */
     public function addToWishlist($product_id) {
 
-        if (!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('gmail_data'))) {
+        if (empty($this->session->userdata('user_login')) || empty($this->session->userdata('gmail_data'))) {
             echo 'loginyyyyyyyyyyyyyyyyyyyy';
         } else {
             $data['product_id'] = $product_id;
