@@ -9,7 +9,7 @@ class PaymentComplete extends CI_Controller {
         $this->load->model('My_orders_model');
 
         if (empty($this->session->userdata('user_login')) && empty($this->session->userdata('gmail_data'))) {
-            redirect(base_url().'User_login');
+            redirect(base_url().'UserLogin');
         }
     }
 

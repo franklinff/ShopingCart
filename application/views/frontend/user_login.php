@@ -15,29 +15,32 @@
 						<form action="UserLogin/login" method="POST" id="login">
 							<input type="email" placeholder="Email Address" id="login_email" name="login_email" class="form-control" />
 							<input type="password" placeholder="Password" id="login_password" name="login_password" class="form-control" />
-							</br>
+							
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
 							</span>
-							</br>
 							
-							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-							</fb:login-button>
-							<br></br>
+							<button type="submit" class="btn btn-default" style="margin-left:155px;margin-top:-3px;margin-bottom:20px">Login</button>
+							<a href="<?php echo base_url(); ?>ForgotPassword")?> Forgot password?</a>
 
-					
-						<!-- 	<meta name="google-signin-client_id" 
+
+
+<div>
+							<!--<meta name="google-signin-client_id" 
 							content="439039940405-074bbibdr5ddvbgk9cr96tj2i88hd3bc.apps.googleusercontent.com">
 							<div class="g-signin2" data-onsuccess="onSignIn"></div>
 							</br> -->
-						
+							<div style="margin-top:25px">
+							<a href="<?php echo base_url()."UserAuthenticationGmail";?>"><img src="<?php echo base_url("/Eshopper/images/home/sign-in-button.png")?>" style="width: 145px; height: 50px"></a></br>
+							</div>
 
-						<a href="<?php echo base_url()."UserAuthenticationGmail";?>"><img src="<?php echo base_url("/Eshopper/images/home/sign-in-button.png")?>" style="width: 145px; height: 50px"></a></br>
-
-							<a href="<?php echo base_url(); ?>ForgotPassword")?> Forgot password?</a>
-
-							<button type="submit" class="btn btn-default">Login</button>
+							<div style="margin-top:25px">
+							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" styl>
+							</fb:login-button>
+							</div>		
+</div>							
+							
 						</form>
 					</div><!--/login form-->
 				</div>
@@ -68,7 +71,7 @@
 							<input type="password" placeholder="Confirm Password" id="conf_pwd" name="conf_pwd"/>
 							<span class="Password" id="err"></span>
 						
-							<button type="submit" class="btn btn-default">Signup</button>
+							<button type="submit" class="btn btn-default" style="margin-left:150px;margin-top:20px">Signup</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>

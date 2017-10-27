@@ -317,7 +317,7 @@
                 url: "<?php echo base_url() . 'index.php/shop/addToWishlist/' ?>" + product_id,
                 success: function (data) {
                     if (data == 'login') {
-                        window.location = '<?php echo base_url(); ?>index.php/userLogin';
+                        window.location = '<?php echo base_url(); ?>index.php/UserLogin';
                     }
                     var messge = JSON.parse(data);
                     //console.log(messge);

@@ -31,7 +31,7 @@ class MyOrder extends CI_Controller
 
         $config['page_query_string'] = TRUE;
         $config['per_page'] = 3;
-        $config['base_url'] = base_url() . 'index.php/My_order/index/page/';
+        $config['base_url'] = base_url() . 'MyOrder/index/page/';
         $config['total_rows'] = $data['order_count'][0]['order_count'];
         $config['uri_segment'] = 5;
         $config['next_link'] = 'Next';
