@@ -27,7 +27,9 @@ class Shop extends CI_Controller {
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
- /*     print_r($data['user_id']);
+
+
+/*      print_r($login_info);
         die();*/
 
         $data['categories'] = $this->Shop_model->getCategories();  

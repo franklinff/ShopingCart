@@ -9,14 +9,14 @@ class UserLogin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        
+
         // Load facebook library
-        /*$this->load->library('facebook');*/
+        //$this->load->library('facebook');
+
+        //Load user model
+        $this->load->model('User');
 
         $this->load->model('User_login_model');
-        /*  $this->load->library('email');
-      		$this->load->helper('string');
-        	$this->load->helper('date');*/
     }
 	
 	public function index()
@@ -103,7 +103,6 @@ class UserLogin extends CI_Controller
 
 	public function login()
 	{
-
 			$data = array(
 			'email' => $this->input->post('login_email'),
 			'password' => md5($this->input->post('login_password')),
@@ -143,19 +142,23 @@ class UserLogin extends CI_Controller
 	}
 
 
+
+
 	public function facebookLogin()
 	{
        $name = $this->input->post('name');
        $email = $this->input->post('email');
        $id = $this->input->post('id');
+
        $result = $this->User_login_model->fb_login($email);
+
+
 
        if(!empty($result)){
 	       	$this->session->set_userdata('user_login',$result);
-	       	redirect('Shop');
-	       	
+	       	redirect('Shop');      	
        }else{
-			$name1 =  (explode(" ",$name));			
+			$name1 =  (explode(" ",$name));		
 			$first_name = $name1[0];
 			$last_name =$name1[1];
 
@@ -163,17 +166,21 @@ class UserLogin extends CI_Controller
 			'firstname' => $this->input->post('first_name'),
 			'lastname' => $this->input->post('last_name'),
 			'email' => $this->input->post('email_add'),
-			'password' => $this->input->post('password'),
-			'role_type' => '5'
+			'password' => $this->input->post('password')
 			);
-/*			print_r($data);
-			die();*/
+
+
+
+			 $this->session->set_userdata('user_login',$data);
+
+
+
 			$this->User_login_model->registration_through_fb($first_name,$last_name,$email,$id);
 			redirect('Shop');
        }
 	}
 
-
+/*
 	public function gmailLogin()
 	{
 
@@ -197,7 +204,7 @@ class UserLogin extends CI_Controller
 			$this->User_login_model->registration_through_gmail($first_name,$last_name,$email,$id);
 			redirect('Shop');
        }
-	}
+	}*/
 
 
 	public function logout()

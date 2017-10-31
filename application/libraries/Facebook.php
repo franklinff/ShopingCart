@@ -48,9 +48,9 @@ Class Facebook
         $this->load->helper('url');
         if (!isset($this->fb)){
             $this->fb = new FB([
-                'app_id'                => $this->config->item('facebook_app_id'),
-                'app_secret'            => $this->config->item('facebook_app_secret'),
-                'default_graph_version' => $this->config->item('facebook_graph_version')
+                'app_id'                => $this->config->item('1898439137095995'),
+                'app_secret'            => $this->config->item('660d53cd9e228b89f46358c16c22cc9c'),
+                'default_graph_version' => $this->config->item('v2.6')
             ]);
         }
         // Load correct helper depending on login type

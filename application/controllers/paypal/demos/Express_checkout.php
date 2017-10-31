@@ -12,7 +12,7 @@ class Express_checkout extends CI_Controller {
         $this->load->model('user_addres_model', 'user_address');
         $this->load->model('User_login_model', 'user_login');           
         if (empty($this->session->userdata('user_login'))) {
-            redirect('User_login');
+            redirect('UserLogin');
         }
 
         // Load PayPal library config
@@ -110,8 +110,8 @@ class Express_checkout extends CI_Controller {
          */
         $SECFields = array(
             'maxamt' => $cart['grand_total'], // The expected maximum total amount the order will be, including S&H and sales tax.
-            'returnurl' => site_url('index.php/paypal/demos/express_checkout/GetExpressCheckoutDetails'), // Required.  URL to which the customer will be returned after returning from PayPal.  2048 char max.
-            'cancelurl' => site_url('index.php/paypal/demos/express_checkout/OrderCancelled'), // Required.  URL to which the customer will be returned if they cancel payment on PayPal's site.
+            'returnurl' => site_url('index.php/paypal/demos/Express_checkout/GetExpressCheckoutDetails'), // Required.  URL to which the customer will be returned after returning from PayPal.  2048 char max.
+            'cancelurl' => site_url('index.php/paypal/demos/Express_checkout/OrderCancelled'), // Required.  URL to which the customer will be returned if they cancel payment on PayPal's site.
             'hdrimg' => 'https://www.angelleye.com/images/angelleye-paypal-header-750x90.jpg', // URL for the image displayed as the header during checkout.  Max size of 750x90.  Should be stored on an https:// server or you'll get a warning message in the browser.
             'logoimg' => 'https://www.angellesye.com/images/angelleye-logo-190x60.jpg', // A URL to your logo image.  Formats:  .gif, .jpg, .png.  190x60.  PayPal places your logo image at the top of the cart review area.  This logo needs to be stored on a https:// server.
             'brandname' => 'Angell EYE', // A label that overrides the business name in the PayPal account on the PayPal hosted checkout pages.  127 char max.
@@ -160,7 +160,7 @@ class Express_checkout extends CI_Controller {
             $errors = array('Errors' => $PayPalResult['ERRORS']);
             // Load errors to variable
             $this->load->vars('errors', $errors);
-            $this->load->view('paypal/demos/express_checkout/paypal_error');
+            $this->load->view('paypal/demos/Express_checkout/paypal_error');
         } else {
             // Successful call.
             //print_r($PayPalResult);exit;
@@ -212,7 +212,7 @@ class Express_checkout extends CI_Controller {
             $errors = array('Errors' => $PayPalResult['ERRORS']);
             // Load errors to variable
             $this->load->vars('errors', $errors);
-            $this->load->view('paypal/demos/express_checkout/paypal_error');
+            $this->load->view('paypal/demos/Express_checkout/paypal_error');
         } else {
 
             // Successful call.
@@ -273,7 +273,7 @@ class Express_checkout extends CI_Controller {
             $this->load->vars('cart', $cart);
             // Example - Load Review Page
             $this->load->view('frontend/header');
-            $this->load->view('paypal/demos/express_checkout/review', $cart);
+            $this->load->view('paypal/demos/Express_checkout/review', $cart);
             $this->load->view('frontend/footer');
         }
     }
@@ -387,7 +387,7 @@ class Express_checkout extends CI_Controller {
             // Load errors to variable
             $this->load->vars('errors', $errors);
 
-            $this->load->view('paypal/demos/express_checkout/paypal_error');
+            $this->load->view('paypal/demos/Express_checkout/paypal_error');
         } else {
             // Successful call.
             /**
@@ -426,7 +426,7 @@ class Express_checkout extends CI_Controller {
                 $coupon_used_insert = $this->checkout->insert_coupon_used($coupon_used);
             }
             // Successful Order
-            redirect('index.php/paypal/demos/express_checkout/OrderComplete');
+            redirect('index.php/paypal/demos/Express_checkout/OrderComplete');
         }
     }
 
@@ -553,7 +553,7 @@ class Express_checkout extends CI_Controller {
         $order_id = $cart['order_id'];
 
         // Successful call.  Load view or whatever you need to do here.
-        redirect(base_url() . 'index.php/payment_complete/index/' . $order_id);               
+        redirect(base_url() . 'index.php/PaymentComplete/index/' . $order_id);               
         //$this->session->unset_userdata('cart');
     }
 
@@ -566,7 +566,7 @@ class Express_checkout extends CI_Controller {
         // Clear cart from session userdata
         $this->session->unset_userdata('shopping_cart');
         // Successful call.  Load view or whatever you need to do here.
-        $this->load->view('index.php/paypal/demos/express_checkout/order_cancelled');
+        $this->load->view('index.php/paypal/demos/Express_checkout/order_cancelled');
     }
 
 }

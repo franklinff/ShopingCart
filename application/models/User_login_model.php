@@ -87,7 +87,8 @@ class User_login_model extends CI_Model{
             'fb_token' => $id,
             'created_date' => date('y-m-d'),
             'role_type' => 5,
-            'registration_method' => 'f'
+            'registration_method' => 'f',
+            'status' =>'1'
             );
         /*echo '<pre>';print_r($data);die();*/
         $result =$this->db->insert('users',$data);

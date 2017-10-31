@@ -36,9 +36,9 @@
 							</div>
 
 							<div style="margin-top:25px">
-							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" styl>
+							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 							</fb:login-button>
-							</div>		
+							</div>	
 </div>							
 							
 						</form>
@@ -224,19 +224,22 @@
 		   }(document, 'script', 'facebook-jssdk'));
 
 		function testAPI() {
-	    	/*console.log('Welcome!  Fetching your information.... ');*/
+	    	console.log('Welcome!  Fetching your information.... ');
 	    	FB.api('/me?fields=id,name,email,permissions,picture', function(response)
 	    	{
 	    	var id = response.id;
 	    	var name = response.name;
 	        var email = response.email;
-	        /*console.log(email);console.log(id);console.log(name);*/
+	        
+	        console.log(email);
+	        console.log(id);
+	        console.log(name);
 	        	        
-	        var url= '<?php echo base_url();?>index.php/User_login/facebook_login/';
+	        var url= '<?php echo base_url();?>UserLogin/facebookLogin/';
 	        //console.log(url);
 
 			   $.ajax({
-               url: '<?php echo base_url();?>index.php/User_login/facebook_login/',
+               url: '<?php echo base_url();?>UserLogin/facebookLogin/',
                type: "POST",
                async: false,
                data: { 'id':id,'name':name,'email':email },
@@ -245,8 +248,7 @@
 			   success: function (data) {
               	// alert('hiiiiiiiiiiiiiiiiiiii');
                 //window.location = "http://localhost/project/index.php/User_login/facebook_login/";              
-	            window.location = "<?php echo base_url("index.php/User_login/facebook_login/")?>";  
-
+	            window.location = "<?php echo base_url("UserLogin/facebookLogin/")?>";  
 	            },
 	            failure: function (data) {
 	                //alert('failllllllllllllllllllll');
@@ -257,6 +259,8 @@
 	  	 })
 	  	}
 	</script>
+
+
 
 	<style type="text/css">
 		  #register label.error{

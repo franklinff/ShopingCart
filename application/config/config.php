@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://localhost/project';
+/*$config['base_url'] = 'http://localhost/project';*/
 $config['base_url'] = 'https://murmuring-wave-89756.herokuapp.com';
 
 /*
@@ -378,10 +378,12 @@ $config['cache_query_string'] = FALSE;
 // $config['sess_time_to_update'] = 300;
 // $config['sess_regenerate_destroy'] = FALSE;
 
-$config['sess_driver'] = 'files';
+//$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 144000;
-$config['sess_save_path'] = APPPATH . 'cache/sessions/'; 
+//$config['sess_save_path'] = APPPATH . 'cache/sessions/';
+$config['sess_save_path'] = 'ci_sessions'; 
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = TRUE;

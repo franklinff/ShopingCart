@@ -79,7 +79,12 @@ $db['default'] = array(
 	'username' => 'lead_sharad',
 	'password' => 's_Q6W4&+d]JjWxh[',		
 	'database' => 'demoFranklinP',
-	'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysqli',	
+	/*'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'demo',
+	'dbdriver' => 'mysqli',*/
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -94,4 +99,6 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+
 
