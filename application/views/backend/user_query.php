@@ -61,7 +61,7 @@
                                             
                                             <td>
                                                 <div class="buttons">
-                                                    <a href="<?php echo base_url(); ?>Contact_us_admin/reply_to_query/<?php echo $row['id']; ?>">
+                                                    <a href="<?php echo base_url(); ?>ContactUsAdmin/replyToQuery/<?php echo $row['id']; ?>">
                                                         <button class="btn btn_delete">Reply</button>
                                                     </a>
                                                 </div>

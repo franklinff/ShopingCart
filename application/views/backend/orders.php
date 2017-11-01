@@ -21,7 +21,7 @@
                                     <h4 class="modal-title">Change the order status</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?php echo base_url(); ?>index.php/orders/updateOrderStatus" method="post" class="searchform">
+                                    <form action="<?php echo base_url(); ?>Orders/updateOrderStatus" method="post" class="searchform">
                                         <input type="radio" name="status" value="P"> Pending<br>
                                         <input type="radio" name="status" value="O"> Processing<br>
                                         <input type="radio" name="status" value="S"> Shipped<br>
@@ -74,7 +74,7 @@
                                             <td class=""><?php echo $value['grand_total']; ?></td>
                                             <td class=""><?php echo $value['shipping_method']; ?></td>
                                             <td class=""><?php echo $value['created_date']; ?></td>
-                                            <td class=""><a href="<?php echo base_url(); ?>index.php/orders/order_details/<?php echo $value['id']; ?>" >View Details</a></td>
+                                            <td class=""><a href="<?php echo base_url(); ?>Orders/orderDetails/<?php echo $value['id']; ?>" >View Details</a></td>
                                             <td class=""><a href="" class="orders" id="note" onclick="getId(<?php echo $value['id']; ?>);" data-toggle="modal" data-target="#myModal">Status</a></td>
                                         </tr>
                                         <?php

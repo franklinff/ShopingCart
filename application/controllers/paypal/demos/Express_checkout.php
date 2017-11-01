@@ -273,7 +273,7 @@ class Express_checkout extends CI_Controller {
             $this->load->vars('cart', $cart);
             // Example - Load Review Page
             $this->load->view('frontend/header');
-            $this->load->view('paypal/demos/Express_checkout/review', $cart);
+            $this->load->view('paypal/demos/express_checkout/review.php', $cart);
             $this->load->view('frontend/footer');
         }
     }
