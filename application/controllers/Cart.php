@@ -38,7 +38,8 @@ class Cart extends CI_Controller {
             $product_quantity = array();
             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
 
-
+    print_r($data['cart_products']);
+    die();
 
 
             $i = 0;
