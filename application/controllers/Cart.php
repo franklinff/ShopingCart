@@ -25,9 +25,6 @@ class Cart extends CI_Controller {
         //echo '<pre>';        print_r($this->session->userdata());exit;
         $product_details = $this->session->userdata('cart'); 
 
-
-
-
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
