@@ -10,6 +10,8 @@ class MyAccount extends CI_Controller
 
     public function index()
 	{
+					        print_r($this->session->userdata('user_login'));
+					        exit();
 
 
 
