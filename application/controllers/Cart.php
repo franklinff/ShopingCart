@@ -23,8 +23,6 @@ class Cart extends CI_Controller {
     public function index() {
         $data = '';
         //echo '<pre>';        print_r($this->session->userdata());exit;
-        var_dump($this->session->userdata('cart'));
-        var_dump($this->session->All_userdata());
         $product_details = $this->session->userdata('cart');       
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
@@ -103,6 +101,9 @@ class Cart extends CI_Controller {
             }        
             $data['countries'] = $this->User_addres_model->getCountries();
         }
+
+        echo '<pre>';
+        print_r($data);
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);
