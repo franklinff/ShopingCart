@@ -127,6 +127,10 @@ class UserLogin extends CI_Controller
 							if ($role == 5) 
 							{
 					        $this->session->set_userdata('user_login',$result);
+					        
+					        echo"hiiiii";
+					        exit();
+
                             redirect('Shop');
 							}    							  
 						}
