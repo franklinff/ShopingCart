@@ -44,12 +44,10 @@ class Cart extends CI_Controller {
         // $r = $this->db->get();
 
             $cart_products = $this->Cart_model->getAddedProducts($product_id);
-            echo '<pre>';
-            print_r($cart_products);
-            echo '</pre>';
+            $data['cart_products'] = $cart_products;
+            print_r($data['cart_products']);
             $i = 0;
-
-            foreach ($cart_products as $cart_prod) {
+            foreach ($data['cart_products'] as $cart_prod) {
                 // $cart_prod = (array) $cart_prod;
                 foreach ($product_details as $key => $quantity) {
 
