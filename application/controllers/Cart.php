@@ -35,14 +35,11 @@ class Cart extends CI_Controller {
         if ($product_details) {
 
             $product_id = array_keys($product_details);
-
-            print_r($product_id);
-            die();
-
-
             $product_quantity = array();
             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
 
+            print_r($data['cart_products']);
+            die();
 
 
             $i = 0;
