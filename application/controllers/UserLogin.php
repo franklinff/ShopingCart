@@ -16,6 +16,10 @@ class UserLogin extends CI_Controller
         //Load user model
         $this->load->model('User');
         $this->load->model('User_login_model');
+
+         
+     	print_r($this->session->userdata('user_login'));
+					        
     }
 	
 	public function index()
@@ -124,12 +128,9 @@ class UserLogin extends CI_Controller
 							$role = $result[0]['role_type'];
 							if ($role == 5) 
 							{
-					        $this->session->set_userdata('user_login',$result);
-					      	 
-					     	print_r($this->session->userdata('user_login'));
-					        exit();
-					        
-                            redirect('Shop');
+					        	$this->session->set_userdata('user_login',$result);
+					      	
+                            	redirect('Shop');
 							}    							  
 						}
 						else
