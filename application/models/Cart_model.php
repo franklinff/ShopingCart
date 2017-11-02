@@ -23,8 +23,7 @@ class Cart_model extends CI_Model {
         $this->db->from('product');
         $this->db->where_in('product.id', $product_id);
         $r = $this->db->get();
-        $res = $r->result_array();
-        
+        $res = $r->result_array();        
         return $res;
     }
 
