@@ -46,7 +46,7 @@ class Cart extends CI_Controller {
             // $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
              $data['cart_products'] = $r->result_array();
             echo '<pre>';
-            print_r($r->result_array(););
+            print_r($r->result_array());
             echo '</pre>';
             $i = 0;
 
