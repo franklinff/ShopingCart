@@ -102,8 +102,7 @@ class Cart extends CI_Controller {
             $data['countries'] = $this->User_addres_model->getCountries();
         }
 
-        echo '<pre>';
-        print_r($data);
+       var_dump($data);
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);
