@@ -25,8 +25,7 @@ class Cart extends CI_Controller {
         //echo '<pre>';        print_r($this->session->userdata());exit;
         $product_details = $this->session->userdata('cart'); 
 
-        print_r($product_details);
-        die();
+
 
 
         $login_info = $this->session->userdata('user_login');
@@ -41,6 +40,11 @@ class Cart extends CI_Controller {
             $product_id = array_keys($product_details);
             $product_quantity = array();
             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
+
+
+            print_r($data['cart_products']);
+            die();
+
             $i = 0;
 
 
