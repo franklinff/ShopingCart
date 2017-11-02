@@ -21,7 +21,7 @@ class Cart extends CI_Controller {
      * @return view file
      */
     public function index() {
-        $data = '';
+        $data = [];
         //echo '<pre>';        print_r($this->session->userdata());exit;
         $product_details = $this->session->userdata('cart'); 
 
@@ -36,35 +36,27 @@ class Cart extends CI_Controller {
 
             $product_id = array_keys($product_details);
             $product_quantity = array();
-        //     $this->db->select('product.id,product.name,product.is_featured,product.price,product.special_price,product.special_price_from,
-        // product.special_price_to,(SELECT pm.image_name FROM product_images pm WHERE pm.product_id = product.id ORDER BY pm.id ASC LIMIT 1) AS image_name');
+           
+             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
+            
 
-        // $this->db->from('product');
-        // $this->db->where_in('product.id', $product_id);
-        // $r = $this->db->get();
-
-            $cart_products = $this->Cart_model->getAddedProducts($product_id);
-            // $data['cart_products'] = $cart_products;
-            // print_r($cart_products);
-            $i = 0;
-            foreach ($cart_products as $cart_prod) {
-                // $cart_prod = (array) $cart_prod;
+            foreach ($data['cart_products'] as $cart_prod) {
                 foreach ($product_details as $key => $quantity) {
 
                     if ($key == $cart_prod['id']) {
-                        $cart_products[$i]['quantity'] = $quantity['quantity'];
+                        $data['cart_products'][$i]['quantity'] = $quantity['quantity'];
                     }
                 }
                 foreach ($product_details as $key => $total_price) {
                     if ($key == $cart_prod['id']) {
-                        $cart_products[$i]['total_price'] = $total_price['total_price'];
+                        $data['cart_products'][$i]['total_price'] = $total_price['total_price'];
                     }
                 }
                 $i++;
             }
             
             $data['sub_total'] = array();
-            foreach ($cart_products as $value) {
+            foreach ($data['cart_products'] as $value) {
                 $data['sub_total'][] = $value['total_price'];
             }
             $data['sub_total'] = array_sum($data['sub_total']);
@@ -111,7 +103,8 @@ class Cart extends CI_Controller {
             }        
             $data['countries'] = $this->User_addres_model->getCountries();
         }
-        $data['cart_products']  = $cart_products;
+
+
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);
@@ -335,6 +328,5 @@ class Cart extends CI_Controller {
             }
         }
     }
-
 
 }
