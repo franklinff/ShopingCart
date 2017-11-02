@@ -18,6 +18,9 @@ class Shop extends CI_Controller {
      */
     public function index() {
 
+                                    print_r($this->session->userdata('user_login'));
+                            exit();
+
         if ($this->input->get('per_page')) {
             $page = ($this->input->get('per_page'));
         } else {

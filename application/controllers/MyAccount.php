@@ -10,10 +10,6 @@ class MyAccount extends CI_Controller
 
     public function index()
 	{
-					        print_r($this->session->userdata('user_login'));
-					        exit();
-
-
 
 		if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('gmail_data')) )
 		{
