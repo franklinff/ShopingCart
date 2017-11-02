@@ -9,13 +9,12 @@ class UserLogin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        session_start();
 
         // Load facebook library
         //$this->load->library('facebook');
-
         //Load user model
         $this->load->model('User');
-
         $this->load->model('User_login_model');
     }
 	
@@ -112,7 +111,6 @@ class UserLogin extends CI_Controller
 			{
 /*	echo"hello login";
 	die();*/
-
 		    $this->form_validation->set_rules('login_email', 'Email', 'required');
 		    $this->form_validation->set_rules('login_password', 'Password', 'required');
 		    	if($this->form_validation->run() == TRUE )
@@ -127,17 +125,10 @@ class UserLogin extends CI_Controller
 							if ($role == 5) 
 							{
 					        $this->session->set_userdata('user_login',$result);
-					        
-					/*        print_r($this->session->userdata('user_login'));
-					        exit();*/
-
-					        echo '<pre>';
-					        echo"hello";
-							var_dump($_SESSION);
-							echo '</pre>';
-
-							die();
-
+					      	/*  
+					     	print_r($this->session->userdata('user_login'));
+					        exit();
+					        */
                             redirect('Shop');
 							}    							  
 						}
@@ -163,8 +154,6 @@ class UserLogin extends CI_Controller
 
        $result = $this->User_login_model->fb_login($email);
 
-
-
        if(!empty($result)){
 	       	$this->session->set_userdata('user_login',$result);
 	       	redirect('Shop');      	
@@ -180,11 +169,7 @@ class UserLogin extends CI_Controller
 			'password' => $this->input->post('password')
 			);
 
-
-
-			 $this->session->set_userdata('user_login',$data);
-
-
+			$this->session->set_userdata('user_login',$data);
 
 			$this->User_login_model->registration_through_fb($first_name,$last_name,$email,$id);
 			redirect('Shop');
