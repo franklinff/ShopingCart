@@ -131,6 +131,13 @@ class UserLogin extends CI_Controller
 					/*        print_r($this->session->userdata('user_login'));
 					        exit();*/
 
+					        echo '<pre>';
+					        echo"hello";
+							var_dump($_SESSION);
+							echo '</pre>';
+
+							die();
+
                             redirect('Shop');
 							}    							  
 						}
