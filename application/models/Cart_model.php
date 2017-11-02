@@ -16,9 +16,15 @@ class Cart_model extends CI_Model {
      * @return : array
      */
     public function getAddedProducts($product_id) { 
-        $this->db->select('product.id,product.name,product.is_featured,product.price,product.special_price,product.special_price_from,
-                    product.special_price_to,(SELECT pm.image_name FROM product_images pm 
-                    WHERE pm.product_id = product.id ORDER BY pm.id ASC LIMIT 1 ) AS image_name');
+        $this->db->select('product.id,
+                            product.name,
+                            product.is_featured,
+                            product.price,
+                            product.special_price,
+                            product.special_price_from,
+                            product.special_price_to,
+                            (SELECT pm.image_name FROM product_images pm WHERE pm.product_id = product.id ORDER BY pm.id ASC LIMIT 1 ) AS image_name');
+
         $this->db->from('product');
         $this->db->where_in('product.id', $product_id);
         $r = $this->db->get();
