@@ -27,6 +27,9 @@ class Cart_model extends CI_Model {
     $this->db->where_in('product.id', $product_id);
     $r = $this->db->get();
 
+    print_r($r->result_array());
+    die();
+
 /*
         echo $this->db->last_query();
         die();*/
