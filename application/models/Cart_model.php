@@ -27,10 +27,11 @@ class Cart_model extends CI_Model {
     $this->db->where_in('product.id', $product_id);
     $r = $this->db->get();
 
-                    $this->db->last_query();
+    return $r->result_array();
+
+                        $this->db->last_query();
                     die();
 
-    return $r->result_array();
     }
 
 
