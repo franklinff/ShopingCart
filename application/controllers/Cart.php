@@ -44,9 +44,9 @@ class Cart extends CI_Controller {
         $r = $this->db->get();
 
             // $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
-             $data['cart_products'] = $r->result_array();;
+             $data['cart_products'] = $r->result_array();
             echo '<pre>';
-            print_r($data['cart_products']);
+            print_r($r->result_array(););
             echo '</pre>';
             $i = 0;
 
@@ -339,4 +339,14 @@ class Cart extends CI_Controller {
         }
     }
 
+
+    function test($product_id){
+        $this->db->select('product.id,product.name,product.is_featured,product.price,product.special_price,product.special_price_from,
+        product.special_price_to,(SELECT pm.image_name FROM product_images pm WHERE pm.product_id = product.id ORDER BY pm.id ASC LIMIT 1) AS image_name');
+
+        $this->db->from('product');
+        $this->db->where_in('product.id', $product_id);
+        $r = $this->db->get();
+        return $r->result_array();
+    }
 }
