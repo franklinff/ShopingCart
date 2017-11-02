@@ -9,16 +9,12 @@ class UserLogin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
 
         // Load facebook library
         //$this->load->library('facebook');
         //Load user model
         $this->load->model('User');
         $this->load->model('User_login_model');
-
-
-     	var_dump($this->session->userdata('user_login'));
 					        
     }
 	

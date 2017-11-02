@@ -7,7 +7,6 @@ class Shop extends CI_Controller {
         $this->load->model('Shop_model');
         $this->load->model('Wishlist_model');
         $this->load->library('pagination');
-        var_dump($this->session->userdata('user_login'));
     }
 
     /*
