@@ -18,9 +18,7 @@ class MyAccount extends CI_Controller
 			$user_id = $user_data[0]['id'];
 
 			$data['user']= $this->My_account_model->user_information($user_id);
-
 			//$data['gmail'] = $this->session->userdata('gmail_data');
-
 			$this->load->view('frontend/header');
 			$this->load->view('frontend/my_account',$data); 
 			$this->load->view('frontend/footer');
