@@ -44,27 +44,27 @@ class Cart extends CI_Controller {
         // $r = $this->db->get();
 
             $cart_products = $this->Cart_model->getAddedProducts($product_id);
-            $data['cart_products'] = $cart_products;
-            print_r($data['cart_products']);
+            // $data['cart_products'] = $cart_products;
+            print_r($cart_products);
             $i = 0;
-            foreach ($data['cart_products'] as $cart_prod) {
+            foreach ($cart_products as $cart_prod) {
                 // $cart_prod = (array) $cart_prod;
                 foreach ($product_details as $key => $quantity) {
 
                     if ($key == $cart_prod['id']) {
-                        $data['cart_products'][$i]['quantity'] = $quantity['quantity'];
+                        $cart_products[$i]['quantity'] = $quantity['quantity'];
                     }
                 }
                 foreach ($product_details as $key => $total_price) {
                     if ($key == $cart_prod['id']) {
-                        $data['cart_products'][$i]['total_price'] = $total_price['total_price'];
+                        $cart_products[$i]['total_price'] = $total_price['total_price'];
                     }
                 }
                 $i++;
             }
             
             $data['sub_total'] = array();
-            foreach ($data['cart_products'] as $value) {
+            foreach ($cart_products as $value) {
                 $data['sub_total'][] = $value['total_price'];
             }
             $data['sub_total'] = array_sum($data['sub_total']);
@@ -111,8 +111,7 @@ class Cart extends CI_Controller {
             }        
             $data['countries'] = $this->User_addres_model->getCountries();
         }
-
-
+        $data['cart_products']  = $cart_products;
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);
