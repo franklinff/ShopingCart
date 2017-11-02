@@ -37,6 +37,9 @@ class Cart extends CI_Controller {
             $product_quantity = array();
             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
             $i = 0;
+
+                   print_r($data['cart_products']);
+       die();
             
             foreach ($data['cart_products'] as $cart_prod) {
                 foreach ($product_details as $key => $quantity) {
@@ -102,7 +105,7 @@ class Cart extends CI_Controller {
             $data['countries'] = $this->User_addres_model->getCountries();
         }
 
-       var_dump($data);
+
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);
