@@ -103,7 +103,7 @@ foreach ($cart_data as $cart) {
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>/index.php/Shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>/Shop">Home</a></li>
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
@@ -155,7 +155,7 @@ foreach ($cart_data as $cart) {
 
                             <tr>
                                 <td class="cart_product">
-                                    <a href="<?php echo base_url(); ?>index.php/productDetails/<?php echo $cart_product['id']; ?>">
+                                    <a href="<?php echo base_url(); ?>ProductDetails/<?php echo $cart_product['id']; ?>">
                                         <img src="<?php echo base_url(); ?>uploads/<?php echo $cart_product['image_name']; ?>" class="cart_img_style" style="width: 100px" alt="">
                                     </a>
                                 </td>

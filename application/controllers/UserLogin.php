@@ -9,18 +9,15 @@ class UserLogin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         // Load facebook library
         //$this->load->library('facebook');
         //Load user model
         $this->load->model('User');
-        $this->load->model('User_login_model');
-					        
+        $this->load->model('User_login_model');				        
     }
 	
 	public function index()
 	{
-
 	    $data = array(
 			'firstname' => $this->input->post('first_name'),
 			'lastname' => $this->input->post('last_name'),
@@ -124,8 +121,7 @@ class UserLogin extends CI_Controller
 							$role = $result[0]['role_type'];
 							if ($role == 5) 
 							{
-					        	$this->session->set_userdata('user_login',$result);
-					      	
+					        	$this->session->set_userdata('user_login',$result);			      	
                             	redirect('Shop');
 							}    							  
 						}
@@ -198,8 +194,6 @@ class UserLogin extends CI_Controller
 			redirect('Shop');
        }
 	}*/
-
-
 	public function logout()
 	{
 		$this->session->unset_userdata('user_login');
@@ -211,5 +205,6 @@ class UserLogin extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('UserLogin');
 	}
+
 
 }

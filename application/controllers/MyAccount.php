@@ -11,7 +11,6 @@ class MyAccount extends CI_Controller
 
     public function index()
 	{
-
 		if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('gmail_data')) )
 		{
 			$user_data = $this->session->userdata('user_login');

@@ -23,7 +23,12 @@ class Cart extends CI_Controller {
     public function index() {
         $data = '';
         //echo '<pre>';        print_r($this->session->userdata());exit;
-        $product_details = $this->session->userdata('cart');       
+        $product_details = $this->session->userdata('cart'); 
+
+        print_r($product_details);
+        die();
+
+
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
@@ -38,8 +43,8 @@ class Cart extends CI_Controller {
             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
             $i = 0;
 
-                   print_r($data['cart_products']);
-       die();
+
+
             
             foreach ($data['cart_products'] as $cart_prod) {
                 foreach ($product_details as $key => $quantity) {
