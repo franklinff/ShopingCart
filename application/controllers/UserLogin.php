@@ -128,8 +128,8 @@ class UserLogin extends CI_Controller
 							{
 					        $this->session->set_userdata('user_login',$result);
 					        
-					        print_r($this->session->userdata('user_login'));
-					        exit();
+					/*        print_r($this->session->userdata('user_login'));
+					        exit();*/
 
                             redirect('Shop');
 							}    							  
