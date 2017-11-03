@@ -96,17 +96,17 @@
 								
 						    <li>
 						    <a href="<?php echo base_url('Cart') ?>">
-									(<span id="cart_count_total"><?php
-                                                    if ($this->session->userdata('cart') != '') {
+                            <i class="fa fa-shopping-cart"></i>
+						    Cart
+						    	(<span id="cart_count_total"><?php
+                                        if ($this->session->userdata('cart') != '') {
                                                         $cart = $this->session->userdata('cart');
                                                         echo COUNT($cart);
                                                     } else {
                                                         echo '0';
                                                     }
                                                     ?>                	
-                                    </span>)
-                            <i class="fa fa-shopping-cart"></i>
-						    Cart
+                                </span>)
 						    </a>
 						    </li>
 							
