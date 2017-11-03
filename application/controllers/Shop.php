@@ -221,7 +221,7 @@ class Shop extends CI_Controller {
      * @param $product_id
      * @return json
      */
-    public function addToWishlist($product_id) {
+     public function addToWishlist($product_id){
 
         if (empty($this->session->userdata('user_login')) && empty($this->session->userdata('gmail_data'))) {
             redirect(base_url().'UserLogin');
