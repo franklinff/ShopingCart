@@ -94,18 +94,21 @@
 
 							<li><a href="<?php echo base_url('Wishlist') ?>"><i class="fa fa-star"></i> Wishlist</a></li>
 								
-						    <li><a href="<?php echo base_url('Cart') ?>"><i class="fa fa-shopping-cart"></i>
-
-													(<span id="cart_count_total"><?php
-                                                    if ($this->session->cart != '') {
-                                                        $cart = $this->session->cart;
+						    <li>
+						    <a href="<?php echo base_url('Cart') ?>">
+									(<span id="cart_count_total"><?php
+                                                    if ($this->session->userdata('cart') != '') {
+                                                        $cart = $this->session->userdata('cart');
                                                         echo COUNT($cart);
                                                     } else {
                                                         echo '0';
                                                     }
-                                                    ?></span>)
-
-						    Cart</a></li>
+                                                    ?>                	
+                                    </span>)
+                            <i class="fa fa-shopping-cart"></i>
+						    Cart
+						    </a>
+						    </li>
 							
 							<li>
 							<a href="<?php echo base_url('UserLogin') ?>" class="active">
