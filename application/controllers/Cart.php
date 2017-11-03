@@ -28,7 +28,7 @@ class Cart extends CI_Controller {
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
-        $wishlist_count = $this->Shop_model->check_prod_id('', $data['user_id']);
+        $wishlist_count = $this->Shop_model->check_prod_id([], $data['user_id']);
         $wishlist_count = COUNT($wishlist_count);
         $this->session->set_userdata('wishlist_count', $wishlist_count);
 
@@ -72,10 +72,10 @@ class Cart extends CI_Controller {
                 $discount = $percent * $data['sub_total'];
                 $data['discount'] = $discount;
             }else{
-                $data['discount'] = '';
+                $data['discount'] = [];
             }
 
-            if ($data['discount'] == '') {
+            if ($data['discount'] == []) {
                 if ($data['sub_total'] < 500) {
                     $data['grand_total'] = $data['sub_total'] + 50;
                     $data['shipping_charges'] = '&#8377;50';
@@ -121,7 +121,7 @@ class Cart extends CI_Controller {
      */
     public function state($country_id) {
         $data['states'] = $this->User_addres_model->getStates($country_id);
-        $states = '';
+        $states = [];
         foreach ($data['states'] as $value) {
             $states .= '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
         }
