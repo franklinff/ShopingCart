@@ -92,14 +92,13 @@
                                 </ul>
                             </li>
 
-
 							<li>
 							<a href="<?php echo base_url('Wishlist') ?>">
 							<i class="fa fa-star"></i>
 							Wishlist
 							(<span id="wishlist_count_total"><?php
                                 if ($this->session->userdata('wishlist_count') != '') {
-                                            $cart = $this->session->userdata('wishlist_count');
+                                            $wishlist_count = $this->session->userdata('wishlist_count');
                                             echo COUNT($wishlist_count);
                                             } else {
                                             echo '0';
@@ -109,9 +108,6 @@
 							</a>		
 							</li>
 								
-
-
-
 						    <li>
 						    <a href="<?php echo base_url('Cart') ?>">
                             <i class="fa fa-shopping-cart"></i>
@@ -128,9 +124,6 @@
 						    </a>
 						    </li>
 							
-
-
-
 							<li>
 							<a href="<?php echo base_url('UserLogin') ?>" class="active">
 							<?php if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('userData'))){   ?>
