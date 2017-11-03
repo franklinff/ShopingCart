@@ -97,11 +97,11 @@
 							<i class="fa fa-star"></i>
 							Wishlist
 							(<span id="wishlist_count_total"><?php
-                                if ($this->session->userdata('wishlist_count') != '') {
-                                            $wishlist_count = $this->session->userdata('wishlist_count');
-                                            echo COUNT($wishlist_count);
+                                if ($this->session->userdata('wishlist') != '') {
+                                            $wishlist_count = $this->session->userdata('wishlist');
+                                            	echo COUNT($wishlist);
                                             } else {
-                                            echo '0';
+                                           		echo '0';
                                             }
                                 ?>                	
                             </span>)
