@@ -99,7 +99,7 @@
 							(<span id="wishlist_count_total"><?php
                                 if ($this->session->userdata('wishlist') != '') {
                                             $wishlist_count = $this->session->userdata('wishlist');
-                                            	echo COUNT($wishlist);
+                                            	echo COUNT($wishlist_count);
                                             } else {
                                            		echo '0';
                                             }
