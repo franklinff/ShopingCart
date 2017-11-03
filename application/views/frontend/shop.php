@@ -185,7 +185,7 @@
 
 
     <div id="myDiv">
-    <img src="<?php echo base_url();?>/uploads/ajax-loader.gif" style="display:none;"/>
+    <img src="<?php echo base_url(); ?>/uploads/ajax-loader.gif" style="display:none;"/>
     </div>
 
 
