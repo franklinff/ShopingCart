@@ -25,7 +25,7 @@ class Wishlist extends CI_Controller {
      * @return view file
      */
     public function index() {
-        $data = '';
+        $data = [];
 
         $user_login_details = $this->session->userdata('user_login');
         $user_id = $user_login_details[0]['id'];
