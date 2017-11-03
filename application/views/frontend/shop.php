@@ -183,6 +183,12 @@
                                                         <span id="special_price_<?php echo $product['id']; ?>"><?php echo $product['special_price']; ?></span></h2>
                                                     <p><?php echo $product['name']; ?></p>
 
+
+    <div id="myDiv">
+    <img id="loading-image" src="ajax-loader.gif" style="display:none;"/>
+    </div>
+
+
                                                     <a id="add_to_cart" href="javascript:void(0);" class="btn btn-default add-to-cart" data-value="<?php echo $product['id']; ?>">
                                                         <span id="added_prod_to_cart_<?php echo $product['id']; ?>">
                                                             <?php
@@ -253,7 +259,10 @@
 
     function display_cart_prod(product_id, price, quantity) {
         $.ajax({
-            type: "post",
+            type: "post",          
+            beforeSend: function() {
+                $("#loading-image").show();
+            },
             url: "<?php echo base_url() . 'index.php/shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
 //           data: 'product_id='+product_id,
             success: function (data) {
@@ -309,12 +318,6 @@
 
 
         $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
-        
-
-            $('#added_to_wishlist_' + product_id). html('<img id="#added_to_wishlist_ + product_id" alt="" src="<?php echo base_url(); ?>uploads/ajax-loader.gif" width="100" height="100" align="center" />');
-
-
-
             var product_id = $(this).attr('data-value');
             console.log(product_id);
             $.ajax({
