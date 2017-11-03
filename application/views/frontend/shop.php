@@ -185,7 +185,7 @@
 
 
     <div id="myDiv">
-    <img id="loading-image" src="ajax-loader.gif" style="display:none;"/>
+    <img src="<?php echo base_url();?>/uploads/ajax-loader.gif" style="display:none;"/>
     </div>
 
 
@@ -298,11 +298,6 @@
             var price = $('#prod_' + product_id).text();
             var special_price = $('#special_price_' + product_id).text();
             var quantity = 1;
-
-            beforeSend: function() {
-                $("#loading-image").show();
-            },
-
             console.log(product_id); 
             //console.log(price);
             //console.log(special_price);
@@ -324,6 +319,9 @@
             $.ajax({
                 type: "post",
                 url: "<?php echo base_url() . 'Shop/addToWishlist/' ?>" + product_id,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                 success: function (data) {
                     if (data == 'login') {
                         window.location = '<?php echo base_url(); ?>index.php/UserLogin';
@@ -332,6 +330,7 @@
                     //console.log(messge);
                     $('#added_to_wishlist_' + product_id).html(messge.message);
                     $('#wishlist_count_total').text(messge.quantity);
+                    $('#myDiv').hide();
                 }
             });
         });
