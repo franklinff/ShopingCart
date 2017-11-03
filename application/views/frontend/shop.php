@@ -260,9 +260,6 @@
     function display_cart_prod(product_id, price, quantity) {
         $.ajax({
             type: "post",          
-            beforeSend: function() {
-                $("#loading-image").show();
-            },
             url: "<?php echo base_url() . 'index.php/shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
 //           data: 'product_id='+product_id,
             success: function (data) {
@@ -301,6 +298,10 @@
             var price = $('#prod_' + product_id).text();
             var special_price = $('#special_price_' + product_id).text();
             var quantity = 1;
+
+            beforeSend: function() {
+                $("#loading-image").show();
+            },
 
             console.log(product_id); 
             //console.log(price);
