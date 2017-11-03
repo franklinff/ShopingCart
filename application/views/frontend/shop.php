@@ -274,7 +274,7 @@
                 url: "<?php echo base_url(); ?>index.php/shop/priceRange/" + price_range,
                 success: function (data) {
                     var products = JSON.parse(data);
-//console.log(products.price_range_products);
+                    //console.log(products.price_range_products);
                     if (products.price_range_products != '') {
                         $('#price_range_products').html(products.price_range_products);
                         $('.pagination').html(products.price_range_pagination);
@@ -285,7 +285,6 @@
                 }
             });
         });
-
 
 
         $('.add-to-cart').click(function () {
@@ -307,7 +306,15 @@
         });
 
 
+
+
         $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
+        
+
+            $('#added_to_wishlist_' + product_id). html('<img id="loader-img" alt="" src="<?php echo base_url(); ?>uploads/ajax-loader.gif" width="100" height="100" align="center" />');
+
+
+
             var product_id = $(this).attr('data-value');
             console.log(product_id);
             $.ajax({
@@ -324,7 +331,6 @@
                 }
             });
         });
-
 
     });
 </script>
