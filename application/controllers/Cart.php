@@ -23,7 +23,8 @@ class Cart extends CI_Controller {
     public function index() {
         $data = [];
         //echo '<pre>';        print_r($this->session->userdata());exit;
-        $product_details = $this->session->userdata('cart');       
+        $product_details = $this->session->userdata('cart'); 
+
         $login_info = $this->session->userdata('user_login');
         $data['user_id'] = $login_info[0]['id'];
 
@@ -35,9 +36,10 @@ class Cart extends CI_Controller {
 
             $product_id = array_keys($product_details);
             $product_quantity = array();
-            $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
-            $i = 0;
+           
+             $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
             
+
             foreach ($data['cart_products'] as $cart_prod) {
                 foreach ($product_details as $key => $quantity) {
 
@@ -101,6 +103,8 @@ class Cart extends CI_Controller {
             }        
             $data['countries'] = $this->User_addres_model->getCountries();
         }
+
+
 
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/cart', $data);

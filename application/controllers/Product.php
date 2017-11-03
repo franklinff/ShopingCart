@@ -1,10 +1,10 @@
 <?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+*/
 
 class Product extends CI_Controller
 {
@@ -18,6 +18,7 @@ class Product extends CI_Controller
                 redirect('Login');
             }
     }
+
     
     public function index()
     {
@@ -30,6 +31,8 @@ class Product extends CI_Controller
         $this->load->view('backend/list_product.php',$data);   
         $this->load->view('backend/footer.php');   
     }
+
+
 
     public function addProduct()
     {
