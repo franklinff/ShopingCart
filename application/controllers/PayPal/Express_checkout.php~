@@ -47,7 +47,7 @@ class Express_checkout extends CI_Controller {
      * Cart Review page
      */
     function index() {
-        $data = '';
+        $data = [];
         $product_details = $this->session->cart;
         $total = $this->session->checkout;
         $order_id = $this->session->userdata('last_id');

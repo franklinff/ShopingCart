@@ -34,7 +34,7 @@ class Checkout extends CI_Controller {
      * @return view file
      */
     public function index() {
-        $data = '';
+        $data = [];
         $product_details = $this->session->userdata('cart');
         //echo'<pre>';print_r($this->session->userdata());exit;
         $total = $this->session->userdata('checkout');
