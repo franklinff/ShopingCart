@@ -294,11 +294,9 @@
             var special_price = $('#special_price_' + product_id).text();
             var quantity = 1;
 
-            console.log(product_id);
-            
+            console.log(product_id); 
             //console.log(price);
             //console.log(special_price);
-            
             //console.log(price);
             if (special_price !== '') {
                 price = special_price;
