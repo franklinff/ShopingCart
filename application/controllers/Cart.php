@@ -21,7 +21,7 @@ class Cart extends CI_Controller {
      * @return view file
      */
     public function index() {
-        $data = '';
+        $data = [];
         //echo '<pre>';        print_r($this->session->userdata());exit;
         $product_details = $this->session->userdata('cart');       
         $login_info = $this->session->userdata('user_login');
