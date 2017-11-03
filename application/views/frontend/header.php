@@ -97,6 +97,15 @@
 							<a href="<?php echo base_url('Wishlist') ?>">
 							<i class="fa fa-star"></i>
 							Wishlist
+							(<span id="wishlist_count_total"><?php
+                                if ($this->session->userdata('wishlist_count') != '') {
+                                            $cart = $this->session->userdata('wishlist_count');
+                                            echo COUNT($wishlist_count);
+                                            } else {
+                                            echo '0';
+                                            }
+                                ?>                	
+                            </span>)
 							</a>		
 							</li>
 								
