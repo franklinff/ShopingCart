@@ -174,7 +174,7 @@ class Shop_model extends CI_Model {
             $this->db->where('product_id', $product_id);
         }
         $this->db->where('user_id', $user_id);
-        $r = $this->db->get[];
+        $r = $this->db->get();
         return $r->result_array();
     }
 
