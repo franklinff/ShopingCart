@@ -295,9 +295,9 @@
             var quantity = 1;
 
             console.log(product_id);
-            console.log(price);
-            console.log(special_price);
-            console.log(quantity);
+            //console.log(price);
+            //console.log(special_price);
+            //console.log(quantity);
 
             if (special_price !== '') {
                 price = special_price;

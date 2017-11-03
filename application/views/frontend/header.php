@@ -77,23 +77,22 @@
 							<li><a href="<?php echo site_url('ContactUs')?>">Contact</a></li>
 
 							<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo base_url("Shop")?>">Products</a></li>
-										
-										<li><a href="<?php echo base_url("Checkout") ?>">Checkout</a></li> 
-                                    </ul>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="<?php echo base_url("Shop")?>">Products</a></li>		
+									<li><a href="<?php echo base_url("Checkout") ?>">Checkout</a></li> 
+                                </ul>
                             </li> 
 
                             <li class="dropdown"><a href="#">Account<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu" class="nav navbar-nav collapse navbar-collapse">
                                 		<li><a href="<?php echo base_url('MyAccount') ?>">My account</a></li>
-
                                         <li><a href="<?php echo site_url('Address')?>">Address</a></li>
-                                       
 										<li><a href="<?php echo base_url("TrackOrder")?>">Track order</a></li> 
 										<li><a href="<?php echo base_url("MyOrder")?>">My order details</a></li>
                                 </ul>
                             </li>
+
+                            
 
 							<li><a href="<?php echo base_url('Wishlist') ?>"><i class="fa fa-star"></i> Wishlist</a></li>
 								
