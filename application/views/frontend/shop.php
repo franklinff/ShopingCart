@@ -185,7 +185,7 @@
 
 
     <div id="myDiv">
-    <img src="<?php echo base_url();?>uploads/ajax-loader.gif" style="display:none;"/>
+    <img src="<?php echo base_url();?>/uploads/ajax-loader.gif" style="display:none;"/>
     </div>
 
 
@@ -330,7 +330,7 @@
                     //console.log(messge);
                     $('#added_to_wishlist_' + product_id).html(messge.message);
                     $('#wishlist_count_total').text(messge.quantity);
-                    $('#myDiv').hide();
+                    $("#myDiv").hide();
                 }
             });
         });
