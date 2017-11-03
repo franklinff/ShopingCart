@@ -184,8 +184,8 @@
                                                     <p><?php echo $product['name']; ?></p>
 
 
-    <div id="myDiv">
-    <img src="<?php echo base_url();?>/uploads/ajax-loader.gif" style=""/>
+    <div id="myDiv"  style="display: none">
+        <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
     </div>
 
 
