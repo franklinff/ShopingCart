@@ -150,13 +150,6 @@
                                 echo 'Featured Items';
                             }
                             ?></h2>
-
-    <div id="myDiv">
-    <img src="<?php echo base_url(); ?>uploads/ajax-loader.gif" style="display:none;"/>
-    </div>
-
-
-                            
                         <div id="price_range_products">
                             <?php
                             if (!empty($products)) {
@@ -221,6 +214,9 @@
                                             </div>
 
 
+    <div id="myDiv">
+    <img src="<?php echo base_url(); ?>uploads/ajax-loader.gif" style="display:none;"/>
+    </div>
 
 
                                             <div class="choose">
