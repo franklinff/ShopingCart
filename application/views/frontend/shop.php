@@ -311,7 +311,7 @@
         $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
         
 
-            $('#added_to_wishlist_' + product_id). html('<img id="'#added_to_wishlist_' + product_id" alt="" src="<?php echo base_url(); ?>uploads/ajax-loader.gif" width="100" height="100" align="center" />');
+            $('#added_to_wishlist_' + product_id). html('<img id="#added_to_wishlist_ + product_id" alt="" src="<?php echo base_url(); ?>uploads/ajax-loader.gif" width="100" height="100" align="center" />');
 
 
 
