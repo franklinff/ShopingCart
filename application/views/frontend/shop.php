@@ -150,6 +150,13 @@
                                 echo 'Featured Items';
                             }
                             ?></h2>
+
+    <div id="myDiv">
+    <img src="<?php echo base_url(); ?>uploads/ajax-loader.gif" style="display:none;"/>
+    </div>
+
+
+                            
                         <div id="price_range_products">
                             <?php
                             if (!empty($products)) {
@@ -184,9 +191,7 @@
                                                     <p><?php echo $product['name']; ?></p>
 
 
-    <div id="myDiv">
-    <img src="<?php echo base_url(); ?>/uploads/ajax-loader.gif" style="display:none;"/>
-    </div>
+
 
 
                                                     <a id="add_to_cart" href="javascript:void(0);" class="btn btn-default add-to-cart" data-value="<?php echo $product['id']; ?>">
@@ -214,6 +219,9 @@
 
                                                 </div>
                                             </div>
+
+
+
 
                                             <div class="choose">
                                                 <ul class="nav nav-pills nav-justified">
