@@ -103,7 +103,7 @@ foreach ($cart_data as $cart) {
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>/index.php/Shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>Shop">Home</a></li>
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
@@ -148,6 +148,12 @@ foreach ($cart_data as $cart) {
                     </tr>
                 </thead>
 
+
+
+
+
+
+
                 <tbody>
                     <?php
                     if (!empty($cart_products)) {
@@ -175,6 +181,14 @@ foreach ($cart_data as $cart) {
                                             }
                                             ?></span></p>
                                 </td>
+
+
+
+<div id="myDiv"  style="display: none">
+    <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
+</div>
+
+                                
 
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
@@ -206,6 +220,10 @@ foreach ($cart_data as $cart) {
 
                     <?php } ?>                      
                 </tbody>
+
+
+
+
 
             </table>
         </div>
@@ -307,13 +325,17 @@ foreach ($cart_data as $cart) {
             var prod_name = $('#prod_name_' + product_id).text();
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/deleteCartProduct/' ?>" + product_id,
+                url: "<?php echo base_url() . 'cart/deleteCartProduct/' ?>" + product_id,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                 success: function (data) {
 //                    $("#prod_del_" + product_id).closest("tr").slideUp(1000,function(){
 //                        $("#prod_del_" + product_id).closest("tr").fadeOut("slow");
                     $("#prod_del_" + product_id).closest("tr").fadeOut(1000);
                     $('#prod_name').text(prod_name + ' removed from the cart!');
                     $('#product_' + product_id).val(quantity);
+                    $("#myDiv").hide();
                     
                     if (data) {
                         var cart_price = JSON.parse(data);
@@ -352,7 +374,10 @@ foreach ($cart_data as $cart) {
             console.log(price);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -360,14 +385,18 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
+                            $("#myDiv").hide();
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
+                            $("#myDiv").hide();
                         } else {
                             $('#shipping_price').html('&#8377;50');
+                            $("#myDiv").hide();
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
+                        $("#myDiv").hide();
                     }
                 },
             });
@@ -384,7 +413,7 @@ foreach ($cart_data as $cart) {
             console.log(product_id);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -392,14 +421,18 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
+                            $("#myDiv").hide();
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
+                            $("#myDiv").hide();
                         } else {
                             $('#shipping_price').html('&#8377;50');
+                            $("#myDiv").hide();
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
+                        $("#myDiv").hide();
                     }
                 },
             })
@@ -419,7 +452,10 @@ foreach ($cart_data as $cart) {
             console.log(total_price);
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
                     $('#' + product_id).text(total_price);
@@ -427,14 +463,18 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
+                            $("#myDiv").hide();
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
+                            $("#myDiv").hide();
                         } else {
                             $('#shipping_price').html('&#8377;50');
+                            $("#myDiv").hide();
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
+                        $("#myDiv").hide();
                     }
                 },
             });

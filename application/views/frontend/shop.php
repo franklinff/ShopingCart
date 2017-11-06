@@ -81,14 +81,14 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <?php if (isset($category['sub_categories'])) { ?>
-                                                <a href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                                                <a href="<?php echo base_url(); ?>shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
                                                 <a data-toggle="collapse" data-parent="#accordian" href="#<?php echo $category['id']; ?>">
                                                     <span class="badge pull-right">
                                                         <i class="fa fa-plus"></i>
                                                     </span>
                                                 </a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                                                <a href="<?php echo base_url(); ?>shop/index?category_id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
                                             <?php } ?>
                                         </h4>
                                     </div>
@@ -103,7 +103,7 @@
                                                             if ($this->uri->segment(2) == 'index?category_id=' . $sub_category['id']) {
                                                                 echo 'active';
                                                             }
-                                                            ?>" href="<?php echo base_url(); ?>index.php/shop/index?category_id=<?php echo $sub_category['id']; ?>" name="category_id" ><?php echo $sub_category['name']; ?> </a></li>
+                                                            ?>" href="<?php echo base_url(); ?>shop/index?category_id=<?php echo $sub_category['id']; ?>" name="category_id" ><?php echo $sub_category['name']; ?> </a></li>
                                                         <?php } ?>
                                                 </ul>
                                             </div>
@@ -157,6 +157,7 @@
  
  
                    ?>
+
                                     <div class="col-sm-4" >
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
@@ -164,7 +165,7 @@
 
 <a href="<?php echo base_url();?>ProductDetails/index/<?php echo $product['id']; ?>">
                                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $product['image_name']; ?>" class="img_style" style="width: 100%; " alt="" />
-                                                </a>   
+                                                </a>
 
                                                     <?php
                                                     $curr_date = date('Y-m-d');
@@ -179,14 +180,17 @@
                                                     }
                                                     ?>
 
-                                                    <h2>&#8377;<?php echo $strike_start; ?><span id="prod_<?php echo $product['id']; ?>"><?php echo $product['price']; ?></span><?php echo $strike_end; ?>
-                                                        <span id="special_price_<?php echo $product['id']; ?>"><?php echo $product['special_price']; ?></span></h2>
-                                                    <p><?php echo $product['name']; ?></p>
-
 
     <div id="myDiv"  style="display: none">
         <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
     </div>
+
+
+
+
+                                                    <h2>&#8377;<?php echo $strike_start; ?><span id="prod_<?php echo $product['id']; ?>"><?php echo $product['price']; ?></span><?php echo $strike_end; ?>
+                                                        <span id="special_price_<?php echo $product['id']; ?>"><?php echo $product['special_price']; ?></span></h2>
+                                                    <p><?php echo $product['name']; ?></p>
 
 
                                                     <a id="add_to_cart" href="javascript:void(0);" class="btn btn-default add-to-cart" data-value="<?php echo $product['id']; ?>">
@@ -260,12 +264,16 @@
     function display_cart_prod(product_id, price, quantity) {
         $.ajax({
             type: "post",          
-            url: "<?php echo base_url() . 'index.php/shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
+            url: "<?php echo base_url() . 'shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
+            beforeSend: function() {
+                $("#myDiv").show();
+            },
 //           data: 'product_id='+product_id,
             success: function (data) {
                 var messge = JSON.parse(data);
                 $('#cart_count_total').text(messge.total_cart_prod);
                 $('#added_prod_to_cart_' + product_id).html('<span style="color:#FE980F">' + messge.messge + '</span>');
+                $("#myDiv").hide();
             },
         });
     }
@@ -324,7 +332,7 @@
                 },
                 success: function (data) {
                     if (data == 'login') {
-                        window.location = '<?php echo base_url(); ?>index.php/UserLogin';
+                        window.location = '<?php echo base_url(); ?>UserLogin';
                     }
                     var messge = JSON.parse(data);
                     //console.log(messge);

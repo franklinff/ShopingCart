@@ -58,6 +58,14 @@
                                 <td class="cart_price">
                                     <p>&#8377;<span id="price_<?php echo $wishlist_product['id']; ?>"><?php echo $wishlist_product['price']; ?></span></p>
                                 </td>
+
+
+    <div id="myDiv"  style="display: none">
+        <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
+    </div>
+
+
+
                                 <td class="cart_total">
                                     <br><a id="add_to_cart" href="javascript:void(0);" class="btn btn-default add-to-cart" data-value="<?php echo $wishlist_product['id']; ?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </td>
@@ -72,7 +80,7 @@
                         <tr>
                             <td colspan="5">No product added to the wishlist!</td>
                         </tr> 
-<?php } ?>						
+<?php } ?>                      
                 </tbody>
             </table>
         </div>
@@ -95,12 +103,16 @@
             var prod_name = $('#prod_name_'+product_id).text();
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/wishlist/deleteWishlistProduct/' ?>" + product_id,
+                url: "<?php echo base_url() . 'wishlist/deleteWishlistProduct/' ?>" + product_id,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                 success: function (data) {
                     var status = JSON.parse(data);
                     $("#prod_del_" + product_id).closest("tr").remove();
                     $('#prod_name').text(prod_name+' removed from the wishlist!');
                     $('#wishlist_count_total').text(status.total_wishlist_prod);
+                    $("#myDiv").hide();
                 },
             })
         });
@@ -115,8 +127,11 @@
            
            console.log(price);   
            $.ajax({
-               type:"post",
-               url:"<?php echo base_url().'index.php/wishlist/addToCart/'?>"+product_id+"/"+price + "/" + quantity,
+                type:"post",
+                url:"<?php echo base_url().'wishlist/addToCart/'?>"+product_id+"/"+price + "/" + quantity,
+                beforeSend: function() {
+                $("#myDiv").show();
+                },
                success:function(data){
                    var messge = JSON.parse(data);
 //                   console.log(messge);
@@ -124,6 +139,7 @@
                     $('#prod_name').text(prod_name+' moved to the cart!');
                     $('#cart_count_total').text(messge.total_cart_prod);
                     $('#wishlist_count_total').text(messge.total_wishlist_prod);
+                    $("#myDiv").hide();
                },
            });
        });
