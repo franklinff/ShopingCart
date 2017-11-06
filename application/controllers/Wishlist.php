@@ -13,9 +13,10 @@ class Wishlist extends CI_Controller {
         $this->load->model('Wishlist_model');
         $this->load->model('Shop_model'); 
 /*        if (empty($this->session->userdata('user_login'))){      
-           redirect(base_url() . 'User_login');
+           redirect(base_url() . 'UserLogin');
         }*/
     }
+
 
     /*
      * index
@@ -42,7 +43,6 @@ class Wishlist extends CI_Controller {
             }
             $data['wishlist_products'] = $this->Wishlist_model->getWishlistProducts($wishlist_product_ids);
         }
-
         $this->load->view('frontend/header.php');
         $this->load->view('frontend/wishlist', $data);
         $this->load->view('frontend/footer');
