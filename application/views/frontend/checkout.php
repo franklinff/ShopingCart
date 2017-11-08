@@ -106,7 +106,7 @@
                                                             }
                                                             ?>
                                                         </span>
-                                                    </td>										
+                                                    </td>                                       
                                                 </tr>
                                                 <tr>
                                                     <td>Discount price</td>
@@ -296,7 +296,7 @@
                                             }
                                             ?>
                                         </span>
-                                    </td>										
+                                    </td>                                       
                                 </tr>
                                 <tr>
                                     <td>Discount price</td>
@@ -442,3 +442,16 @@
         });
     });
 </script>
+
+
+<style type="text/css">
+    #err_payment_method{
+      color: red;
+    }
+</style>
+
+<style type="text/css">
+    #err_billing_addr{
+    color: red;
+    }
+</style>
