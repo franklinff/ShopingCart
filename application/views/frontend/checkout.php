@@ -253,9 +253,9 @@
                                         <?php echo $cart_product['quantity']; ?>
                                     </div>
                                 </td>
-                                <td class="cart_total">
+                                 <td class="cart_total">
                                     <p class="cart_total_price">&#8377;<span id="<?php echo $cart_product['id']; ?>"><?php echo $cart_product['total_price']; ?></span></p>
-                                </td>
+                                </td> 
                             </tr>
                             <?php
                         }
@@ -265,6 +265,8 @@
                             <td colspan="5">No product added to the cart!</td>
                         </tr> 
                     <?php } ?>
+
+
                     <tr>
                         <td colspan="4">&nbsp;</td>
                         <td colspan="2">
@@ -273,7 +275,7 @@
                                     <td>Cart Sub Total</td>
                                     <td><span>&#8377;<?php
                                             if (!empty($cart_products)) {
-                                                echo $total;
+                                                echo $cart_products[0]['total_price'];
                                             } else {
                                                 echo '0';
                                             }
@@ -457,7 +459,7 @@
 </style>
 
 <style type="text/css">
-    #err_shipping_addr{
+    #err_billing_addr{
     color: red;
     }
 </style>
