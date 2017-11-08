@@ -23,6 +23,7 @@ class Checkout extends CI_Controller {
         }else{
             $last_page_visited = 'checkout';
             $this->session->set_userdata('last_page_visited', $last_page_visited);
+            $this->session->set_flashdata('check_out', 'Please login into your account for the purchase!');
             redirect(base_url() . 'UserLogin');
         }
     }

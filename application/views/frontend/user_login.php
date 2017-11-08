@@ -8,6 +8,9 @@
 
 						<span style="color:green;"><?php echo $this->session->flashdata('new_password_success'); ?></span>
 
+						<span style="color:red;"><?php echo $this->session->flashdata('check_out'); ?></span>
+
+
 						<h2>Login to your account</h2>
 
 						<p class="login-box-msg" style="color:red;"><?php echo $this->session->flashdata('fail'); ?></p>
