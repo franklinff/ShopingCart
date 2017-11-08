@@ -455,3 +455,9 @@
     color: red;
     }
 </style>
+
+<style type="text/css">
+    #err_shipping_addr{
+    color: red;
+    }
+</style>
