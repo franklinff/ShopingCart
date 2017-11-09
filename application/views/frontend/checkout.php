@@ -257,7 +257,7 @@
                                     <td>Cart Sub Total</td>
                                     <td><span>&#8377;<?php
                                             if (!empty($cart_products)) {
-                                                echo $cart_products[0]['total_price'];
+                                                echo $total;;
                                             } else {
                                                 echo '0';
                                             }
