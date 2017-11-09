@@ -132,12 +132,12 @@ class PaymentComplete extends CI_Controller {
                 $data['shipping_charges'] = 'FREE';
             }
         }   
-
+/*
         echo"<pre>";
         echo"hello";
         print_r($data);
         die();
-
+*/
 
         $this->load->view('frontend/header');
         $this->load->view('frontend/payment_success', $data);
