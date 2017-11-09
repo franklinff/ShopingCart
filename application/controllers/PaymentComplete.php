@@ -64,8 +64,9 @@ class PaymentComplete extends CI_Controller {
                 $data['shipping_charges'] = 'FREE';
             }
         }
-        
+
         echo"<pre>";
+        echo"hello";
         print_r($data);
         die();
 
