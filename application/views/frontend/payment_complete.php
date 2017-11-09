@@ -128,7 +128,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </tr>
                         <tr>
                             <td><strong>Grand Total</strong></td>
-                            <td><span>&#8377;<?php echo $grand_total; ?>
+                            <!-- <td><span>&#8377;<?php echo $grand_total; ?> -->
+                            <td><span>&#8377;<?php echo ($grand_total-$discount_price+$shipping_charges); 
                                 </span>
                             </td>
                         </tr> 
