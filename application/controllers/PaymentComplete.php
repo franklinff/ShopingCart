@@ -116,7 +116,7 @@ class PaymentComplete extends CI_Controller {
 
         if (empty($x)) {
             if ($data['sub_total'] < 500) {
-                $data['grand_total'] = $data['sub_total'] + 50;
+                $data['grand_total'] = $data['sub_total'] + 50 - $data['discount_price'];
                 $data['shipping_charges'] = '&#8377;50';
             } else {
                 $data['grand_total'] = $data['sub_total'];
@@ -125,7 +125,7 @@ class PaymentComplete extends CI_Controller {
         } else {
             $data['discount_price'] = $data['discount'];
             if ($data['sub_total'] < 500) {
-                $data['grand_total'] = $data['sub_total'] + 50;
+                $data['grand_total'] = $data['sub_total'] + 50 - $data['discount_price'];
                 $data['shipping_charges'] = '&#8377;50';
             } else {
                 $data['grand_total'] = $data['sub_total'] - $data['discount_price'];
