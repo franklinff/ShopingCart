@@ -65,8 +65,6 @@ class PaymentComplete extends CI_Controller {
             }
         }
 
-
-
         $this->load->view('frontend/header');
         $this->load->view('frontend/payment_complete', $data);        
         $this->load->view('frontend/footer');
