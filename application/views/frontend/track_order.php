@@ -14,7 +14,7 @@
 
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
-                    <form role="form" method="post" id="order_status" action="<?php echo base_url();?>index.php/TrackOrder/trackOrderDetails">
+                    <form role="form" method="post" id="order_status" action="<?php echo base_url();?>TrackOrder/trackOrderDetails">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Order id:</label>

@@ -154,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </td>
                         </tr>
                         <tr>
-                            <td class="center" colspan="2"><a href="<?php echo site_url('index.php/paypal/demos/express_checkout/SetExpressCheckout'); ?>"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"></a></td>
+                            <td class="center" colspan="2"><a href="<?php echo site_url('paypal/demos/express_checkout/SetExpressCheckout'); ?>"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"></a></td>
                         </tr>
                         </tbody>
                     </table>

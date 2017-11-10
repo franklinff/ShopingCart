@@ -48,7 +48,7 @@ class PaymentComplete extends CI_Controller {
         if (empty($data['billing_address']['coupon_id'])) {
 
             if ($data['sub_total'] < 500) {
-                $data['grand_total'] = $data['sub_total'] + 50;
+                $data['grand_total'] = $data['sub_total'] + 50- $data['discount_price'];
                 $data['shipping_charges'] = '&#8377;50';
             } else {
                 $data['grand_total'] = $data['sub_total'];
@@ -57,7 +57,7 @@ class PaymentComplete extends CI_Controller {
         } else {
             $data['discount_price'] = $data['discount'];
             if ($data['sub_total'] < 500) {
-                $data['grand_total'] = $data['sub_total'] + 50;
+                $data['grand_total'] = $data['sub_total'] + 50- $data['discount_price'];
                 $data['shipping_charges'] = '&#8377;50';
             } else {
                 $data['grand_total'] = $data['sub_total'] - $data['discount_price'];
@@ -132,12 +132,6 @@ class PaymentComplete extends CI_Controller {
                 $data['shipping_charges'] = 'FREE';
             }
         }   
-/*
-        echo"<pre>";
-        echo"hello";
-        print_r($data);
-        die();
-*/
 
         $this->load->view('frontend/header');
         $this->load->view('frontend/payment_success', $data);

@@ -501,7 +501,7 @@ foreach ($cart_data as $cart) {
             }
             $.ajax({
                 type: "post",
-                url: "<?php echo base_url() . 'index.php/cart/couponCode/' ?>" + coupon_code,
+                url: "<?php echo base_url() . 'cart/couponCode/' ?>" + coupon_code,
                 success: function (data) {
                     var discount = JSON.parse(data);
                     if (discount.discount_price || discount.discount_total) {
