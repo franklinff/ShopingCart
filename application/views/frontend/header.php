@@ -153,6 +153,10 @@
     <script src="<?php echo base_url("/Eshopper/js/jquery.prettyPhoto.js")?>"></script>
     <script src="<?php echo base_url("/Eshopper/js/main.js")?>"></script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>
+
+
 
 
 

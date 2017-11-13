@@ -213,10 +213,10 @@
 
 
                                                     
-    <div id="myDiv"  style="display: none" >
+<!--     <div id="myDiv"  style="display: none" >
         <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
     </div>
-
+ -->
 
                                                 </div>
                                             </div>
@@ -268,14 +268,16 @@
             type: "post",          
             url: "<?php echo base_url() . 'shop/addToCart/' ?>" + product_id + "/" + price + "/" + quantity,
             beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
             },
 //           data: 'product_id='+product_id,
             success: function (data) {
                 var messge = JSON.parse(data);
                 $('#cart_count_total').text(messge.total_cart_prod);
                 $('#added_prod_to_cart_' + product_id).html('<span style="color:#FE980F">' + messge.messge + '</span>');
-                $("#myDiv").hide();
+                //$("#myDiv").hide();
+                $.LoadingOverlay("hide");
             },
         });
     }
