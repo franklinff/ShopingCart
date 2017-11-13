@@ -332,7 +332,8 @@
                 type: "post",
                 url: "<?php echo base_url() . 'Shop/addToWishlist/' ?>" + product_id,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                 success: function (data) {
                     if (data == 'login') {
@@ -342,7 +343,8 @@
                     //console.log(messge);
                     $('#added_to_wishlist_' + product_id).html(messge.message);
                     $('#wishlist_count_total').text(messge.quantity);
-                    $("#myDiv").hide();
+                    $.LoadingOverlay("hide");
+                    //$("#myDiv").hide();
                 }
             });
         });
