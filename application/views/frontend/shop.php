@@ -338,7 +338,6 @@
                 success: function (data) {
                     if (data == 'login') {
                         window.location = '<?php echo base_url(); ?>UserLogin';
-                         $.LoadingOverlay("hide");
                     }
                     var messge = JSON.parse(data);
                     //console.log(messge);
