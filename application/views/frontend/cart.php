@@ -375,6 +375,7 @@ foreach ($cart_data as $cart) {
                 url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 beforeSend: function() {
                 //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
