@@ -217,9 +217,9 @@ foreach ($cart_data as $cart) {
 
 
 
-<div id="myDiv"  style="display: none">
+<!-- <div id="myDiv"  style="display: none">
     <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
-</div>
+</div> -->
 
 
         </div>
@@ -323,7 +323,8 @@ foreach ($cart_data as $cart) {
                 type: "post",
                 url: "<?php echo base_url() . 'cart/deleteCartProduct/' ?>" + product_id,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                 success: function (data) {
 //                    $("#prod_del_" + product_id).closest("tr").slideUp(1000,function(){
@@ -331,7 +332,8 @@ foreach ($cart_data as $cart) {
                     $("#prod_del_" + product_id).closest("tr").fadeOut(1000);
                     $('#prod_name').text(prod_name + ' removed from the cart!');
                     $('#product_' + product_id).val(quantity);
-                    $("#myDiv").hide();
+                    //$("#myDiv").hide();
+                    $.LoadingOverlay("hide");
                     
                     if (data) {
                         var cart_price = JSON.parse(data);
@@ -372,7 +374,7 @@ foreach ($cart_data as $cart) {
                 type: "post",
                 url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
                 },
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
@@ -381,18 +383,22 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         } else {
                             $('#shipping_price').html('&#8377;50');
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
-                        $("#myDiv").hide();
+                        //$("#myDiv").hide();
+                        $.LoadingOverlay("hide");
                     }
                 },
             });
@@ -417,18 +423,22 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
-                            $("#myDiv").hide();
+                            $.LoadingOverlay("hide");
+                            //$("#myDiv").hide();
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
-                            $("#myDiv").hide();
+                            $.LoadingOverlay("hide");
+                            //$("#myDiv").hide();
                         } else {
                             $('#shipping_price').html('&#8377;50');
-                            $("#myDiv").hide();
+                            $.LoadingOverlay("hide");
+                            //$("#myDiv").hide();
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
-                        $("#myDiv").hide();
+                        $.LoadingOverlay("hide");
+                        //$("#myDiv").hide();
                     }
                 },
             })
@@ -450,7 +460,8 @@ foreach ($cart_data as $cart) {
                 type: "post",
                 url: "<?php echo base_url() . 'cart/updateCartQuantity/' ?>" + quantity + "/" + product_id + "/" + total_price,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                 success: function (data) {
                     $('#product_' + product_id).val(quantity);
@@ -459,18 +470,22 @@ foreach ($cart_data as $cart) {
                         var cart_price = JSON.parse(data);
                         if (cart_price.discount_price) {
                             $('#dis_price').text(cart_price.discount_price);
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         }
                         if (cart_price.sub_total > 500) {
                             $('#shipping_price').text('FREE');
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         } else {
                             $('#shipping_price').html('&#8377;50');
-                            $("#myDiv").hide();
+                            //$("#myDiv").hide();
+                            $.LoadingOverlay("hide");
                         }
                         $('.total_price').text(cart_price.sub_total);
                         $('#di_total').text(cart_price.total);
-                        $("#myDiv").hide();
+                        //$("#myDiv").hide();
+                        $.LoadingOverlay("hide");
                     }
                 },
             });
@@ -481,9 +496,7 @@ foreach ($cart_data as $cart) {
             if (this.checked) {
                 $('.coupons_code').show();
             } else {
-                $('.coupons_code').hide();
-                
-                
+                $('.coupons_code').hide();  
             }
         });
 

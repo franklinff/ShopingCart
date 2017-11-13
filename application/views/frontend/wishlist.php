@@ -132,7 +132,8 @@
                 type:"post",
                 url:"<?php echo base_url().'wishlist/addToCart/'?>"+product_id+"/"+price + "/" + quantity,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                success:function(data){
                    var messge = JSON.parse(data);
@@ -141,7 +142,8 @@
                     $('#prod_name').text(prod_name+' moved to the cart!');
                     $('#cart_count_total').text(messge.total_cart_prod);
                     $('#wishlist_count_total').text(messge.total_wishlist_prod);
-                    $("#myDiv").hide();
+                    //$("#myDiv").hide();
+                    $.LoadingOverlay("hide");
                },
            });
        });
