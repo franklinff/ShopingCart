@@ -72,9 +72,9 @@
     <?php }
 } else { ?>
 
-   <div id="myDiv"  style="display: none">
+<!--    <div id="myDiv"  style="display: none">
         <img src="<?php echo base_url();?>/uploads/ajax-loader.gif"/>
-    </div>
+    </div> -->
 
 
                         <tr>
@@ -105,14 +105,16 @@
                 type: "post",
                 url: "<?php echo base_url() . 'wishlist/deleteWishlistProduct/' ?>" + product_id,
                 beforeSend: function() {
-                $("#myDiv").show();
+                //$("#myDiv").show();
+                $.LoadingOverlay("show");
                 },
                 success: function (data) {
                     var status = JSON.parse(data);
                     $("#prod_del_" + product_id).closest("tr").remove();
                     $('#prod_name').text(prod_name+' removed from the wishlist!');
                     $('#wishlist_count_total').text(status.total_wishlist_prod);
-                    $("#myDiv").hide();
+                    //$("#myDiv").hide();
+                    $.LoadingOverlay("hide");
                 },
             })
         });
