@@ -119,15 +119,16 @@
             })
         });
 
-        $('.add-to-cart').click(function(){
-        
+        $('.add-to-cart').click(function(){        
            var product_id = $(this).attr('data-value');
            var price = $('#price_'+product_id).text();
            var prod_name = $('#prod_name_'+product_id).text();
            var quantity = 1;
-           
-           
-           console.log(price);   
+
+           console.log(price); 
+           console.log(product_id);
+           console.log(prod_name);
+           console.log(quantity);  
            $.ajax({
                 type:"post",
                 url:"<?php echo base_url().'wishlist/addToCart/'?>"+product_id+"/"+price + "/" + quantity,
@@ -137,7 +138,7 @@
                 },
                success:function(data){
                    var messge = JSON.parse(data);
-//                   console.log(messge);
+                    //console.log(messge);
                     $("#prod_del_" + product_id).closest("tr").remove();
                     $('#prod_name').text(prod_name+' moved to the cart!');
                     $('#cart_count_total').text(messge.total_cart_prod);

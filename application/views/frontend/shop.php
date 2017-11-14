@@ -323,8 +323,6 @@
         });
 
 
-
-
         $('.add-to-wishlist').click(function () {               //add-to-wishlist is a class
             var product_id = $(this).attr('data-value');
             console.log(product_id);

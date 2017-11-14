@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class Wishlist extends CI_Controller {
 
     public function __construct() {
@@ -83,7 +77,7 @@ class Wishlist extends CI_Controller {
         $user_login_details = $this->session->userdata('user_login');
         $user_id = $user_login_details[0]['id'];
 
-        if ($this->session->userdata('cart')) {
+        if ($this->session->userdata('cart')) {                     //loop ends on line 130
             $existing_cart_data = $this->session->userdata('cart');
             $available = false;
             foreach ($existing_cart_data as $key => $val) {
@@ -100,6 +94,7 @@ class Wishlist extends CI_Controller {
                     'price' => $price,
                     'total_price' => $total_price
                 );
+
                 $this->session->set_userdata('cart', $existing_cart_data);
                 $reslt = $this->Wishlist_model->delete($product_id);
                 $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
