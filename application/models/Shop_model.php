@@ -91,7 +91,7 @@ class Shop_model extends CI_Model {
      * @param : $count
      * @return : array
      */
-    public function getPrice($count = false) {
+    /*public function getPrice($count = false) {
         if ($count == false) {
             $this->db->select_min('price');
         } else {
@@ -101,7 +101,7 @@ class Shop_model extends CI_Model {
         $this->db->where('is_featured', '1'); 
         $r = $this->db->get();
         return $r->result_array();
-    }
+    }*/
 
 
     /*

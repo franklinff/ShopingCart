@@ -75,17 +75,9 @@ class Shop extends CI_Controller {
         $config['prev_link'] = 'Previous';
         $this->pagination->initialize($config);           
 
-        /*$data['min_price'] = $this->Shop_model->getPrice(false);  //minimum price of product is acheived
-        $data['min_price'] = $data['min_price'][0];
-        $data['min_price'] = explode('.', $data['min_price']['price']);  //digits before . are seperated
-
-        $data['max_price'] = $this->Shop_model->getPrice(true); //highest price is acheived
-        $data['max_price'] = $data['max_price'][0];
-        $data['max_price'] = explode('.', $data['max_price']['price']);*/
-
         $data['products'] = $this->Shop_model->getProdetails(false, $config['per_page'], $page, $category_id, '', ''); //product details on a single page are returned
 
-        $data['banner_name'] = $this->Shop_model->getBanners(); //all banner content is returned
+        //$data['banner_name'] = $this->Shop_model->getBanners(); //all banner content is returned
 
         $data['arr_category'] = $arr_category;
 
@@ -263,113 +255,4 @@ class Shop extends CI_Controller {
 
 
 }
-
-/*    public function price_range($price_range) {
-
-        $login_info = $this->session->user_login;
-        $data['user_id'] = $login_info[0]['id'];
-
-        if ($this->input->get('per_page')) {
-            $page = ($this->input->get('per_page'));
-        } else {
-            $page = 0;
-        }
-        $price_range = urldecode($price_range);
-        $price_range = explode(':', $price_range);
-        $category_id = $this->input->get('category_id');
-        foreach ($price_range as $key => $value) {
-            $price_range_arr = array($value, '00');
-            $price_range[$key] = implode('.', $price_range_arr);
-        }
-        $min_price = $price_range[0];
-        $max_price = $price_range[1];
-        
-
-        $data['prod_count'] = $this->shop->getProdetails(true, '', '', $category_id, $min_price, $max_price);
-
-        $config['per_page'] = 9;     
-        $config['base_url'] = base_url() . 'shop/index/page/?category_id=' . $category_id;
-        $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $data['prod_count'][0]['prod_count'];
-        $config['uri_segment'] = 4;
-        $data['products'] = $this->shop->getProdetails(false, $config['per_page'], $page, $category_id, $min_price, $max_price);
-     
-        $wishlist_products = $this->wishlist->getAddedProducts($data['user_id']);
-        $price_range_products = '';
-        foreach ($data['products'] as $product) {
-            $price_range_products .= '<div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                        <div class="productinfo text-center"><a href="' . base_url() . 'product_details/' . $product['id'] . '">
-                                                    <img src="' . base_url() . 'uploads/' . $product['image_name'] . '" class="img_style" alt="" />
-                                                </a>';
-            $curr_date = date('Y-m-d');
-            if (($product['special_price'] != '0.00') && ($curr_date > $product['special_price_from']) && ($curr_date < $product['special_price_to']) || ($curr_date == $product['special_price_from']) || ($curr_date == $product['special_price_to'])) {
-                $strike_start = '<strike>';
-                $strike_end = '</strike>';
-            } else {
-                $strike_start = '';
-                $strike_end = '';
-                $product['price'] = $product['price'];
-                $product['special_price'] = '';
-            }
-            $price_range_products .= '<h2>&#8377;' . $strike_start . '<span id="prod_' . $product['id'] . '">' . $product['price'] . '</span>' . $strike_end .
-                    '<span id="special_price_' . $product['id'] . '">' . $product['special_price'] . '</span></h2>
-                                                <p>' . $product['name'] . '</p>' .
-                    '<a id="add_to_cart" href="javascript:void(0);" class="btn btn-default add-to-cart" data-value="' . $product['id'] . '">' .
-                    '<span id="added_prod_to_cart_' . $product['id'] . '">';
-            $cart_data = $this->session->cart;
-            if (!empty($cart_data)) {
-                $avail = FALSE;
-                foreach ($cart_data as $key => $value) {
-                    if ($key == $product['id']) {
-                        $avail = TRUE;
-                        $price_range_products .= '<span style="color:green">Added to the cart!</span>';
-                        break;
-                    }
-                }
-                if ($avail == FALSE) {
-                    $price_range_products .= '<i class="fa fa-shopping-cart"></i>Add to cart';
-                }
-            } else {
-                $price_range_products .= '<i class="fa fa-shopping-cart"></i>Add to cart';
-            }
-            $price_range_products .= '</span>
-                                                </a></div></div>
-                                                <div class="choose">
-                                            <ul class="nav nav-pills nav-justified">
-                                                <li><a href="javascript:void(0);" id="add_to_wishlist" class="add-to-wishlist" data-value="' . $product['id'] . '"><span id="added_to_wishlist_' . $product['id'] . '">';
-            if (!empty($wishlist_products)) {
-                $avail = FALSE;
-                foreach ($wishlist_products as $value) {
-                    if ($value['product_id'] == $product['id']) {
-                        $avail = TRUE;
-                        $price_range_products .= '<i class = "fa fa-minus-square"></i>Remove from wishlist!';
-                        break;
-                    }
-                }
-                if ($avail == FALSE) {
-                    $price_range_products .= '<i class = "fa fa-plus-square"></i>Add to wishlist';
-                }
-            } else {
-                $price_range_products .= '<i class = "fa fa-plus-square"></i>Add to wishlist';
-            }
-            $price_range_products .= '</span></a></li>
-                                            </ul>
-                                        </div></div></div>';
-            ;
-        }
-        $price_range_pagination = '';
-        $price_range_pagination .= '<ul class="pagination">' .
-                $price_range_pagination .= $this->pagination->create_links();
-        $price_range_pagination .= '</ul>';
-        $price_range = array(
-            'price_range_pagination' => $price_range_pagination,
-            'price_range_products' => $price_range_products
-        );
-        echo json_encode($price_range);
-    }
-*/
-
-
 
