@@ -50,7 +50,7 @@ class ThankYou extends CI_Controller {
         }
         else
         {
-       	redirect('User_login');
+       	redirect('UserLogin');
         }
 
     }

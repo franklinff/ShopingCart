@@ -75,13 +75,13 @@ class Shop extends CI_Controller {
         $config['prev_link'] = 'Previous';
         $this->pagination->initialize($config);           
 
-        $data['min_price'] = $this->Shop_model->getPrice(false);  //minimum price of product is acheived
+        /*$data['min_price'] = $this->Shop_model->getPrice(false);  //minimum price of product is acheived
         $data['min_price'] = $data['min_price'][0];
         $data['min_price'] = explode('.', $data['min_price']['price']);  //digits before . are seperated
 
         $data['max_price'] = $this->Shop_model->getPrice(true); //highest price is acheived
         $data['max_price'] = $data['max_price'][0];
-        $data['max_price'] = explode('.', $data['max_price']['price']);
+        $data['max_price'] = explode('.', $data['max_price']['price']);*/
 
         $data['products'] = $this->Shop_model->getProdetails(false, $config['per_page'], $page, $category_id, '', ''); //product details on a single page are returned
 

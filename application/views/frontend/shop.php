@@ -29,6 +29,7 @@
                                     </div>
                                 </div>
                
+
                                 <div class="item">
                                     <div class="col-sm-6">
                                         <h1><span>E</span>-SHOPPER</h1>
@@ -39,6 +40,7 @@
                                         <img src="<?php echo base_url("/Eshopper/images/home/girl2.jpg")?>" class="girl img-responsive" alt="" />
                                     </div>
                                 </div>
+
 
                                 <div class="item">
                                     <div class="col-sm-6">
@@ -64,6 +66,7 @@
                 </div>
             </div>
     </section><!--/slider-->
+
 
 
     <section>
