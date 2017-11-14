@@ -17,10 +17,8 @@
                                 <!--login form-->
                                 <h2>Enter Address</h2>  
 
-                            <!--     <a href="http://localhost/project/index.php/Address/">list</a> -->
-
-                                <a href="<?php echo base_url("Address/")?>">List</a>
-
+                                <!--<a href="http://localhost/project/index.php/Address/">list</a> -->
+                                <a href="<?php echo base_url("Address/")?>">Back</a>
 
                                 <form action="<?php echo base_url(); ?>Address/addUserAdds" method="post" id="address_form">
 
@@ -73,7 +71,7 @@
                         <!-- /.box -->
                     </div>
                 <!-- /.content -->
-                </div>
+              </div>
         <!-- /.content-wrapper -->
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
@@ -163,10 +161,9 @@
            option.attr('value', this.value).text(this.label);           
            $('.country').append(option);
          });  
-          
-          
         }
       });
+
 
     /*Get the state list */
     $('.country').change(function(){
@@ -194,6 +191,7 @@
         }
       });
     });
+
 
     /*Get the city list */
     $('.state').change(function(){

@@ -9,9 +9,11 @@ class Address extends CI_Controller
         $this->load->model('User_addres_model');
 
         if (empty($this->session->userdata('user_login')) && empty($this->session->userdata('gmail_data'))){  //user_login is a session set in User_login controller
-          redirect(base_url() . 'UserLogin');              //User_login is a controller
+          redirect(base_url() . 'UserLogin');              //UserLogin is a controller
         }
     } 
+
+
 
     public function index()
     {
@@ -26,7 +28,7 @@ class Address extends CI_Controller
 
 
     /*
-     * function name : get_countries 
+     * function name : getCountries 
      * @access  public
      */
     public function getCountries()
@@ -45,7 +47,7 @@ class Address extends CI_Controller
 
 
     /*
-     * function name :get_states
+     * function name :getStates
      * get_states function for states
      * @access  public 
      * @return : void
@@ -65,17 +67,14 @@ class Address extends CI_Controller
 
 
     /*
-     * function name :get_cities
+     * function name :getCities
      * get_cities function for cities
      * @access  public 
      * @return : void
      */
     public function getCities()
     {
-        $result = $this->db->where('state_id', $_POST['id'])
-                ->get('cities')
-                ->result_array();
-
+        $result = $this->db->where('state_id', $_POST['id'])->get('cities')->result_array();
         $data = array();
         foreach ($result as $r) {
             $data['value'] = $r['id'];
