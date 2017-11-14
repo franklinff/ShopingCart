@@ -70,7 +70,7 @@ class TrackOrder extends CI_Controller {
             $this->load->view('frontend/footer');
         }else{
             $this->session->set_flashdata('error','Enter a valid order id!');
-            redirect('Track_order');
+            redirect('TrackOrder');
         }
     }
 

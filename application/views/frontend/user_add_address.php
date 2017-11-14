@@ -164,7 +164,6 @@
         }
       });
 
-
     /*Get the state list */
     $('.country').change(function(){
       $.ajax({
@@ -192,7 +191,6 @@
       });
     });
 
-
     /*Get the city list */
     $('.state').change(function(){
       $.ajax({
@@ -217,6 +215,7 @@
                 }
             });
         });
+
     });
 </script>
 
