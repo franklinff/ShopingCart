@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url(); ?>index.php/shop">Home</a></li>
+                <li><a href="<?php echo base_url(); ?>Shop">Home</a></li>
                 <li class="active">Addresses</li>
             </ol>
             <a href="<?php echo base_url(); ?>Address/addUserAdds"><button type="submit" class="btn btn-default">Add Address</button></a>
@@ -49,11 +49,11 @@
                                 </td>
 
                                 <td class="total">
-                                      <a href="<?php echo base_url(); ?>index.php/Address/deleteAddress/<?php echo $row['id']; ?>">
+                                      <a href="<?php echo base_url(); ?>Address/deleteAddress/<?php echo $row['id']; ?>">
                                       <button class="btn btn_edit" id="btn_edit" value="">Delete</button>
                                       </a>
 
-                                      <a href="<?php echo base_url(); ?>index.php/Address/updateAddress/<?php echo $row['id']; ?>">
+                                      <a href="<?php echo base_url(); ?>Address/updateAddress/<?php echo $row['id']; ?>">
                                       <button class="btn btn_delete">Edit</button>
                                       </a>                               
                                 </td>

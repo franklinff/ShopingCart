@@ -119,7 +119,7 @@ class Wishlist extends CI_Controller {
                 $reslt = $this->Wishlist_model->delete($product_id);
                 $wishlist_count = $this->Shop_model->check_prod_id('', $user_id);
                 $wishlist_count = COUNT($wishlist_count);
-                $cart_amount = COUNT($this->session->cart);
+                $cart_amount = COUNT($this->session->userdata('cart'));
 
                 $cart_array = array(
                     'messge' => 'Product Quantity Updated!',

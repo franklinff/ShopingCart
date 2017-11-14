@@ -18,16 +18,12 @@
 						<form action="UserLogin/login" method="POST" id="login">
 							<input type="email" placeholder="Email Address" id="login_email" name="login_email" class="form-control" />
 							<input type="password" placeholder="Password" id="login_password" name="login_password" class="form-control" />
-							
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
 							</span>
-							
 							<button type="submit" class="btn btn-default" style="margin-left:155px;margin-top:-3px;margin-bottom:20px">Login</button>
 							<a href="<?php echo base_url(); ?>ForgotPassword")?> Forgot password?</a>
-
-
 
 <div>
 							<!--<meta name="google-signin-client_id" 
@@ -42,8 +38,7 @@
 							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 							</fb:login-button>
 							</div>	
-</div>							
-							
+</div>								
 						</form>
 					</div><!--/login form-->
 				</div>
