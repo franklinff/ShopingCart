@@ -416,7 +416,7 @@
                         var payment_method = JSON.parse(data);
                         console.log(paypal);
                         if (payment_method == 'success_paypal') {
-                        //window.location = '<?php echo base_url() . 'index.php/paypal/demos/express_checkout'; ?>';
+                //window.location = '<?php //echo base_url() . 'index.php/paypal/demos/express_checkout'; ?>';
                         window.location = '<?php echo base_url() . 'payPal'; ?>';
                         } else {
                             window.location = '<?php echo base_url() . 'index.php/checkout/paymentSuccess'; ?>';
