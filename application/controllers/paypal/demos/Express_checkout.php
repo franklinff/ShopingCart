@@ -554,7 +554,7 @@ class Express_checkout extends CI_Controller {
 
         // Successful call.  Load view or whatever you need to do here.
         //redirect(base_url() . 'PaymentComplete/index/' . $order_id);  
-        redirect(base_url() . 'ppalOrderComplete/' . $order_id);             
+        redirect(base_url() . 'pPalOrderComplete/' . $order_id);             
         
         //$this->session->unset_userdata('cart');
     }
