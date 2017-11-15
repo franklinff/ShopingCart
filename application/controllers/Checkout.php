@@ -262,7 +262,7 @@ class Checkout extends CI_Controller {
             'grand_total');
 
         $this->session->unset_userdata($unset_data);
-        redirect(base_url() . 'PaymentComplete/codSucces/' . $order_id);
+        redirect(base_url() . 'CODorderComplete/' . $order_id);
     }
 
 }
