@@ -115,7 +115,7 @@
 							<h2>About Shopper</h2>
 							<p class="login-box-msg" style="color:red;"><?php echo $this->session->flashdata('error_X'); ?></p>
 							<p class="login-box-msg" style="color:green;"><?php echo $this->session->flashdata('success_X'); ?></p>
-							<form method="post" action="<?php echo base_url();?>index.php/Mailchimp/insert_news_letter" class="searchform">
+							<form method="post" action="<?php echo base_url();?>index.php/Mailchimp/insertNewsLetter" class="searchform">
 								<input type="email" name="email_id" placeholder="Your email address" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
 								<p>Get the most recent updates from <br />our site and be updated your self...</p>
