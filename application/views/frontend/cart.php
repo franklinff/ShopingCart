@@ -400,6 +400,25 @@ foreach ($cart_data as $cart) {
                         $('#di_total').text(cart_price.total);
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
+
+                        toastr["success"](data.cart_quantity_up + data.cart_quantity_up);          
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-center",
+                            "preventDuplicates": true,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "100",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
                     }
                 },
             });
@@ -431,6 +450,7 @@ foreach ($cart_data as $cart) {
                             $('#shipping_price').text('FREE');
                             $.LoadingOverlay("hide");
                             //$("#myDiv").hide();
+
                         } else {
                             $('#shipping_price').html('&#8377;50');
                             $.LoadingOverlay("hide");
@@ -487,6 +507,25 @@ foreach ($cart_data as $cart) {
                         $('#di_total').text(cart_price.total);
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
+
+                        toastr["success"](data.cart_quantity_down + data.cart_quantity_down);          
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-center",
+                            "preventDuplicates": true,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "100",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
                     }
                 },
             });
