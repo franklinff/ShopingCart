@@ -167,7 +167,7 @@
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <a href="<?php echo base_url();?>ProductDetails/index/<?php echo $product['id']; ?>">
+                                                    <a href="<?php echo base_url();?>IndividualProduct/<?php echo $product['id']; ?>">
                                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $product['image_name']; ?>" class="img_style" style="width: 100%; " alt="" />
                                                 </a>
 
