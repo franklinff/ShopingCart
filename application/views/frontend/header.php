@@ -25,6 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link href="<?php echo base_url("/Eshopper/css/toastr.min.css")?>" rel="stylesheet"/>
 </head><!--/head-->
 
 
@@ -156,6 +157,9 @@
     <!-- ajax loader -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>
+
+
+    <script src="<?php echo base_url("/Eshopper/js/toastr.min.js")?>"></script><!-- toastr js -->
 
 
 
