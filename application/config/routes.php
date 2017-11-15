@@ -56,5 +56,7 @@ $route['Shop'] = 'shop/index/page/?category_id';
 $route['codOrderComplete/(:any)'] = 'PaymentComplete/codSucces/$1';
 $route['payPal'] = 'paypal/demos/express_checkout';
 
+$route['ppalOrderComplete/(:any)'] = 'PaymentComplete/index/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
