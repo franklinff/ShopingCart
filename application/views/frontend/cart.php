@@ -330,7 +330,7 @@ foreach ($cart_data as $cart) {
 //                    $("#prod_del_" + product_id).closest("tr").slideUp(1000,function(){
 //                        $("#prod_del_" + product_id).closest("tr").fadeOut("slow");
                     $("#prod_del_" + product_id).closest("tr").fadeOut(1000);
-                    $('#prod_name').text(prod_name + ' removed from the cart!');
+                    $('#prod_name').text(prod_name + ' removed from the cart!').css('color','red');
                     $('#product_' + product_id).val(quantity);
                     //$("#myDiv").hide();
                     $.LoadingOverlay("hide");
