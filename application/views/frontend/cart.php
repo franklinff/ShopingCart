@@ -400,37 +400,7 @@ foreach ($cart_data as $cart) {
                         $('#di_total').text(cart_price.total);
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
-                        toastr["success"](data.cart_quantity_up + data.cart_quantity_up);          
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": true,
-                            "positionClass": "toast-top-center",
-                            "preventDuplicates": true,
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "100",
-                            "timeOut": "5000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        }
                     }
-
-
-
-
-
-
-
-
-
-
-
-
                 },
             });
         });
