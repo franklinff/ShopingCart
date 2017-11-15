@@ -67,7 +67,7 @@ class Shop extends CI_Controller {
         $data['prod_count'] = $this->Shop_model->getProdetails(true, '', '', $category_id, '', ''); //returns total no.(qty) of products 
 
         $config['per_page'] = 6;
-        $config['base_url'] = base_url() . 'index.php/shop/index/page/?category_id=' . $category_id;
+        $config['base_url'] = base_url() . 'Shop' . $category_id;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $data['prod_count'][0]['prod_count'];
         $config['uri_segment'] = 5;

@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 
 $route['IndividualProduct/(:any)'] = 'ProductDetails/index/$1';
-
+$route['Shop'] = 'shop/index/page/?category_id';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
