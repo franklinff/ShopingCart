@@ -140,7 +140,7 @@
                    var messge = JSON.parse(data);
                     //console.log(messge);
                     $("#prod_del_" + product_id).closest("tr").remove();
-                    $('#prod_name').text(prod_name+' moved to the cart!').css('color','green');
+                    $('#prod_name').text(prod_name+' moved to the cart!').css('color','yellow');
                     $('#cart_count_total').text(messge.total_cart_prod);
                     $('#wishlist_count_total').text(messge.total_wishlist_prod);
                     //$("#myDiv").hide();
