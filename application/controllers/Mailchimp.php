@@ -27,7 +27,7 @@ class Mailchimp extends CI_Controller
         	if($user_email === $email)
         	{    		 
 				$this->session->set_flashdata('error_X','Email address already registered');
-				redirect('User_login');
+				redirect('UserLogin');
         	}
         	else
         	{

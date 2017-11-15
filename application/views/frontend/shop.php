@@ -287,26 +287,6 @@
 
     $(document).ready(function () { 
 
-        $('.slider-track').click(function () {
-            var price_range = $('.tooltip-inner').html();
-            console.log(price_range);
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url(); ?>index.php/shop/priceRange/" + price_range,
-                success: function (data) {
-                    var products = JSON.parse(data);
-                    //console.log(products.price_range_products);
-                    if (products.price_range_products != '') {
-                        $('#price_range_products').html(products.price_range_products);
-                        $('.pagination').html(products.price_range_pagination);
-                    } else {
-                        $('#price_range_products').html('No Products Found in this range');
-                        $('.pagination').html(products.price_range_pagination);
-                    }
-                }
-            });
-        });
-
 
         $('.add-to-cart').click(function () {
             var product_id = $(this).attr('data-value');
