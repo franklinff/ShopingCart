@@ -53,7 +53,8 @@ $route['default_controller'] = 'login';
 
 $route['IndividualProduct/(:any)'] = 'ProductDetails/index/$1';
 $route['Shop'] = 'shop/index/page/?category_id';
-$route['CODorderComplete/(:any)'] = 'PaymentComplete/codSucces/$1';
+$route['codOrderComplete/(:any)'] = 'PaymentComplete/codSucces/$1';
+$route['payPal'] = 'paypal/demos/express_checkout';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
