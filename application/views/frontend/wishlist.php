@@ -111,7 +111,7 @@
                 success: function (data) {
                     var status = JSON.parse(data);
                     $("#prod_del_" + product_id).closest("tr").remove();
-                    $('#prod_name').text(prod_name+' removed from the wishlist!');
+                    $('#prod_name').text(prod_name+' removed from the wishlist!').css('color','red');
                     $('#wishlist_count_total').text(status.total_wishlist_prod);
                     //$("#myDiv").hide();
                     $.LoadingOverlay("hide");
