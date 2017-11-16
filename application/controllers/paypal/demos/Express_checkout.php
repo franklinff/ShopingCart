@@ -6,11 +6,11 @@ class Express_checkout extends CI_Controller {
     function __construct() {
 
         parent::__construct();
-        //$this->load->helper('url'); //$this->load->library('session'); //$this->load->library('email');
-        $this->load->model('checkout_model', 'checkout');
-        $this->load->model('cart_model', 'cart');
-        $this->load->model('user_addres_model', 'user_address');
-        $this->load->model('User_login_model', 'user_login');           
+        $this->load->model('Checkout_model');
+        $this->load->model('Cart_model');
+        /*$this->load->model('User_addres_model', 'user_address');
+        $this->load->model('User_login_model', 'user_login');  */
+
         if (empty($this->session->userdata('user_login'))) {
             redirect('UserLogin');
         }
@@ -49,8 +49,8 @@ class Express_checkout extends CI_Controller {
         if ($product_details) {
             $product_id = array_keys($product_details);
             $product_quantity = array();
-            $data['cart_products'] = $this->cart->getAddedProducts($product_id);
-            $data['cart_product_price'] = $this->cart->getPrice($product_id,$order_id);
+            $data['cart_products'] = $this->Cart_model->getAddedProducts($product_id);
+            $data['cart_product_price'] = $this->Cart_model->getPrice($product_id,$order_id);
 
             $i = 0;
             foreach ($data['cart_products'] as $cart_prod) {
@@ -82,13 +82,16 @@ class Express_checkout extends CI_Controller {
             $user_info = $this->session->userdata('user_login');
             $user_id = $user_info[0]['id'];
 
-            $data['user_address'] = $this->checkout->getUserAddress($user_id);
+            $data['user_address'] = $this->Checkout_model->getUserAddress($user_id);
             $this->session->set_userdata('shopping_cart', $data);
         }
         $this->load->view('frontend/header');
         $this->load->view('frontend/paypal_index', $data);
         $this->load->view('frontend/footer');
     }
+
+
+
 
     /*
      * SetExpressCheckout
@@ -172,6 +175,9 @@ class Express_checkout extends CI_Controller {
         }
     }
 
+
+
+
     /*
      * GetExpressCheckoutDetails
      */
@@ -243,7 +249,7 @@ class Express_checkout extends CI_Controller {
                 $cart['shipping_country_code'] = isset($payment['SHIPTOCOUNTRYCODE']) ? $payment['SHIPTOCOUNTRYCODE'] : '';
                 $cart['shipping_country_name'] = isset($payment['SHIPTOCOUNTRYNAME']) ? $payment['SHIPTOCOUNTRYNAME'] : '';
             }
-            /**
+            /*
              * At this point, we now have the buyer's shipping address available in our app.
              * We could now run the data through a shipping calculator to retrieve rate
              * information for this particular order.
@@ -252,14 +258,7 @@ class Express_checkout extends CI_Controller {
              * We're going to set static values for these things in our static
              * shopping cart, and then re-calculate our grand total.
              */
-//			$cart['shopping_cart']['shipping'] = 10.00;
-//			$cart['shopping_cart']['handling'] = 2.50;
-//			$cart['shopping_cart']['tax'] = 1.50;
-//			$cart['shopping_cart']['grand_total'] = number_format(
-//				$cart['shopping_cart']['subtotal']
-//				+ $cart['shopping_cart']['shipping']
-//				+ $cart['shopping_cart']['handling']
-//				+ $cart['shopping_cart']['tax'],2);
+
 
             /*
              * Now we will redirect the user to a final review
@@ -268,8 +267,8 @@ class Express_checkout extends CI_Controller {
              */
             // Set example cart data into session
             $this->session->set_userdata('shopping_cart', $cart);
-//print_r($cart);exit;
-// Load example cart data to variable
+            //print_r($cart);exit;
+            // Load example cart data to variable
             $this->load->vars('cart', $cart);
             // Example - Load Review Page
             $this->load->view('frontend/header');
@@ -369,7 +368,7 @@ class Express_checkout extends CI_Controller {
          */
         $PayPalResult = $this->paypal_pro->DoExpressCheckoutPayment($PayPalRequestData);
 
-        $reslt = $this->checkout->update_trans_id($PayPalResult['PAYMENTS'][0]['TRANSACTIONID'], $cart['last_id']);
+        $reslt = $this->Checkout_model->update_trans_id($PayPalResult['PAYMENTS'][0]['TRANSACTIONID'], $cart['last_id']);
         //Undefined offset: 0 [need to rectify the error]
 
         /*
@@ -423,7 +422,7 @@ class Express_checkout extends CI_Controller {
             //echo '<pre>';
             //print_r($this->session->userdata());exit;
             if ($coupon_used['coupon_id'] != '') {
-                $coupon_used_insert = $this->checkout->insert_coupon_used($coupon_used);
+                $coupon_used_insert = $this->Checkout_model->insert_coupon_used($coupon_used);
             }
             // Successful Order
             redirect('paypal/demos/Express_checkout/OrderComplete');
@@ -504,40 +503,6 @@ class Express_checkout extends CI_Controller {
             }
         }
 
-        /*$title = 'payment_template';
-        $email_template_data = $this->user_login->getEmailTemplate($title);
-        $email_template_data = $email_template_data[0];
-
-        if ($cart['order_details_template'] != '') {
-            $template1 = $this->parser->parse('payment_template', $cart);
-        }
-
-        $config = Array(
-                        'protocol' => 'smtp',
-                        'smtp_host' => 'smtp.wwindia.com',
-                        'smtp_port' => 25,
-                        'smtp_user' => 'rashmi.nalwaya@wwindia.com', 
-                        'smtp_pass' => 'RashmI123', 
-                        'mailtype' => 'html',
-                        'charset' => 'utf-8',
-                        'wordwrap' => TRUE,
-                        'newline' =>'\r\n'
-                        );
-
-        $this->email->initialize($config);
-        $this->load->library('email', $config);
-
-        $this->email->from('franklinfargoj1991@gmail.com');
-        $this->email->to($cart['email']);  // Mail to admin
-        $this->email->subject('Order Details');
-        $this->email->message($template1);
-        $this->email->send();
-
-        $this->email->from('franklinfargoj1991@gmail.com');
-        $this->email->to(ADMIN_EMAIL);  // Mail to admin
-        $this->email->subject('Order Details');
-        $this->email->message($template1);
-        $this->email->send();*/
 
         if ($cart['total'] > 500) {
             $cart['shipping_charges'] = '0';
