@@ -400,7 +400,7 @@ foreach ($cart_data as $cart) {
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
 
-                        toastr["success"]("Quantity upgraded!");          
+                        toastr["success"]("Quantity upgraded");          
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
@@ -464,6 +464,7 @@ foreach ($cart_data as $cart) {
             })
         });
 
+
         $('.cart_quantity_down').click(function () {
             var product_id = $(this).attr('data-value');
             var quantity = $('#product_' + product_id).val();
@@ -507,7 +508,7 @@ foreach ($cart_data as $cart) {
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
 
-                        toastr["success"](Quantity reduced!);          
+                        toastr["success"]("Quantity reduced!");          
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
@@ -529,6 +530,7 @@ foreach ($cart_data as $cart) {
                 },
             });
         });
+
 
         $('.coupons_code').hide();
         $(".coupon_code").change(function () {

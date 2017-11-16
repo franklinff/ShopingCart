@@ -245,7 +245,6 @@ class Cart extends CI_Controller {
             $price['discount_total'] = $cart_price['total'];
             $price['coupon_code'] = $discount['coupon_code'];
             $this->session->set_userdata('discount', $price);
-
         } else {
             $cart_price = array(
                 'sub_total' => $sub_total,
