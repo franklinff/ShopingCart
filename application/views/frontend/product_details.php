@@ -148,8 +148,9 @@
         $('.cart').click(function () {
             var product_id = $(this).attr('data-value');
             var price = <?php echo $individual_data[0]['price']; ?>;
-            var quantity = $('.quantity').val() ;  
-  
+            //var quantity = $('.quantity').val() ;  
+            var quantity = 1;
+
             console.log(product_id);
             console.log(price);
             console.log(quantity);
