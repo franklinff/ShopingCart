@@ -21,7 +21,13 @@ class ContactUs extends CI_Controller {
         $this->load->view('frontend/footer');
     }
 
-
+    /*
+     * add
+     * Displays contact us form. 
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function add() {
 
         $postData = $this->input->post();  //data from the form on post of the user

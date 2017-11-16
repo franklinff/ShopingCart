@@ -87,7 +87,7 @@ class Address extends CI_Controller
 
 
     /*
-     * function name :get_cities
+     * function name :addUserAdds
      * add user address
      * @access  public 
      * @return : void
@@ -136,7 +136,7 @@ class Address extends CI_Controller
 
 
     /*
-     * function name :update_address
+     * function name :updateAddress
      * updates the address as per the id
      * @access  public
      * @param : id

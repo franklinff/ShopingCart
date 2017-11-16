@@ -13,6 +13,13 @@ class User extends CI_Controller
         }
     }
     
+    /*
+     * function name :index
+     * List the active users.
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function index()
     {
         $data['result'] = $this->User_model->list_user();
@@ -21,7 +28,14 @@ class User extends CI_Controller
         $this->load->view("backend/list_user.php", $data);
         $this->load->view('backend/footer.php');
     }
-    
+
+    /*
+     * function name :addUser
+     * Add user form.
+     * @access  public
+     * @param : null
+     * @return : view file
+     */ 
     public function addUser()
     {
         $this->load->view('backend/header.php');
@@ -59,7 +73,14 @@ class User extends CI_Controller
             $this->session->set_flashdata('error', 'Error! Please try again.');
         }
     }
-    
+
+    /*
+     * function name : edit
+     * Edit user details.
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function edit($id)
     {        
         $data['current_user'] = $this->User_model->getById($id);             
@@ -90,12 +111,26 @@ class User extends CI_Controller
         $this->load->view('backend/footer.php');             
     }
     
+    /*
+     * function name :deleteUser
+     * Deletes a user.
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function deleteUser($id)
     {
         $this->User_model->delete_user($id);
         redirect('User');
     }
 
+    /*
+     * function name :configData
+     * Display config list
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function configData()
     {
         $data['resultz'] = $this->User_model->config();
@@ -106,6 +141,13 @@ class User extends CI_Controller
         $this->load->view('backend/footer.php');        
     }
 
+    /*
+     * function name :editConfiguration
+     * Edit configuration details
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function editConfiguration($id)
     {
         $data['current_config'] = $this->User_model->getConfigId($id);

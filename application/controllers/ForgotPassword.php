@@ -10,6 +10,12 @@ class ForgotPassword extends CI_Controller
         //$this->load->library('email'); // $this->load->library('session');   
     } 
 
+    /*
+     * index
+     * Forgot password view
+     * @access public
+     * @return null
+     */
     public function index()
     {
         $email = $this->input->post('email');

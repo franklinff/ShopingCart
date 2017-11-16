@@ -12,6 +12,12 @@ class Coupon extends CI_Controller
         }
     }
 
+    /*
+     * index
+     * List the active coupon
+     * @access public
+     * @return null
+     */
     public function index()
     {
         $data['current_coupon'] = $this->Coupon_model->getAll();
@@ -22,6 +28,12 @@ class Coupon extends CI_Controller
         $this->load->view('backend/footer.php');   
     }
 
+    /*
+     * addCoupon
+     * Add new coupon
+     * @access public
+     * @return null
+     */
     public function addCoupon()
     {
        $data_info = array(
@@ -44,6 +56,13 @@ class Coupon extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
+    /*
+     * deleteCoupon
+     * Deleted the coupon
+     * @access public
+     * @param id
+     * @return null
+     */
     public function deleteCoupon($id)
     {
         $this->Coupon_model->delete_coupon($id);
@@ -60,7 +79,7 @@ class Coupon extends CI_Controller
                           'no_of_uses' => $this->input->post('no_of_uses'),    
                           );
 
-/*        print_r($data_info);
+/*      print_r($data_info);
         die();
 */
         $id = $data['current_coupon'][0]['id'];

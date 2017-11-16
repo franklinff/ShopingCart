@@ -15,6 +15,13 @@ class Category extends CI_Controller
         }
     }
     
+
+    /* index
+     * Display category list.
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function index()
     {
        /* echo '<pre>';
@@ -27,6 +34,12 @@ class Category extends CI_Controller
         $this->load->view('backend/footer.php');
     }
     
+    /*
+     * addCategory
+     * Add new category
+     * @access public
+     * @return null
+     */
     public function addCategory()
     {
         $data['categories'] = $this->Category_model->getAll(); //to display the category in select category dropdown   
@@ -61,6 +74,13 @@ class Category extends CI_Controller
     }
 
 
+    /*
+     * editCategy
+     * Edit category
+     * @access public
+     * @param integer $id 
+     * @return view 
+     */
     public function editCategy($id)
     {
     $data['current_catg'] = $this->Category_model->getCategory($id);

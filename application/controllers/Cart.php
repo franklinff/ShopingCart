@@ -126,7 +126,7 @@ class Cart extends CI_Controller {
 
 
     /*
-     * delete_cart_product
+     * deleteCartProduct
      * Delete cart data. 
      * @access public
      * @param integer $product_id 
@@ -195,7 +195,7 @@ class Cart extends CI_Controller {
     }
 
     /*
-     * update_cart_quantity
+     * updateCartQuantity
      * Update cart data. 
      * @access public
      * @param integer $quantity 
@@ -257,7 +257,7 @@ class Cart extends CI_Controller {
     }
 
     /*
-     * coupon_code
+     * couponCode
      * Apply coupon code. 
      * @access public
      * @param alphanumeric $coupon_code 

@@ -14,7 +14,7 @@ class TrackOrder extends CI_Controller {
     
     /*
      * index
-     * Display a view page.
+     * Display a view page of track order.
      * @access public
      * @param null
      * @return view file
@@ -27,10 +27,10 @@ class TrackOrder extends CI_Controller {
 
 
     /*
-     * track_order_details
+     * trackOrderDetails
      * Display order status.
      * @access public
-     * @param $order_id
+     * @param null
      * @return view file
      */
     public function trackOrderDetails() {

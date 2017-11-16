@@ -16,6 +16,13 @@ class UserLogin extends CI_Controller
         $this->load->model('User_login_model');				        
     }
 	
+    /*
+     * index
+     * Login and registration of new user
+     * @access public
+     * @param null 
+     * @return view file
+     */
 	public function index()
 	{
 	    $data = array(
@@ -97,6 +104,13 @@ class UserLogin extends CI_Controller
 		}
 	}
 
+    /*
+     * login
+     * User login buy authentication of the email and pwd, if registered
+     * @access public
+     * @param null 
+     * @return view file
+     */
 	public function login()
 	{
 			$data = array(
@@ -138,8 +152,13 @@ class UserLogin extends CI_Controller
 
 
 
-
-	public function facebookLogin()
+    /*
+     * facebookLogin
+     * Registration and login through fb 
+     * @access public
+     * @param null 
+     * @return view file
+     */	public function facebookLogin()
 	{
        $name = $this->input->post('name');
        $email = $this->input->post('email');
@@ -194,6 +213,14 @@ class UserLogin extends CI_Controller
 			redirect('Shop');
        }
 	}*/
+
+    /*
+     * logout
+     * Session are destroyed and redirected to Login page 
+     * @access public
+     * @param null 
+     * @return view file
+     */
 	public function logout()
 	{
 		$this->session->unset_userdata('user_login');

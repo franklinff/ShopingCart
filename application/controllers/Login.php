@@ -12,8 +12,7 @@ class Login extends CI_Controller{
         }
 
         /*
-         * function name :__construct
-         * Counstructor for Admin_login controller 
+         * function name :index
          * @access	public
          * @return : void
          */

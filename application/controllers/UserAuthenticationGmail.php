@@ -9,7 +9,15 @@ class UserAuthenticationGmail extends CI_Controller
         $this->load->model('User_login_model');
 
     }
-    
+
+
+    /*
+     * index
+     * Gmail registration
+     * @access public
+     * @param null 
+     * @return view file
+     */    
     public function index(){
 
 		// Include the google api php libraries
@@ -84,6 +92,13 @@ class UserAuthenticationGmail extends CI_Controller
 
     }
 	
+    /*
+     * gmailTrial
+     * Login and registration of new user
+     * @access public
+     * @param $user_id 
+     * Redirect to shop if registered
+     */
     public function gmailTrial($user_id)
     {
         $result = $this->User_login_model->getId($user_id);
@@ -106,6 +121,13 @@ class UserAuthenticationGmail extends CI_Controller
 
     }
 
+    /*
+     * logout
+     * Login and registration of new user
+     * @access public
+     * @param null 
+     * Redirect to UserAuthenticationGmail
+     */
 	public function logout() {
 		$this->session->unset_userdata('token');
 		$this->session->unset_userdata('userData');

@@ -12,6 +12,12 @@ class Banner extends CI_Controller
         }
     }
 
+    /* index
+     * Display products in banner list
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function index()
     {
         $data['result'] = $this->Banner_model->list_banner();        
@@ -21,6 +27,13 @@ class Banner extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
+    /*
+     * uploadImage
+     * Sending state data. 
+     * @access public
+     * @param integer null
+     * @return view
+     */
     public function uploadImage()
     {
     	$this->load->view('backend/header.php');
@@ -53,13 +66,25 @@ class Banner extends CI_Controller
         }
 	}
 
+    /*
+     * deleteBanner
+     * @access public
+     * @param integer $id 
+     * @return view
+     */
 	public function deleteBanner($id)
     {
 		$this->Banner_model->delete_banner($id);
         redirect('Banner');
 	}
 
-
+    /*
+     * editBanner
+     * Sending state data. 
+     * @access public
+     * @param integer $id
+     * @return view
+     */
     public function editBanner($id)
     {
         $data['current_banner'] = $this->Banner_model->getById($id); //able to get data of the row as per the id.
@@ -90,6 +115,6 @@ class Banner extends CI_Controller
             $this->session->set_flashdata('success', 'Banner successfully updated!');
             redirect('Banner');
         }
-
     }
+
 }

@@ -10,6 +10,13 @@ class ProductDetails extends CI_Controller
     	 $this->load->model('Shop_model');
     }
 
+    /*
+     * function name :index
+     * A single product with three images is displayed
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function index($id)
 	{
 		$data['individual_data'] = $this->Product_details_model->getProduct($id);

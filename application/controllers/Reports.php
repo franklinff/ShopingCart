@@ -12,6 +12,13 @@ class Reports extends CI_Controller{
         }       
     } 
 
+    /*
+     * function name : couponsUsed
+     * Coupon used by the user is displayed in the list
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function couponsUsed()
     {
 		$data['coupons'] = $this->Reports_model->getCoupons();
@@ -21,6 +28,13 @@ class Reports extends CI_Controller{
         $this->load->view('backend/footer');
     }
 
+    /*
+     * function name :customersRegistered
+     * 
+     * @access  public
+     * @param : $start_date,$end_date
+     * @return : view file
+     */
     public function customersRegistered($start_date='',$end_date='')
     {	
 		//$data['customers'] = $this->Reports_model->getCustomers();
@@ -43,6 +57,13 @@ class Reports extends CI_Controller{
     }
 
 
+    /*
+     * function name : salesReports
+     * Display graphical report of sales done
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function salesReports()
     {
     	$data['sales_reports'] = $this->Reports_model->get_sales_data();

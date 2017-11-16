@@ -16,7 +16,13 @@ class MyOrder extends CI_Controller
         }
     } 
 
-
+    /*
+     * function name :index
+     * User order list
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function index(){
 
         if ($this->uri->segment(5)) {
@@ -50,7 +56,13 @@ class MyOrder extends CI_Controller
     }
 
 
-
+    /*
+     * function name :orderDetails
+     * Get order details.
+     * @access  public
+     * @param : $order_id
+     * @return : view file
+     */
      public function orderDetails($order_id) {
 
         $data['order_details'] = $this->My_orders_model->getOrderDetails($order_id);

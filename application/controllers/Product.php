@@ -19,7 +19,13 @@ class Product extends CI_Controller
             }
     }
 
-    
+    /*
+     * function name :index
+     * List the total products
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function index()
     {
         $data['products'] = $this->Product_model->getAll();
@@ -33,7 +39,13 @@ class Product extends CI_Controller
     }
 
 
-
+    /*
+     * function name :addProduct
+     * To add a product.
+     * @access  public
+     * @param : null
+     * @return : view file
+     */
     public function addProduct()
     {
        $data_info = array(
@@ -74,7 +86,6 @@ class Product extends CI_Controller
         $time1 = time();
         $time2 = time();
         $time3 = time();   
-
 
         if ($this->form_validation->run() == TRUE)
         {
@@ -146,7 +157,13 @@ class Product extends CI_Controller
 }
 
 
-
+    /*
+     * function name :editProduct
+     * Edit product content 
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function editProduct($id)
     {
         $data['current_product'] = $this->Product_model->getProduct($id); //retrives product information 
@@ -266,7 +283,13 @@ class Product extends CI_Controller
 }
 
 
-
+    /*
+     * function name : deleteProduct
+     * Deletes the product
+     * @access  public
+     * @param : $id
+     * @return : view file
+     */
     public function deleteProduct($id)
     {       
         $this->Product_model->delete_product($id);

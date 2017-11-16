@@ -43,7 +43,7 @@ class Wishlist extends CI_Controller {
     }
 
     /*
-     * delete_wishlist_product
+     * deleteWishlistProduct
      * Deletes product added to the wishlist. 
      * @access public
      * @param $product_id 
@@ -65,11 +65,10 @@ class Wishlist extends CI_Controller {
     }
 
     /*
-     * add_to_cart
+     * addToCart
      * Adds product to cart. 
      * @access public
-     * @param $product_id 
-     * @param $price 
+     * @param $product_id, $price, $prod_quantity
      * @return json
      */
     public function addToCart($product_id, $price, $prod_quantity) {

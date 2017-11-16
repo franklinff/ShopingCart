@@ -26,7 +26,7 @@ class ChangePassword extends CI_Controller{
     }
     
     /*
-     * update_password
+     * updatePassword
      * Update password.
      * @access public
      * @param null

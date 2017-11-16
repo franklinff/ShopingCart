@@ -9,6 +9,12 @@ class CmsFrontend extends CI_Controller
         $this->load->model('Cms_frontend_model');
     }
 
+    /* coInformation
+     * Display Com. INformation
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function coInformation()
     {
     	$id= 10;
@@ -19,6 +25,12 @@ class CmsFrontend extends CI_Controller
         $this->load->view('frontend/footer');
     }
 
+    /* coTerms
+     * Display Com. Terms
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function coTerms()
     {
     	$id= 11;
@@ -29,6 +41,12 @@ class CmsFrontend extends CI_Controller
         $this->load->view('frontend/footer');
     }
 
+    /* coPrivacy
+     * Display Com. Privacy
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function coPrivacy()
     {
     	$id= 12;
@@ -39,6 +57,12 @@ class CmsFrontend extends CI_Controller
         $this->load->view('frontend/footer');
     }
 
+    /* coRefund
+     * Display Com. refund policy
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function coRefund()
     {
     	$id= 13;
@@ -49,6 +73,13 @@ class CmsFrontend extends CI_Controller
         $this->load->view('frontend/footer');
     }
 
+
+    /* coCopyright
+     * Display Com. copyright
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function coCopyright()
     {
     	$id= 14;

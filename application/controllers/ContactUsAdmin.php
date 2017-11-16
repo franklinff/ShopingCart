@@ -13,6 +13,13 @@ class ContactUsAdmin extends CI_Controller
         }
     }
 
+    /*
+     * index
+     * Displays User query form
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function index()
     {
         $data['result'] = $this->Contact_admin_model->user_query();   
@@ -22,6 +29,13 @@ class ContactUsAdmin extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
+    /*
+     * replyToQuery
+     * Displays reply form
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function replyToQuery($id)
     {   
         $data['id'] = $id;
@@ -35,6 +49,13 @@ class ContactUsAdmin extends CI_Controller
         $this->load->view('backend/footer.php');
     }
 
+    /*
+     * dataSubmit
+     * sumits the query rresolution
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function dataSubmit()
     {
        $id = $this->input->post('reply_id');

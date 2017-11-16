@@ -12,6 +12,7 @@ class UserAuthentication extends CI_Controller
         $this->load->model('User');
     }
 
+    //refered codwex for fb login and registration
     public function index(){
         $userData = array();
 

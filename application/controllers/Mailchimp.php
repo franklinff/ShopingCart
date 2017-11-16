@@ -10,6 +10,12 @@ class Mailchimp extends CI_Controller
         $this->load->model('Mailchimp_model');
     }
 
+    /*
+     * index
+     * User login view by default
+     * @access public
+     * @return null
+     */
     public function index()
     {
 	$this->load->view('frontend/header.php');
@@ -17,6 +23,12 @@ class Mailchimp extends CI_Controller
 	$this->load->view('frontend/footer.php');
     }
 
+    /*
+     * insertNewsLetter
+     * Subscriber for newletter
+     * @access public
+     * @return null
+     */
     public function insertNewsLetter()
     {
         $email = $this->input->post('email_id');

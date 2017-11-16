@@ -10,6 +10,12 @@ class Cms extends CI_Controller
     }
 
 
+    /* index
+     * Display cms.
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function index() 
     {
         $data['cms_data'] = $this->Cms_model->getAll();
@@ -20,6 +26,13 @@ class Cms extends CI_Controller
     }
 
 
+    /*
+     * cmsData
+     * Display cms content. 
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function cmsData()
     {
         $data_info = array(
@@ -33,8 +46,6 @@ class Cms extends CI_Controller
                 );
 
        // print_r($data_info);
-
-
         $this->form_validation->set_rules('role_type', 'Long desc.', 'required');
         $this->form_validation->set_rules('meta_title', 'Meta keywd', 'required');
         $this->form_validation->set_rules('long_description', 'Meta title', 'required');
@@ -53,6 +64,13 @@ class Cms extends CI_Controller
     }
 
 
+    /*
+     * updateCms
+     * Display order details summary. 
+     * @access public
+     * @param id
+     * @return view file
+     */
     public function updateCms($id)
     {
         $data['individual_cms']=$this->Cms_model->getById($id);

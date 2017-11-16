@@ -9,6 +9,12 @@ class MyAccount extends CI_Controller
         $this->load->model('My_account_model');
     } 
 
+    /* index
+     * Display my account details.
+     * @access public
+     * @param null
+     * @return view file
+     */
     public function index()
 	{
 		if(!empty($this->session->userdata('user_login')) || !empty($this->session->userdata('gmail_data')) )
@@ -29,6 +35,12 @@ class MyAccount extends CI_Controller
 	}
 
 
+    /*
+     * update
+     * Edit personal details of the account
+     * @access public 
+     * @return view 
+     */
 	public function update()
 	{
 		$user_data = $this->session->userdata('user_login');

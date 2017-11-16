@@ -80,7 +80,7 @@ class Checkout extends CI_Controller {
 
 
     /*
-     * user_address_details
+     * userAddressDetails
      * Apply coupon code. 
      * @access public
      * @param $billing_addr_id, $shipping_addr_id,$shipping_method  
@@ -156,7 +156,7 @@ class Checkout extends CI_Controller {
 
 
     /*
-     * payment_success
+     * paymentSuccess
      * Display order details summary. 
      * @access public
      * @param null

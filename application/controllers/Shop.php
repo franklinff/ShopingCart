@@ -89,11 +89,10 @@ class Shop extends CI_Controller {
     }
 
     /*
-     * add_to_cart
+     * addToCart
      * Add products to the cart.
      * @access public
-     * @param $product_id
-     * @param $price
+     * @param $product_id, $price, $prod_quantity
      * @return json
      */
     public function addToCart($product_id, $price, $prod_quantity) {
@@ -207,7 +206,7 @@ class Shop extends CI_Controller {
     }
 
     /*
-     * add_to_wishlist
+     * addToWishlist
      * Add products to the wishlist.
      * @access public
      * @param $product_id
