@@ -355,7 +355,6 @@ foreach ($cart_data as $cart) {
 //                    }
 //                    alert(status.status);
 //                console.log($(this));
-
                 },
             });
         });
@@ -401,7 +400,7 @@ foreach ($cart_data as $cart) {
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
 
-                        toastr["success"](data.cart_quantity_up + data.cart_quantity_up);          
+                        toastr["success"]("Quantity upgraded");          
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
