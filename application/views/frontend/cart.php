@@ -400,7 +400,7 @@ foreach ($cart_data as $cart) {
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
 
-                        toastr["success"]("Quantity upgraded");          
+                        toastr["success"]("Quantity upgraded!");          
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
@@ -507,7 +507,7 @@ foreach ($cart_data as $cart) {
                         //$("#myDiv").hide();
                         $.LoadingOverlay("hide");
 
-                        toastr["success"](data.cart_quantity_down + data.cart_quantity_down);          
+                        toastr["success"](Quantity reduced!);          
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
