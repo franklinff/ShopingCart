@@ -164,7 +164,7 @@
                     if (messge.messge == 'Already added to the cart!') {
                         $('#added_to_cart').text('Cart updated successfully');
                     } else {
-                        $('#added_to_cart').text(messge.messge);
+                        $('#added_to_cart').text(messge.messge).css('color','green');
                         $('.quantity').val(quantity);
                     }
                 },
