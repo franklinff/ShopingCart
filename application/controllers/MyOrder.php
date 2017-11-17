@@ -25,11 +25,7 @@ class MyOrder extends CI_Controller
      */
     public function index(){
 
-        if ($this->uri->segment(5)) {
-            $page = ($this->uri->segment(5));
-        } else {
-            $page = 1;
-        }
+
 
         $login_info = $this->session->userdata('user_login');
         $user_id = $login_info[0]['id'];       
@@ -44,6 +40,13 @@ class MyOrder extends CI_Controller
         $config['prev_link'] = 'Previous';
         
         $this->pagination->initialize($config);  
+
+
+        if ($this->input->get('per_page')) {
+            $page = ($this->input->get('per_page'));
+        } else {
+            $page = 0;
+        }
 
         $data['orders'] = $this->My_orders_model->getOrders(false,$config['per_page'], $page,$user_id);
 
