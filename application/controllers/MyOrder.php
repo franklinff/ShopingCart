@@ -24,41 +24,11 @@ class MyOrder extends CI_Controller
      * @return : view file
      */
     public function index(){
-/*
-        $login_info = $this->session->userdata('user_login');
-        $user_id = $login_info[0]['id'];       
-        $data['order_count'] = $this->My_orders_model->getOrders(true,'', '',$user_id);
-
-        $config['page_query_string'] = TRUE;
-        $config['per_page'] = 3;
-        $config['base_url'] = base_url() . 'MyOrder/index/page/';
-        $config['total_rows'] = $data['order_count'][0]['order_count'];
-        $config['uri_segment'] = 5;
-        $config['next_link'] = 'Next';
-        $config['prev_link'] = 'Previous';
-        
-        $this->pagination->initialize($config);  
-
-
-        if ($this->input->get('per_page')) {
-            $page = ($this->input->get('per_page'));
-        } else {
-            $page = 0;
-        }
-
-        $data['orders'] = $this->My_orders_model->getOrders(false,$config['per_page'], $page,$user_id);
-
-        $this->load->view('frontend/header.php');
-        $this->load->view('frontend/my_order_view', $data);
-        $this->load->view('frontend/footer');*/
-
-
 
         $login_info = $this->session->userdata('user_login');
         $user_id = $login_info[0]['id']; 
 
         $data['order_count'] = $this->My_orders_model->getOrders(true,'', '',$user_id);
-
         $config['total_rows'] = $data['order_count'][0]['order_count'];
         $config['per_pagev'] = 6;   
         $config['page_query_string'] = TRUE;
